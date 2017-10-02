@@ -1,0 +1,20 @@
+//
+// Theme Style
+//
+
+/// --------------------------------------------------------------
+// Import before variables to fix compilation issues
+// --------------------------------------------------------------
+@import "../../node_modules/bootstrap/scss/functions";
+
+// --------------------------------------------------------------
+// Tools, Variables and Mixins
+// --------------------------------------------------------------
+@import "settings/variables";
+@import "settings/mixins";
+
+// --------------------------------------------------------------
+// Reset and Dependencies
+// --------------------------------------------------------------
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// @import "../../bower_components/animate.css/animate.min";
