@@ -4,19 +4,19 @@
   "description": "[View the documentation](https://bitbucket.org/hastedesign/haste-starter#readme)",
   "main": "webpack.config.js",
   "scripts": {
-    "scss": "node-sass --output-style compressed -o dist/css src/scss",
-    "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers -r dist/css/*",
-    "lint": "eslint src/js",
-    "uglify": "uglifyjs src/js/*.js -m -c -o dist/js/main.min.js --verbose",
-    "imagemin": "imagemin imagemin src/img/* --out-dir=dist/img",
+    "sass": "node-sass --output-style compressed --source-map true -o dist/css src/scss | gnomon --medium=10.0 --high=20.0",
+    "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers -r dist/css/* | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
+    "lint": "eslint src/js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
+    "uglify": "uglifyjs src/js/*.js -m -c -o dist/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
+    "imagemin": "imagemin imagemin src/img/* --out-dir=dist/img | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "serve": "browser-sync start --proxy 'localhost' --files 'dist/css/*.css, dist/js/*.js'",
-    "build:css": "npm run scss && npm run autoprefixer",
+    "build:sass": "npm run sass && npm run autoprefixer",
     "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
-    "build:all": "npm run build:css && npm run build:js && npm run build:images",
-    "watch:css": "onchange \"src/scss/*.scss\" -i -- npm run build:css",
-    "watch:js": "onchange \"src/js/*.js\" -i -- npm run build:js",
-    "watch:all": "parallelshell \"npm run watch:css\" \"npm run watch:js\""
+    "build:all": "npm run build:sass && npm run build:js && npm run build:images",
+	"watch": "parallelshell \"npm run watch:sass\" \"npm run watch:js\"",
+    "watch:sass": "onchange \"src/scss/*.scss\" -i -- npm run build:sass",
+    "watch:js": "onchange \"src/js/*.js\" -i -- npm run build:js"
   },
   "browserslist": {
     "production": [
