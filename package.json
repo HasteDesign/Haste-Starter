@@ -5,17 +5,26 @@
   "main": "webpack.config.js",
   "scripts": {
     "scss": "node-sass --output-style compressed -o dist/css src/scss",
-    "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '&gt; 5%, ie 9' -r dist/css/*",
+    "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers -r dist/css/*",
     "lint": "eslint src/js",
-    "uglify": "mkdir -p dist/js && uglifyjs src/js/*.js -m -c -o dist/js/main.min.js",
-    "imagemin": "imagemin src/images dist/images -p",
-    "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'",
+    "uglify": "uglifyjs src/js/*.js -m -c -o dist/js/main.min.js --verbose",
+    "imagemin": "imagemin imagemin src/img/* --out-dir=dist/img",
+    "serve": "browser-sync start --proxy 'localhost' --files 'dist/css/*.css, dist/js/*.js'",
     "build:css": "npm run scss && npm run autoprefixer",
-    "build:js": "npm run lint &amp;&amp; npm run uglify",
+    "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:css && npm run build:js && npm run build:images",
-    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
-    "watch:js": "onchange 'src/js/*.js' -- npm run build:js"
+    "watch:css": "onchange \"src/scss/*.scss\" -i -- npm run build:css",
+    "watch:js": "onchange \"src/js/*.js\" -i -- npm run build:js",
+    "watch:all": "parallelshell \"npm run watch:css\" \"npm run watch:js\""
+  },
+  "browserslist": {
+    "production": [
+      "> 5%, ie 9"
+    ],
+    "development": [
+      "last 2 versions"
+    ]
   },
   "repository": {
     "type": "git",
@@ -27,25 +36,22 @@
   "homepage": "https://bitbucket.org/hastedesign/haste-starter#readme",
   "devDependencies": {
     "bootstrap": "^4.0.0-beta",
-    "css-loader": "^0.28.7",
+    "browser-sync": "^2.18.13",
     "eslint": "^4.8.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^1.1.4",
+    "imagemin-cli": "^3.0.0",
     "jquery": "^3.2.1",
     "node-sass": "^4.5.3",
     "onchange": "^3.2.1",
     "parallelshell": "^3.0.1",
     "popper": "^1.0.0",
     "popper.js": "^1.12.5",
+    "postcss": "^6.0.12",
+    "postcss-cli": "^4.1.1",
     "postcss-import": "^11.0.0",
-    "postcss-loader": "^2.0.6",
     "precss": "^2.0.0",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.6.0"
+    "uglify-js": "^3.1.3"
   },
   "dependencies": {
-    "exports-loader": "^0.6.4"
+    "autoprefixer": "^7.1.4"
   }
 }
