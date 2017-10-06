@@ -21,7 +21,7 @@ const config = {
 	// Output js in /js subfolder
 	output: {
     	filename: 'js/[name].min.js',
-    	path: path.resolve(__dirname, 'dist')
+    	path: path.resolve(__dirname, 'assets')
 	},
 
 	resolve: {
