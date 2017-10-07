@@ -5,7 +5,7 @@
 /// --------------------------------------------------------------
 // Import before variables to fix compilation issues
 // --------------------------------------------------------------
-@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 // --------------------------------------------------------------
 // Tools, Variables and Mixins
@@ -16,5 +16,31 @@
 // --------------------------------------------------------------
 // Reset and Dependencies
 // --------------------------------------------------------------
-@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// @import "../../bower_components/animate.css/animate.min";
+
+// --------------------------------------------------------------
+// CSS and Components
+// --------------------------------------------------------------
+@import "shared/base";
+@import "shared/wordpress";
+@import "shared/forms";
+@import "shared/pagination";
+@import "shared/shortcodes";
+
+// --------------------------------------------------------------
+// Layout
+// --------------------------------------------------------------
+@import "shared/navigation-skiplink";
+@import "shared/header-branding";
+@import "shared/header-image";
+@import "shared/navigation-top";
+@import "shared/wrapper";
+@import "shared/content";
+@import "shared/sidebar";
+@import "shared/footer";
+@import "shared/animation";
+
+// --------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------
+@import "shared/queries";
+@import "shared/helpers";
