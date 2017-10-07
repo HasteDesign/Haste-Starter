@@ -55,5 +55,21 @@ add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
 function odin_stylesheet_uri( $uri, $dir ) {
 	return $dir . '/assets/css/main.css';
 }
-
 add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
+
+/**
+ * Displays BrowserSync script
+ */
+function odin_browser_sync() {
+
+	if ( is_admin() ) return;
+
+	?>
+	<script id="__bs_script__">
+	//<![CDATA[
+		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
+	//]]>
+	</script>
+	<?php
+}
+add_action( 'wp_print_scripts', 'odin_browser_sync' );

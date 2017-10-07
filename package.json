@@ -9,14 +9,15 @@
     "lint": "eslint src/js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "uglify": "uglifyjs src/js/*.js -m -c -o assets/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "imagemin": "imagemin imagemin src/img/* --out-dir=assets/img | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
-    "serve": "browser-sync start --proxy 'localhost' --files 'assets/css/*.css, assets/js/*.js'",
+    "sync": "browser-sync start --files assets/css/*.css, assets/js/*.js, *.php",
     "build:sass": "npm run sass && npm run autoprefixer",
     "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:sass && npm run build:js && npm run build:images",
-	"watch": "parallelshell \"npm run watch:sass\" \"npm run watch:js\"",
+	  "watch": "parallelshell \"npm run watch:sass\" \"npm run watch:js\"",
     "watch:sass": "onchange \"src/**/*.scss\" -i -- npm run build:sass",
-    "watch:js": "onchange \"src/**/*.js\" -i -- npm run build:js"
+    "watch:js": "onchange \"src/**/*.js\" -i -- npm run build:js",
+    "watch:sync": "parallelshell \"npm run watch:sass\" \"npm run watch:js\" \"npm run sync\""
   },
   "browserslist": {
     "production": [
