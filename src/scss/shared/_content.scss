@@ -9,9 +9,6 @@
 	.post,
 	.page {
 		margin-bottom: 2em;
-		padding-left: 2em;
-		padding-right: 2em;
-		border-left: 5px #F5F5F5 solid;
 
 		// Header area
 		header.entry-header {
@@ -29,20 +26,19 @@
 
 		// Excerpt area
 		.entry-excerpt {
-			font-size: large;
+			@extend .lead;
 		}
 
 		// Content area
 		.entry-content {
-			font-size: larger;
+			font-size: $font-size-lg;
 			padding-top: .5em;
 			padding-bottom: 1.5em;
 		}
 
 		// Footer area
 		.entry-footer {
-			background: #F5F5F5;
-			padding: .5em 1em;
+
 			.cat-links {}
 			.tag-links {}
 			.comments-link {}
