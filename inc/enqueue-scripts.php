@@ -61,9 +61,6 @@ add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
  * Displays BrowserSync script
  */
 function odin_browser_sync() {
-
-	if ( is_admin() ) return;
-
 	?>
 	<script id="__bs_script__">
 	//<![CDATA[
@@ -72,4 +69,4 @@ function odin_browser_sync() {
 	</script>
 	<?php
 }
-add_action( 'wp_print_scripts', 'odin_browser_sync' );
+add_action( 'wp_footer', 'odin_browser_sync' );
