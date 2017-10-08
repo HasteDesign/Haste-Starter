@@ -7,14 +7,14 @@
     "sass": "node-sass --output-style compressed --source-map true -o assets/css src/scss | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers -r assets/css/*.css | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "lint": "eslint src/js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
-    "uglify": "uglifyjs src/js/*.js -m -c -o assets/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
+    "uglify": "uglifyjs node_modules/popper.js/dist/popper.js node_modules/bootstrap/dist/js/bootstrap.min.js src/js/*.js -m -c -o assets/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "imagemin": "imagemin imagemin src/img/* --out-dir=assets/img | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "sync": "browser-sync start --files assets/css/*.css, assets/js/*.js, *.php",
     "build:sass": "npm run sass && npm run autoprefixer",
     "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:sass && npm run build:js && npm run build:images",
-	  "watch": "parallelshell \"npm run watch:sass\" \"npm run watch:js\"",
+    "watch": "parallelshell \"npm run watch:sass\" \"npm run watch:js\"",
     "watch:sass": "onchange \"src/**/*.scss\" -i -- npm run build:sass",
     "watch:js": "onchange \"src/**/*.js\" -i -- npm run build:js",
     "watch:sync": "parallelshell \"npm run watch:sass\" \"npm run watch:js\" \"npm run sync\""
@@ -50,9 +50,10 @@
     "postcss-cli": "^4.1.1",
     "postcss-import": "^11.0.0",
     "precss": "^2.0.0",
-    "uglify-js": "^3.1.3"
+    "uglify-es": "^3.1.3"
   },
   "dependencies": {
-    "autoprefixer": "^7.1.4"
+    "autoprefixer": "^7.1.4",
+    "popper.js": "^1.12.5"
   }
 }

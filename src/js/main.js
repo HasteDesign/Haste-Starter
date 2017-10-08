@@ -1,9 +1,3 @@
-// import 'bootstrap';
-
-// import 'bootstrap/js/dist/util';
-// import 'bootstrap/js/dist/dropdown';
-// ...
-
 /**
  *	Main
  */
@@ -20,7 +14,7 @@ jQuery(document).ready(function($) {
 	 * @link http://fitvidsjs.com
 	 */
 
-	$( '.entry-content' ).fitVids()
+	// $( '.entry-content' ).fitVids();
 
 	/**
 	 * Relative time to date posts.
@@ -28,11 +22,11 @@ jQuery(document).ready(function($) {
 	 */
 
 	/* global moment */
-	moment.locale( $('html').attr('lang') )
-
-	$( '.entry-date' ).each(function() {
-		$(this).text( moment( $(this).children('time').attr('datetime'), moment.ISO_8601 ).startOf('hour').fromNow() )
-	})
+	// moment.locale( $('html').attr('lang') )
+	//
+	// $( '.entry-date' ).each(function() {
+	// 	$(this).text( moment( $(this).children('time').attr('datetime'), moment.ISO_8601 ).startOf('hour').fromNow() )
+	// })
 
 	/**
 	 * Odin Core shortcodes.

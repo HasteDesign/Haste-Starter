@@ -24,7 +24,7 @@ function odin_enqueue_scripts() {
 		wp_enqueue_style( 'odin-main-style', $template_url . '/assets/css/main.css' );
 
 		// Loads main script file.
-		wp_enqueue_script( 'odin-main-script', $template_url . '/assets/js/main.js', array(), null, true );
+		wp_enqueue_script( 'odin-main-script', $template_url . '/src/js/main.js', array(), null, true );
 
 	} else {
 		// Loads main stylesheet file compressed.
