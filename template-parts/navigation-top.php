@@ -1,35 +1,27 @@
-<nav id="navigation-top" class="navbar navbar-inverse" role="navigation">
+<nav id="navigation-top" class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
 	<div class="container">
-		<header class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
-			<span class="sr-only"><?php _e( 'Toggle navigation', 'odin' ); ?></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-				<?php bloginfo( 'name' ); ?>
-			</a>
-		</header>
-		<div class="collapse navbar-collapse">
+		<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+			<?php bloginfo( 'name' ); ?>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="main-menu">
 			<?php
 				wp_nav_menu( array(
 						'theme_location' => 'main-menu',
 						'depth'          => 2,
 						'container'      => false,
-						'menu_class'     => 'nav navbar-nav',
+						'menu_class'     => 'navbar-nav mr-auto',
 						'fallback_cb'    => 'Odin_Bootstrap_Nav_Walker::fallback',
 						'walker'         => new Odin_Bootstrap_Nav_Walker(),
 				) );
 			?>
-			<form method="get" class="navbar-form navbar-right" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-				<label for="navbar-search" class="sr-only">
-					<?php _e( 'Search:', 'odin' ); ?>
-				</label>
-				<div class="form-group">
-					<input type="search" value="<?php echo get_search_query(); ?>" class="form-control" name="s" id="navbar-search" />
-				</div>
-				<button type="submit" class="btn btn-default"><?php _e( 'Search', 'odin' ); ?></button>
+			<form method="get" id="searchform" class="form-inline my-2 my-lg-0" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+				<input type="search" class="form-control" name="s" id="s" value="<?php echo get_search_query(); ?>" placeholder="<?php esc_attr_e( 'Search', 'odin' ); ?>" aria-label="<?php esc_attr_e( 'Search', 'odin' ); ?>" />
+				<button type="submit" class="btn btn-outline-primary my-2 my-sm-0" value="<?php esc_attr_e( 'Search', 'odin' ); ?>">
+					<?php esc_attr_e( 'Search', 'odin' ); ?>
+				</button>
 			</form>
 		</div><!-- .navbar-collapse -->
 	</div><!-- .container -->
