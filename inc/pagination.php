@@ -14,7 +14,7 @@
  *
  * @return string       Return the pagination.
  */
-function odin_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
+function haste_starter_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
 
 	// Prevent show pagination number if Infinite Scroll of JetPack is active.
 	if ( ! isset( $_GET[ 'infinity' ] ) ) {
@@ -32,7 +32,7 @@ function odin_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
 			$big = 999999999;
 
 			// Sets the paginate_links arguments.
-			$arguments = apply_filters( 'odin_pagination_args', array(
+			$arguments = apply_filters( 'haste_starter_pagination_args', array(
 					'base'      => esc_url_raw( str_replace( $big, '%#%', get_pagenum_link( $big, false ) ) ),
 					'format'    => '',
 					'current'   => max( 1, get_query_var( 'paged' ) ),

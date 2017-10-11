@@ -5,7 +5,7 @@
  *
  * @since 2.2.0
  */
-function odin_enqueue_scripts() {
+function haste_starter_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
 
 	// JQuery script.
@@ -40,7 +40,7 @@ function odin_enqueue_scripts() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
+add_action( 'wp_enqueue_scripts', 'haste_starter_enqueue_scripts', 1 );
 
 /**
  * Odin custom stylesheet URI.
@@ -52,15 +52,15 @@ add_action( 'wp_enqueue_scripts', 'odin_enqueue_scripts', 1 );
  *
  * @return string      New URI.
  */
-function odin_stylesheet_uri( $uri, $dir ) {
+function haste_starter_stylesheet_uri( $uri, $dir ) {
 	return $dir . '/assets/css/main.css';
 }
-add_filter( 'stylesheet_uri', 'odin_stylesheet_uri', 10, 2 );
+add_filter( 'stylesheet_uri', 'haste_starter_stylesheet_uri', 10, 2 );
 
 /**
  * Displays BrowserSync script
  */
-function odin_browser_sync() {
+function haste_starter_browser_sync() {
 	?>
 	<script id="__bs_script__">
 	//<![CDATA[
@@ -69,4 +69,4 @@ function odin_browser_sync() {
 	</script>
 	<?php
 }
-add_action( 'wp_footer', 'odin_browser_sync' );
+add_action( 'wp_footer', 'haste_starter_browser_sync' );

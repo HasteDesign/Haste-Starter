@@ -8,7 +8,7 @@
  *
  * @return string            HTML of breadcrumbs.
  */
-function odin_breadcrumbs( $homepage = '' ) {
+function haste_starter_breadcrumbs( $homepage = '' ) {
 	global $wp_query, $post, $author;
 
 	! empty( $homepage ) || $homepage = __( 'Home', 'haste-starter' );

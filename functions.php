@@ -7,10 +7,9 @@
  * hooks in WordPress to change core functionality.
  *
  * @see https://codex.wordpress.org/Plugin_API for more information on hooks, actions, and filters.
- * @see https://github.com/wpbrasil/odin for documentation Odin Theme.
+ * @see https://bitbucket.org/hastedesign/haste-starter for documentation Odin Theme.
  *
- * @package WordPress
- * @subpackage Odin
+ * @package WordPress\HasteStarter
  */
 
 /**
@@ -32,15 +31,15 @@ require_once get_template_directory() . '/inc/classes/class-thumbnail-resizer.ph
  * Shortcodes.
  */
 
-require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes.php';
-require_once get_template_directory() . '/inc/shortcodes/class-odin-shortcodes-menu.php';
+require_once get_template_directory() . '/inc/shortcodes/class-shortcodes.php';
+require_once get_template_directory() . '/inc/shortcodes/class-shortcodes-menu.php';
 
 /**
  * Widgets.
  */
 
 // Facebook like box widget.
-require_once get_template_directory() . '/inc/widgets/class-odin-widget-like-box.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-like-box.php';
 
 /**
  * Hooks.

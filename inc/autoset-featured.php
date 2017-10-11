@@ -3,18 +3,18 @@
  * Automatically sets the post thumbnail.
  *
  * Use:
- * add_action( 'the_post', 'odin_autoset_featured' );
- * add_action( 'save_post', 'odin_autoset_featured' );
- * add_action( 'draft_to_publish', 'odin_autoset_featured' );
- * add_action( 'new_to_publish', 'odin_autoset_featured' );
- * add_action( 'pending_to_publish', 'odin_autoset_featured' );
- * add_action( 'future_to_publish', 'odin_autoset_featured' );
+ * add_action( 'the_post', 'haste_starter_autoset_featured' );
+ * add_action( 'save_post', 'haste_starter_autoset_featured' );
+ * add_action( 'draft_to_publish', 'haste_starter_autoset_featured' );
+ * add_action( 'new_to_publish', 'haste_starter_autoset_featured' );
+ * add_action( 'pending_to_publish', 'haste_starter_autoset_featured' );
+ * add_action( 'future_to_publish', 'haste_starter_autoset_featured' );
  *
  * @since  2.2.0
  *
  * @global array $post WP post object.
  */
-function odin_autoset_featured() {
+function haste_starter_autoset_featured() {
 	global $post;
 
 	if ( isset( $post->ID ) ) {

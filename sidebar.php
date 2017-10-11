@@ -4,12 +4,12 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package odin
+ * @package HasteStarter
  */
 
 ?>
 
-<aside id="sidebar" class="<?php echo odin_classes_page_sidebar_aside(); ?>" role="complementary">
+<aside id="sidebar" class="<?php echo haste_starter_classes_page_sidebar_aside(); ?>" role="complementary">
 	<?php
 		if ( ! dynamic_sidebar( 'main-sidebar' ) ) {
 			the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 10 ) );

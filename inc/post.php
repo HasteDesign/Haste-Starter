@@ -11,8 +11,8 @@
  *
  * @return string
  */
-function odin_get_image_url( $id, $width, $height, $crop = true, $upscale = false ) {
-	$resizer    = Odin_Thumbnail_Resizer::get_instance();
+function haste_starter_get_image_url( $id, $width, $height, $crop = true, $upscale = false ) {
+	$resizer    = Haste_Starter_Thumbnail_Resizer::get_instance();
 	$origin_url = wp_get_attachment_url( $id );
 	$url        = $resizer->process( $origin_url, $width, $height, $crop, $upscale );
 
@@ -38,18 +38,18 @@ function odin_get_image_url( $id, $width, $height, $crop = true, $upscale = fals
  *
  * @return string         Return the post thumbnail.
  */
-function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upscale = false ) {
-	if ( ! class_exists( 'Odin_Thumbnail_Resizer' ) ) {
+function haste_starter_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upscale = false ) {
+	if ( ! class_exists( 'Haste_Starter_Thumbnail_Resizer' ) ) {
 		return;
 	}
 
 	$thumb = get_post_thumbnail_id();
 
 	if ( $thumb ) {
-		$image = odin_get_image_url( $thumb, $width, $height, $crop, $upscale );
+		$image = haste_starter_get_image_url( $thumb, $width, $height, $crop, $upscale );
 		$html  = '<img class="wp-image-thumb img-responsive ' . esc_attr( $class ) . '" src="' . esc_url( $image ) . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $alt ) . '" />';
 
-		return apply_filters( 'odin_thumbnail_html', $html );
+		return apply_filters( 'haste_starter_thumbnail_html', $html );
 	}
 }
 
@@ -57,7 +57,7 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upsc
  * Get term meta fields
  *
  * Usage:
- * <?php echo odin_get_term_meta( $term_id, $field );?>
+ * <?php echo haste_starter_get_term_meta( $term_id, $field );?>
  *
  * @since  2.2.7
  *
@@ -66,14 +66,14 @@ function odin_thumbnail( $width, $height, $alt, $crop = true, $class = '', $upsc
  *
  * @return string               Field value
  */
-function odin_get_term_meta( $term_id, $field ) {
+function haste_starter_get_term_meta( $term_id, $field ) {
 	// First try to get value in the new Term Meta WP API.
 	if ( $value = get_term_meta( $term_id, $field, true ) ) {
 		return $value;
 	}
 
 	// After, try to get in the old way (option API).
-	$option_name = sprintf( 'odin_term_meta_%s_%s', $term_id, $field );
+	$option_name = sprintf( 'haste_starter_term_meta_%s_%s', $term_id, $field );
 	$value       = get_option( $name );
 
 	// Upgrade to new update_term_meta().
@@ -89,7 +89,7 @@ function odin_get_term_meta( $term_id, $field ) {
  * Custom excerpt for content or title.
  *
  * Usage:
- * Place: <?php echo odin_excerpt( 'excerpt', value ); ?>
+ * Place: <?php echo haste_starter_excerpt( 'excerpt', value ); ?>
  *
  * @since  2.2.0
  *
@@ -98,7 +98,7 @@ function odin_get_term_meta( $term_id, $field ) {
  *
  * @return string       Return the excerpt.
  */
-function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
+function haste_starter_excerpt( $type = 'excerpt', $limit = 40 ) {
 	$limit = (int) $limit;
 
 	// Set excerpt type.
@@ -120,9 +120,9 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
  *
  * Usage:
  * To show related by categories:
- * Add in single.php <?php odin_related_posts(); ?>
+ * Add in single.php <?php haste_starter_related_posts(); ?>
  * To show related by tags:
- * Add in single.php <?php odin_related_posts( 'tag' ); ?>
+ * Add in single.php <?php haste_starter_related_posts( 'tag' ); ?>
  *
  * @since  2.2.0
  *
@@ -136,7 +136,7 @@ function odin_excerpt( $type = 'excerpt', $limit = 40 ) {
  *
  * @return string              Related Posts.
  */
-function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thumb = true, $post_type = 'post' ) {
+function haste_starter_related_posts( $display = 'category', $qty = 4, $title = '', $thumb = true, $post_type = 'post' ) {
 	global $post;
 
 	$show = false;
@@ -212,7 +212,7 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 						$img = '<img src="' . get_template_directory_uri() . '/core/assets/images/odin-thumb-placeholder.jpg" alt="' . get_the_title() . '">';
 					}
 					// Filter to replace the image.
-					$image = apply_filters( 'odin_related_posts_thumbnail', $img );
+					$image = apply_filters( 'haste_starter_related_posts_thumbnail', $img );
 
 					$layout .= '<span class="thumb">';
 					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', esc_url( get_permalink() ), get_the_title(), $image );

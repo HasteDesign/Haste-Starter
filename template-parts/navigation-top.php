@@ -13,8 +13,8 @@
 						'depth'          => 2,
 						'container'      => false,
 						'menu_class'     => 'navbar-nav mr-auto',
-						'fallback_cb'    => 'Odin_Bootstrap_Nav_Walker::fallback',
-						'walker'         => new Odin_Bootstrap_Nav_Walker(),
+						'fallback_cb'    => 'Haste_Starter_Bootstrap_Nav_Walker::fallback',
+						'walker'         => new Haste_Starter_Bootstrap_Nav_Walker(),
 				) );
 			?>
 			<form method="get" id="searchform" class="form-inline my-2 my-lg-0" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">

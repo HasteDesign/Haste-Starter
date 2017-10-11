@@ -2,7 +2,7 @@
 /**
  * odin WooCommerce hooks
  *
- * @package odin
+ * @package HasteStarter
  */
 
 /**
@@ -13,14 +13,14 @@
 
 /**
  * Content wrapper before and after
- * @see  odin_before_content()
- * @see  odin_after_content()
+ * @see  haste_starter_before_content()
+ * @see  haste_starter_after_content()
  * @since  2.2.6
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-add_action( 'woocommerce_before_main_content', 'odin_before_content', 10 );
-add_action( 'woocommerce_after_main_content', 'odin_after_content', 10 );
+add_action( 'woocommerce_before_main_content', 'haste_starter_before_content', 10 );
+add_action( 'woocommerce_after_main_content', 'haste_starter_after_content', 10 );
 
 /**
  * Remove sidebar
@@ -37,21 +37,21 @@ add_action( 'woocommerce_after_main_content', 'odin_after_content', 10 );
  * Breadcrumb
  *
  * Use:
- * do_action( 'odin_content_top' ); on anywhere for show the breadcrumb
+ * do_action( 'haste_starter_content_top' ); on anywhere for show the breadcrumb
  *
  * @see woocommerce_breadcrumb
  * @since  2.2.6
  */
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
-add_action( 'odin_content_top', 'woocommerce_breadcrumb', 10 );
+add_action( 'haste_starter_content_top', 'woocommerce_breadcrumb', 10 );
 
 /**
  * Filters
- * @see  odin_thumbnail_columns()
- * @see  odin_products_per_page()
- * @see  odin_loop_columns()
+ * @see  haste_starter_thumbnail_columns()
+ * @see  haste_starter_products_per_page()
+ * @see  haste_starter_loop_columns()
  * @since  2.2.6
  */
-add_filter( 'woocommerce_product_thumbnails_columns', 	'odin_thumbnail_columns' );
-add_filter( 'loop_shop_per_page', 						'odin_products_per_page' );
-add_filter( 'loop_shop_columns', 						'odin_loop_columns' );
+add_filter( 'woocommerce_product_thumbnails_columns', 	'haste_starter_thumbnail_columns' );
+add_filter( 'loop_shop_per_page', 						'haste_starter_products_per_page' );
+add_filter( 'loop_shop_columns', 						'haste_starter_loop_columns' );

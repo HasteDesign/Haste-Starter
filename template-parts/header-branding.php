@@ -1,6 +1,6 @@
 <div id="header-branding">
 	<div class="container">
-		<?php odin_the_custom_logo(); ?>
+		<?php haste_starter_the_custom_logo(); ?>
 
 		<?php if ( is_front_page() && is_home() ) : ?>
 			<h1 class="site-title">

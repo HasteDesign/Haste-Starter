@@ -7,7 +7,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package odin
+ * @package HasteStarter
  */
 
 ?>
@@ -33,7 +33,7 @@
 			</nav>
 		<?php endif; ?>
 		<ul class="media-list">
-			<?php wp_list_comments( array( 'callback' => 'odin_comments_loop' ) ); ?>
+			<?php wp_list_comments( array( 'callback' => 'haste_starter_comments_loop' ) ); ?>
 		</ul>
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav id="comment-nav-above">

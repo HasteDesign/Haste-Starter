@@ -1,6 +1,6 @@
 <?php
 /**
- * Odin_Shortcodes class.
+ * Haste_Starter_Shortcodes class.
  *
  * Built Shortcodes.
  *
@@ -9,7 +9,7 @@
  * @author   WPBrasil
  * @version  2.1.4
  */
-class Odin_Shortcodes {
+class Haste_Starter_Shortcodes {
 
 	/**
 	 * Construct Post Type.
@@ -538,7 +538,7 @@ class Odin_Shortcodes {
 	 */
 	function map( $atts, $content = null ) {
 		extract( shortcode_atts( array(
-			'id'                => 'odin_map',
+			'id'                => 'haste_starter_map',
 			'latitude'          => '0',
 			'longitude'         => '0',
 			'zoom'              => '10',
@@ -566,7 +566,7 @@ class Odin_Shortcodes {
 		$html = '<div class="odin-map" id="' . esc_attr( $id ) . '" style="width: ' . esc_attr( $width ) . 'px; height: ' . esc_attr( $height ) . 'px;"></div>';
 
 		$js = '<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>';
-		$html .= apply_filters( 'odin_map_shortcode_js_' . $id, $js );
+		$html .= apply_filters( 'haste_starter_map_shortcode_js_' . $id, $js );
 		$html .= '<script type="text/javascript">var latlng = new google.maps.LatLng(' . esc_js( $latitude ) . ', ' . esc_js($longitude ) . ');var myOptions = {zoom: ' . esc_js( $zoom ) . ',center: latlng,scrollwheel: ' . esc_js( $scrollwheel ) .',scaleControl: ' . esc_js( $scale ) .',disableDefaultUI: ' . esc_js( $hidecontrols ) .',mapTypeId: google.maps.MapTypeId.' . esc_js( $maptype ) . '};var ' .esc_js(  $id ) . ' = new google.maps.Map(document.getElementById("' . esc_js( $id ) . '"), myOptions);';
 
 		// Kml.
@@ -693,4 +693,4 @@ class Odin_Shortcodes {
 
 }
 
-new Odin_Shortcodes;
+new Haste_Starter_Shortcodes;

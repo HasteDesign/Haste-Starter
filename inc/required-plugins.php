@@ -4,16 +4,15 @@
  *
  * @see http://tgmpluginactivation.com/configuration/ for detailed documentation.
  *
- * @package    WordPress
- * @subpackage Odin
+ * @package    WordPress\HasteStarter
  */
 
-add_action( 'tgmpa_register', 'odin_register_required_plugins' );
+add_action( 'tgmpa_register', 'haste_starter_register_required_plugins' );
 
 /**
  * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
  */
-function odin_register_required_plugins() {
+function haste_starter_register_required_plugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.
@@ -22,7 +21,7 @@ function odin_register_required_plugins() {
 		array(
 			'name'   => 'Odin Toolkit',
 			'slug'   => 'odin-toolkit',
-			'source' => 'https://github.com/wpbrasil/odin-toolkit/archive/master.zip',
+			'source' => 'https://bitbucket.org/hastedesign/haste-starter-toolkit/archive/master.zip',
 		),
 	);
 

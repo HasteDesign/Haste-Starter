@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package odin
+ * @package HasteStarter
  */
 
 ?>
@@ -19,7 +19,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta">
-				<?php odin_posted_on(); ?>
+				<?php haste_starter_posted_on(); ?>
 			</div>
 		<?php endif; ?>
 	</header>

@@ -4,7 +4,7 @@
  *
  * @since 2.2.0
  */
-function odin_widgets_init() {
+function haste_starter_widgets_init() {
 	register_sidebar(
 		array(
 			'name' => __( 'Main Sidebar', 'haste-starter' ),
@@ -18,4 +18,4 @@ function odin_widgets_init() {
 	);
 }
 
-add_action( 'widgets_init', 'odin_widgets_init' );
+add_action( 'widgets_init', 'haste_starter_widgets_init' );

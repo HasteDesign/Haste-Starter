@@ -2,10 +2,10 @@
 /**
  * Custom template tags used to integrate this theme with WooCommerce.
  *
- * @package odin
+ * @package HasteStarter
  */
 
-if ( ! function_exists( 'odin_cart_link' ) ) {
+if ( ! function_exists( 'haste_starter_cart_link' ) ) {
 
 	/**
 	 * Cart Link
@@ -17,7 +17,7 @@ if ( ! function_exists( 'odin_cart_link' ) ) {
 	 *
 	 * @return array           Settings
 	 */
-	function odin_cart_link() {
+	function haste_starter_cart_link() {
 		if ( is_cart() ) {
 			$class = 'current-menu-item active';
 		} else {
@@ -33,7 +33,7 @@ if ( ! function_exists( 'odin_cart_link' ) ) {
 	}
 }
 
-if ( ! function_exists( 'odin_product_search' ) ) {
+if ( ! function_exists( 'haste_starter_product_search' ) ) {
 
 	/**
 	 * Display Product Search
@@ -42,7 +42,7 @@ if ( ! function_exists( 'odin_product_search' ) ) {
 	 *
 	 * @uses  is_woocommerce_activated() check if WooCommerce is activated
 	 */
-	function odin_product_search() {
+	function haste_starter_product_search() {
 		if ( is_woocommerce_activated() ) { ?>
 			<div class="site-search">
 				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
@@ -52,7 +52,7 @@ if ( ! function_exists( 'odin_product_search' ) ) {
 	}
 }
 
-if ( ! function_exists( 'odin_header_cart' ) ) {
+if ( ! function_exists( 'haste_starter_header_cart' ) ) {
 
 	/**
 	 * Display Header Cart
@@ -61,10 +61,10 @@ if ( ! function_exists( 'odin_header_cart' ) ) {
 	 *
 	 * @uses  is_woocommerce_activated() check if WooCommerce is activated
 	 */
-	function odin_header_cart() {
+	function haste_starter_header_cart() {
 		if ( is_woocommerce_activated() ) { ?>
 			<ul class="site-header-cart menu">
-				<?php odin_cart_link(); ?>
+				<?php haste_starter_cart_link(); ?>
 				<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
 			</ul>
 		<?php

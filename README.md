@@ -1,12 +1,12 @@
 # Odin Framework #
 
-[Ver essa documentação em Português do Brasil](https://github.com/wpbrasil/odin/blob/master/docs/README-pt_BR.md)
+[Ver essa documentação em Português do Brasil](https://bitbucket.org/hastedesign/haste-starter/blob/master/docs/README-pt_BR.md)
 
 ![Odin Framework](https://i.imgur.com/DdeMgUx.png)
 
 * [Website](http://wpod.in/)
 * [Odin Expo](http://expo.wpod.in/)
-* [GitHub](https://github.com/wpbrasil/odin)
+* [GitHub](https://bitbucket.org/hastedesign/haste-starter)
 * [WordPress Brasil Group on Facebook](https://www.facebook.com/groups/wordpress.brasil)
 
 ## Project Description ##
@@ -19,7 +19,7 @@ Send the folder "odin" to the default themes folder from WordPress `wp-content/t
 
 ## Documentation ##
 
-Informations about how-to use the classes and functions from Odin is on the [Official Wiki](https://github.com/wpbrasil/odin/wiki/)
+Informations about how-to use the classes and functions from Odin is on the [Official Wiki](https://bitbucket.org/hastedesign/haste-starter/wiki/)
 
 ## Plugins Support ##
 
@@ -48,7 +48,7 @@ Odin supports natively these plugins:
 
 The Odin Framework is an **Open Source** project. Anyone can (and should) help us to improve it.
 
-Report bugs or do suggestions using the [Issues/Project Forum](https://github.com/wpbrasil/odin/issues)
+Report bugs or do suggestions using the [Issues/Project Forum](https://bitbucket.org/hastedesign/haste-starter/issues)
 
 ## Contribute to the Project ##
 
@@ -60,7 +60,7 @@ More details about how to contribute and send Pull Requests in [GitHub Collabora
 
 ## Changelog ##
 
-[Changelog here!](https://github.com/wpbrasil/odin/blob/master/docs/CHANGELOG.md)
+[Changelog here!](https://bitbucket.org/hastedesign/haste-starter/blob/master/docs/CHANGELOG.md)
 
 ## Copyright and License ##
 

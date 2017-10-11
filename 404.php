@@ -4,12 +4,12 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package odin
+ * @package HasteStarter
  */
 
 get_header(); ?>
 
-	<main id="content" class="<?php echo odin_classes_page_full(); ?>" tabindex="-1" role="main">
+	<main id="content" class="<?php echo haste_starter_classes_page_full(); ?>" tabindex="-1" role="main">
 
 			<header class="page-header">
 				<h1 class="page-title"><?php _e( 'Not Found', 'haste-starter' ); ?></h1>

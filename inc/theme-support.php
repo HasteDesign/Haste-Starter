@@ -1,12 +1,12 @@
 <?php
 
-if ( ! function_exists( 'odin_theme_support' ) ) :
+if ( ! function_exists( 'haste_starter_theme_support' ) ) :
 	/**
 	 * Setup theme support.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_theme_support
 	 */
-	function odin_theme_support() {
+	function haste_starter_theme_support() {
 
 		// Add multiple languages support.
 		load_theme_textdomain( 'haste-starter', get_template_directory() . '/languages' );
@@ -92,9 +92,9 @@ if ( ! function_exists( 'odin_theme_support' ) ) :
 	} /* end theme support */
 endif;
 
-add_action( 'after_setup_theme', 'odin_theme_support' );
+add_action( 'after_setup_theme', 'haste_starter_theme_support' );
 
-if ( ! function_exists( 'odin_content_width' ) ) :
+if ( ! function_exists( 'haste_starter_content_width' ) ) :
 	/**
 	 * Sets the content width in pixels, based on the theme's design and stylesheet.
 	 *
@@ -102,9 +102,9 @@ if ( ! function_exists( 'odin_content_width' ) ) :
 	 *
 	 * @global int $content_width
 	 */
-	function odin_content_width() {
-		$GLOBALS['content_width'] = apply_filters( 'odin_content_width', 860 );
+	function haste_starter_content_width() {
+		$GLOBALS['content_width'] = apply_filters( 'haste_starter_content_width', 860 );
 	}
 endif;
 
-add_action( 'after_setup_theme', 'odin_content_width', 0 );
+add_action( 'after_setup_theme', 'haste_starter_content_width', 0 );

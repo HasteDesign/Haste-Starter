@@ -1,6 +1,6 @@
 <?php
 /**
- * Odin_Thumbnail_Resizer class.
+ * Haste_Starter_Thumbnail_Resizer class.
  *
  * Resizer thumbnails.
  * Inspired by the class Aq_Resize <https://github.com/sy4mil/Aqua-Resizer/>,
@@ -11,7 +11,7 @@
  * @author   WPBrasil
  * @version  2.1.5
  */
-class Odin_Thumbnail_Resizer {
+class Haste_Starter_Thumbnail_Resizer {
 
 	/**
 	 * The singleton instance.

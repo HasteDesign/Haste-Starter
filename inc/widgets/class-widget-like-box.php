@@ -1,6 +1,6 @@
 <?php
 /**
- * Odin_Widget_Like_Box class.
+ * Haste_Starter_Widget_Like_Box class.
  *
  * Facebook like widget.
  *
@@ -9,14 +9,14 @@
  * @author   WPBrasil
  * @version  2.2.0
  */
-class Odin_Widget_Like_Box extends WP_Widget {
+class Haste_Starter_Widget_Like_Box extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
 	 */
 	public function __construct() {
 		parent::__construct(
-			'odin_facebook_like_box',
+			'haste_starter_facebook_like_box',
 			__( 'Facebook Like Box', 'haste-starter' ),
 			array( 'description' => __( 'This widget includes a facebook like box on your blog', 'haste-starter' ), )
 		);
@@ -159,8 +159,8 @@ class Odin_Widget_Like_Box extends WP_Widget {
 /**
  * Register the Like Box Widget.
  */
-function odin_like_box_widget() {
-	register_widget( 'Odin_Widget_Like_Box' );
+function haste_starter_like_box_widget() {
+	register_widget( 'Haste_Starter_Widget_Like_Box' );
 }
 
-add_action( 'widgets_init', 'odin_like_box_widget' );
+add_action( 'widgets_init', 'haste_starter_like_box_widget' );

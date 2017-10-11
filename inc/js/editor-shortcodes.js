@@ -4,9 +4,9 @@
 	/**
 	 * Add the shortcodes downdown.
 	 */
-	tinymce.PluginManager.add( 'odin_shortcodes', function( editor ) {
+	tinymce.PluginManager.add( 'haste_starter_shortcodes', function( editor ) {
 		var ed      = tinymce.activeEditor;
-		var odin_ui = new Odin_Shortcode_UI( editor, ed );
+		var haste_starter_ui = new Haste_Starter_Shortcode_UI( editor, ed );
 
 		editor.addButton(
 			'haste-starter', {
@@ -15,94 +15,94 @@
 				menu: [ {
 					text   : ed.getLang( 'odin.button' ),
 					onclick: function() {
-						odin_ui.button();
+						haste_starter_ui.button();
 					}
 				}, {
 					text   : ed.getLang( 'odin.group_button' ),
 					onclick: function() {
-						odin_ui.group_button();
+						haste_starter_ui.group_button();
 					}
 				}, {
 					text   : ed.getLang( 'odin.alert' ),
 					onclick: function() {
-						odin_ui.alert();
+						haste_starter_ui.alert();
 					}
 				}, {
 					text   : ed.getLang( 'odin.label' ),
 					onclick: function() {
-						odin_ui.label();
+						haste_starter_ui.label();
 					}
 				}, {
 					text   : ed.getLang( 'odin.badge' ),
 					onclick: function() {
-						odin_ui.badge();
+						haste_starter_ui.badge();
 					}
 				}, {
 					text   : ed.getLang( 'odin.icon' ),
 					onclick: function() {
-						odin_ui.icon();
+						haste_starter_ui.icon();
 					}
 				}, {
 					text   : ed.getLang( 'odin.well' ),
 					onclick: function() {
-						odin_ui.well();
+						haste_starter_ui.well();
 					}
 				}, {
 					text   : ed.getLang( 'odin.table' ),
 					onclick: function() {
-						odin_ui.table();
+						haste_starter_ui.table();
 					}
 				}, {
 					text   : ed.getLang( 'odin.grid' ),
 					onclick: function() {
-						odin_ui.grids();
+						haste_starter_ui.grids();
 					}
 				}, {
 					text   : ed.getLang( 'odin.progress_bar' ),
 					onclick: function() {
-						odin_ui.progress();
+						haste_starter_ui.progress();
 					}
 				}, {
 					text   : ed.getLang( 'odin.panel' ),
 					onclick: function() {
-						odin_ui.panel();
+						haste_starter_ui.panel();
 					}
 				}, {
 					text   : ed.getLang( 'odin.tabs' ),
 					onclick: function() {
-						odin_ui.tabs();
+						haste_starter_ui.tabs();
 					}
 				}, {
 					text   : ed.getLang( 'odin.accordion' ),
 					onclick: function() {
-						odin_ui.accordion();
+						haste_starter_ui.accordion();
 					}
 				}, {
 					text   : ed.getLang( 'odin.tooltip' ),
 					onclick: function() {
-						odin_ui.tooltip();
+						haste_starter_ui.tooltip();
 					}
 				}, {
 					text   : ed.getLang( 'odin.map' ),
 					onclick: function() {
-						odin_ui.map();
+						haste_starter_ui.map();
 					}
 				}, {
 					text   : ed.getLang( 'odin.clear' ),
 					onclick: function() {
-						odin_ui.clear();
+						haste_starter_ui.clear();
 					}
 				}, {
 					text   : ed.getLang( 'odin.qrcode' ),
 					onclick: function() {
-						odin_ui.qrcode();
+						haste_starter_ui.qrcode();
 					}
 				} ]
 			} );
 	} );
 })();
 
-function Odin_Shortcode_UI( _editor, _ed ) {
+function Haste_Starter_Shortcode_UI( _editor, _ed ) {
 	var editor = _editor;
 	var ed     = _ed;
 
@@ -729,7 +729,7 @@ function Odin_Shortcode_UI( _editor, _ed ) {
 
 				type : 'textbox',
 				name : 'id',
-				value: 'odin_gmap',
+				value: 'haste_starter_gmap',
 				label: ed.getLang( 'odin.id' )
 			}, {
 				type : 'textbox',
