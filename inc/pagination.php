@@ -41,8 +41,8 @@ function odin_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
 					'end_size'  => $end,
 					'mid_size'  => $mid,
 					'type'      => 'list',
-					'prev_text' => __( '&laquo; Previous', 'odin' ),
-					'next_text' => __( 'Next &raquo;', 'odin' ),
+					'prev_text' => __( '&laquo; Previous', 'haste-starter' ),
+					'next_text' => __( 'Next &raquo;', 'haste-starter' ),
 				)
 			);
 

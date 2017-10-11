@@ -9,7 +9,7 @@
 		var odin_ui = new Odin_Shortcode_UI( editor, ed );
 
 		editor.addButton(
-			'odin', {
+			'haste-starter', {
 				text: ed.getLang( 'odin.shortcode_title' ),
 				type: 'menubutton',
 				menu: [ {

@@ -6,6 +6,6 @@
  */
 register_nav_menus(
 	array(
-		'main-menu' => __( 'Main Menu', 'odin' )
+		'main-menu' => __( 'Main Menu', 'haste-starter' )
 	)
 );

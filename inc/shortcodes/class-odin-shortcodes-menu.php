@@ -55,7 +55,7 @@ class Odin_Shortcodes_Menu {
 	 * @return array
 	 */
 	public function register_shortcode_button( $buttons ) {
-		array_push( $buttons, '|', 'odin' );
+		array_push( $buttons, '|', 'haste-starter' );
 
 		return $buttons;
 	}

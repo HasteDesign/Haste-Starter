@@ -11,7 +11,7 @@
 function odin_breadcrumbs( $homepage = '' ) {
 	global $wp_query, $post, $author;
 
-	! empty( $homepage ) || $homepage = __( 'Home', 'odin' );
+	! empty( $homepage ) || $homepage = __( 'Home', 'haste-starter' );
 
 	// Default html.
 	$current_before = '<li class="active">';
@@ -138,11 +138,11 @@ function odin_breadcrumbs( $homepage = '' ) {
 				echo $parents;
 			}
 
-			printf( __( '%sCategory: %s%s', 'odin' ), $current_before, single_cat_title( '', false ), $current_after );
+			printf( __( '%sCategory: %s%s', 'haste-starter' ), $current_before, single_cat_title( '', false ), $current_after );
 
 		// Tags archive.
 		} elseif ( is_tag() ) {
-			printf( __( '%sTag: %s%s', 'odin' ), $current_before, single_tag_title( '', false ), $current_after );
+			printf( __( '%sTag: %s%s', 'haste-starter' ), $current_before, single_tag_title( '', false ), $current_after );
 
 		// Custom post type archive.
 		} elseif ( is_post_type_archive() ) {
@@ -157,13 +157,13 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// Search page.
 		} elseif ( is_search() ) {
-			printf( __( '%sSearch result for: &quot;%s&quot;%s', 'odin' ), $current_before, get_search_query(), $current_after );
+			printf( __( '%sSearch result for: &quot;%s&quot;%s', 'haste-starter' ), $current_before, get_search_query(), $current_after );
 
 		// Author archive.
 		} elseif ( is_author() ) {
 			$userdata = get_userdata( $author );
 
-			echo $current_before . __( 'Posted by', 'odin' ) . ' ' . $userdata->display_name . $current_after;
+			echo $current_before . __( 'Posted by', 'haste-starter' ) . ' ' . $userdata->display_name . $current_after;
 
 		// Archives per days.
 		} elseif ( is_day() ) {
@@ -213,12 +213,12 @@ function odin_breadcrumbs( $homepage = '' ) {
 
 		// 404 page.
 		} elseif ( is_404() ) {
-			echo $current_before . __( '404 Error', 'odin' ) . $current_after;
+			echo $current_before . __( '404 Error', 'haste-starter' ) . $current_after;
 		}
 
 		// Gets pagination.
 		if ( get_query_var( 'paged' ) ) {
-			echo ' (' . sprintf( __( 'Page %s', 'odin' ), get_query_var( 'paged' ) ) . ')';
+			echo ' (' . sprintf( __( 'Page %s', 'haste-starter' ), get_query_var( 'paged' ) ) . ')';
 		}
 
 		echo '</ol>';

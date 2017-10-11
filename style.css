@@ -1,15 +1,15 @@
 /*
-Theme Name: Odin
-Theme URI: http://wpod.in
-Description: Framework and base theme for development with WordPress.
-Author: WordPress Brasil
+Theme Name: Haste Starter
+Theme URI: https://hastedesign.com.br
+Description: Base theme for WordPress - forked from Odin Framework
+Author: Haste Studio
 Author URI: https://github.com/wpbrasil/odin
-Version: 3.0.0
-Tags: one-column, two-columns, right-sidebar, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, translation-ready
+Version: 1.0.0
+Tags: [See: https://make.wordpress.org/themes/handbook/review/required/theme-tags/]
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: odin
+Text Domain: haste-starter
 
 Don't add css in this file!
-The theme css is in assets/css/style.css
+The theme css is in assets/css/main.css
 */

@@ -22,7 +22,7 @@
 
 <body <?php body_class(); ?>>
 	<nav class="navigation-skiplink" role="navigation">
-		<a class="navigation-skiplink-link" href="#content"><?php _e( 'Skip to content', 'odin' ); ?></a>
+		<a class="navigation-skiplink-link" href="#content"><?php _e( 'Skip to content', 'haste-starter' ); ?></a>
 	</nav>
 
 	<header id="header" role="banner">

@@ -19,7 +19,7 @@ get_header(); ?>
 					<div class="entry-meta">
 						<?php
 							$metadata = wp_get_attachment_metadata();
-							printf( __( 'Image total size: %s pixels', 'odin' ), sprintf( '<a href="%1$s" title="%2$s"><span>%3$s</span> &times; <span>%4$s</span></a>', wp_get_attachment_url(), esc_attr( __( 'Full image link', 'odin' ) ), $metadata['width'], $metadata['height'] ) );
+							printf( __( 'Image total size: %s pixels', 'haste-starter' ), sprintf( '<a href="%1$s" title="%2$s"><span>%3$s</span> &times; <span>%4$s</span></a>', wp_get_attachment_url(), esc_attr( __( 'Full image link', 'haste-starter' ) ), $metadata['width'], $metadata['height'] ) );
 						?>
 					</div>
 				</header>
@@ -40,15 +40,15 @@ get_header(); ?>
 				<footer class="entry-footer">
 					<nav>
 						<ul class="pager">
-							<li class="previous"><?php previous_image_link( false, __( '&larr; Previous image', 'odin' ) ); ?></li>
-							<li class="next"><?php next_image_link( false, __( 'Next image &rarr;', 'odin' ) ); ?></li>
+							<li class="previous"><?php previous_image_link( false, __( '&larr; Previous image', 'haste-starter' ) ); ?></li>
+							<li class="next"><?php next_image_link( false, __( 'Next image &rarr;', 'haste-starter' ) ); ?></li>
 						</ul>
 					</nav>
 
 					<?php if ( ! empty( $post->post_parent ) ) : ?>
 					<nav>
-						<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( sprintf( __( 'Back to %s', 'odin' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" class="link-post-parent" rel="gallery">
-							<?php printf( __( '<span class="meta-nav">&larr;</span> %s', 'odin' ), get_the_title( $post->post_parent ) ); ?>
+						<a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php echo esc_attr( sprintf( __( 'Back to %s', 'haste-starter' ), strip_tags( get_the_title( $post->post_parent ) ) ) ); ?>" class="link-post-parent" rel="gallery">
+							<?php printf( __( '<span class="meta-nav">&larr;</span> %s', 'haste-starter' ), get_the_title( $post->post_parent ) ); ?>
 						</a>
 					</nav>
 					<?php endif; ?>

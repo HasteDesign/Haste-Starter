@@ -141,7 +141,7 @@ function odin_related_posts( $display = 'category', $qty = 4, $title = '', $thum
 
 	$show = false;
 	$post_qty = (int) $qty;
-	! empty( $title ) || $title = __( 'Related Posts', 'odin' );
+	! empty( $title ) || $title = __( 'Related Posts', 'haste-starter' );
 
 	// Creates arguments for WP_Query.
 	switch ( $display ) {
