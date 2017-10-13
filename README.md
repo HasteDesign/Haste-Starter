@@ -1,56 +1,59 @@
-# Odin Framework #
+# Haste Starter #
 
-[Ver essa documentação em Português do Brasil](https://bitbucket.org/hastedesign/haste-starter/blob/master/docs/README-pt_BR.md)
+(https://img.shields.io/badge/License-GPL-blue.svg)(https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg)
 
-![Odin Framework](https://i.imgur.com/DdeMgUx.png)
+Haste Starter is a base to be used to create custom WordPress themes. It's an open source fork from [Odin Framework](https://wpod.in). 
 
-* [Website](http://wpod.in/)
-* [Odin Expo](http://expo.wpod.in/)
-* [GitHub](https://bitbucket.org/hastedesign/haste-starter)
-* [WordPress Brasil Group on Facebook](https://www.facebook.com/groups/wordpress.brasil)
+With this base theme you will have a lot of WordPress pre-made templates from Template Hierarchy, some general initial WordPress theme config that includes: sidebars, menus, definition of theme supports, helper functions and much more. It also includes Bootstrap 4, npm scripts to build Sass (with autoprefixer), uglify JavaScript, browsersync, image optimization and watch tasks, but don't worry, you're free to use only what you need and are comfortable with!
 
-## Project Description ##
+Here are some things you'll find in Haste Starter:
 
-Welcome to Odin, a base-theme developed by [WordPress Brasil Group](https://www.facebook.com/groups/wordpress.brasil), to help on agile development of themes for WordPress.
+* Templates
+	HTML5, clean and well-coded, as in Odin
+* Initial theme configuration 
+	add\_theme\_supports, menus, sidebars, etc.
+* TGM Plugin Activation 
+	Define required or recommended plugins for your theme
+* Bootstrap 4
+	A good style framework, but it's opitional
+* npm scripts
+	A set of npm tasks configured to deal with your styles and scripts
+* Translation-ready
+	Ready to be translated to any language
+* Helper functions
+	A lot of helper functions and custom template tags to make coding even easier in WordPress
 
 ## Installation ##
 
-Send the folder "odin" to the default themes folder from WordPress `wp-content/themes` or send the zipball using the WordPress Theme Installer.
+Download the latest release of Haste Starter, you can download the [.zip](https://bitbucket.org/hastedesign/haste-starter/get/master.zip) or you can clone the repository if you use Git. Place the theme folder into the `wp-content/themes/` WordPress directory. Done! You can start to work and overwrite the files to make your new awesome theme!
+
+## Configuration ##
+
+Change the theme folder to match your theme name, and update the name and other information in style.css.
 
 ## Documentation ##
 
-Informations about how-to use the classes and functions from Odin is on the [Official Wiki](https://bitbucket.org/hastedesign/haste-starter/wiki/)
-
-## Plugins Support ##
-
-Odin supports natively these plugins:
-
-* [WooCommerce](http://wordpress.org/extend/plugins/woocommerce/)
-* [JetPack](http://wordpress.org/extend/plugins/jetpack/) Infinite Scroll
+Our documentation is under construction, but you can find some information about how to use our theme here [Wiki](https://bitbucket.org/hastedesign/haste-store/wiki/)
 
 ## References ##
 
+Reference of tools used in the theme:
+
 * [Bootstrap](http://getbootstrap.com/)
-* [Bootstrap Sass](https://github.com/twbs/bootstrap-sass)
-* [HTML5shiv](https://github.com/aFarkas/html5shiv)
-* [matchMedia() polyfill](https://github.com/paulirish/matchMedia.js/)
-* [Respond.js](https://github.com/scottjehl/Respond)
 * [Sass](http://sass-lang.com/)
-* [Compass](http://compass-style.org/)
-* [Grunt.js](http://gruntjs.com/)
-* [aq_resize](https://github.com/sy4mil/Aqua-Resizer)
 * [FitVids](https://github.com/davatron5000/FitVids.js)
 * [EditorConfig](http://editorconfig.org/)
-* [goqr.me](http://goqr.me/)
-* [Google Maps](https://developers.google.com/maps/)
+* [Eslint](https://eslint.org/)
+* [Npm](https://docs.npmjs.com)
+* [Composer](https://getcomposer.org/)
+* [TGM Plugin Activation](http://tgmpluginactivation.com/)
 
 ## Bugs and Sugestions ##
 
-The Odin Framework is an **Open Source** project. Anyone can (and should) help us to improve it.
+The Haste Starter is an **Open Source** project. Anyone can (and should) help us to improve it.
+Report bugs or do suggestions using the [Issues/Project Forum](#)
 
-Report bugs or do suggestions using the [Issues/Project Forum](https://bitbucket.org/hastedesign/haste-starter/issues)
-
-## Contribute to the Project ##
+## Contributing ##
 
 To contribute, just click on the **Fork** button, create a *Branch*, improve the code and send it with a **Pull Request**.
 
@@ -60,11 +63,4 @@ More details about how to contribute and send Pull Requests in [GitHub Collabora
 
 ## Changelog ##
 
-[Changelog here!](https://bitbucket.org/hastedesign/haste-starter/blob/master/docs/CHANGELOG.md)
-
-## Copyright and License ##
-
-Copyright 2013 - 2016 - WordPress Brasil Group.
-
-The PHP code is licensed with [GPLv2](http://www.gnu.org/licenses/gpl-2.0.txt).
-All the CSS, SCSS, JS, images files and others, not including the PHP files is licensed with [MIT](http://opensource.org/licenses/MIT) or by the license specified inside the file.
+[Changelog here!](#)
