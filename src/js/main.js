@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 	 * Responsive wp_video_shortcode().
 	 */
 
-	$( '.wp-video-shortcode' ).parent( 'div' ).css( 'width', 'auto' )
+	$( '.wp-video-shortcode' ).parent( 'div' ).css( 'width', 'auto' );
 
 	/**
 	 * Fluid width video embeds.
@@ -28,4 +28,4 @@ jQuery(document).ready(function($) {
 
 	// Tooltip.
 	//$( '.odin-tooltip' ).tooltip();
-})
+});

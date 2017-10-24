@@ -16,10 +16,10 @@
     "build:js": "npm run lint && npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:sass && npm run build:js && npm run build:images",
-    "watch": "parallelshell \"npm run watch:sass\" \"npm run watch:js\"",
+    "watch": "concurrently --names \"SASS,JS\" -c \"white.bgMagenta.bold,black.bgYellow.bold\" \"npm run watch:sass\" \"npm run watch:js\"",
     "watch:sass": "onchange \"src/**/*.scss\" -i -- npm run build:sass",
     "watch:js": "onchange \"src/**/*.js\" -i -- npm run build:js",
-    "watch:sync": "parallelshell \"npm run watch:sass\" \"npm run watch:js\" \"npm run sync\""
+    "watch:sync": "concurrently --names \"SASS,JS,SYNC\" -c \"white.bgMagenta.bold,black.bgYellow.bold,black.bgWhite.bold\" \"npm run watch:sass\" \"npm run watch:js\" \"npm run sync\""
   },
   "browserslist": {
     "production": [
@@ -41,13 +41,13 @@
     "autoprefixer": "^7.1.4",
     "bootstrap": "^4.0.0-beta",
     "browser-sync": "^2.18.13",
+    "concurrently": "^3.5.0",
     "eslint": "^4.8.0",
     "fitvids": "^2.0.0",
     "imagemin-cli": "^3.0.0",
     "jquery": "^3.2.1",
     "node-sass": "^4.5.3",
     "onchange": "^3.2.1",
-    "parallelshell": "^3.0.1",
     "popper": "^1.0.0",
     "popper.js": "^1.12.5",
     "postcss": "^6.0.12",
