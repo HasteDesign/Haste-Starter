@@ -17,8 +17,8 @@
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:sass && npm run build:js && npm run build:images",
     "watch": "concurrently --names \"SASS,JS\" -c \"white.bgMagenta.bold,black.bgYellow.bold\" \"npm run watch:sass\" \"npm run watch:js\"",
-    "watch:sass": "onchange \"src/**/*.scss\" -i -- npm run build:sass",
-    "watch:js": "onchange \"src/**/*.js\" -i -- npm run build:js",
+    "watch:sass": "onchange \"src/**/*.scss\" -- npm run build:sass",
+    "watch:js": "onchange \"src/**/*.js\" -- npm run build:js",
     "watch:sync": "concurrently --names \"SASS,JS,SYNC\" -c \"white.bgMagenta.bold,black.bgYellow.bold,black.bgWhite.bold\" \"npm run watch:sass\" \"npm run watch:js\" \"npm run sync\""
   },
   "browserslist": {
