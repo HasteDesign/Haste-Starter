@@ -1,6 +1,7 @@
 # Haste Starter #
 
-(https://img.shields.io/badge/License-GPL-blue.svg)(https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg)
+[![GPL](https://img.shields.io/badge/License-GPL-blue.svg)]()
+[![PluginTerritory](https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg)]()
 
 Haste Starter is a base to be used to create custom WordPress themes. It's an open source fork from [Odin Framework](https://wpod.in). 
 
@@ -8,20 +9,23 @@ With this base theme you will have a lot of WordPress pre-made templates from Te
 
 Here are some things you'll find in Haste Starter:
 
-* Templates
-	HTML5, clean and well-coded, as in Odin
-* Initial theme configuration 
-	add\_theme\_supports, menus, sidebars, etc.
-* TGM Plugin Activation 
-	Define required or recommended plugins for your theme
-* Bootstrap 4
-	A good style framework, but it's opitional
-* npm scripts
-	A set of npm tasks configured to deal with your styles and scripts
-* Translation-ready
-	Ready to be translated to any language
-* Helper functions
-	A lot of helper functions and custom template tags to make coding even easier in WordPress
+- Templates
+	- HTML5, clean and well-coded, as in Odin
+- Initial theme configuration 
+	- add\_theme\_supports
+	- menus
+	- sidebars
+	- ...and much more
+- TGM Plugin Activation 
+	- Define required or recommended plugins for your theme
+- Bootstrap 4
+	- A good style framework (but it's not mandatory)
+- npm scripts
+	- A set of npm tasks configured to deal with your styles and scripts
+- Translation-ready
+	- Ready to be translated to any language
+- Helper functions
+	- A lot of helper functions and custom template tags to make coding even easier in WordPress
 
 ## Installation ##
 
