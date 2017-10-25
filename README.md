@@ -29,7 +29,7 @@ Here are some things you'll find in Haste Starter:
 
 ## Installation ##
 
-Download the latest release of Haste Starter, you can download the [.zip](https://bitbucket.org/hastedesign/haste-starter/get/master.zip) or you can clone the repository if you use Git. Place the theme folder into the `wp-content/themes/` WordPress directory. Done! You can start to work and overwrite the files to make your new awesome theme!
+Download the latest release of Haste Starter, you can download the [.zip](https://github.com/HasteDesign/Haste-Starter/archive/master.zip) or you can clone the repository if you use Git. Place the theme folder into the `wp-content/themes/` WordPress directory. Done! You can start to work and overwrite the files to make your new awesome theme!
 
 ## Configuration ##
 
