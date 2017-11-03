@@ -18,10 +18,21 @@ function haste_starter_register_required_plugins() {
 	 * If the source is NOT from the .org repo, then source is also required.
 	 */
 	$plugins = array(
+		// If your plugin is in the official repository
 		array(
-			'name'   => 'Odin Toolkit',
-			'slug'   => 'odin-toolkit',
-			'source' => 'https://bitbucket.org/hastedesign/haste-starter-toolkit/archive/master.zip',
+			'name'   => 'Jetpack',
+			'slug'   => 'jetpack'
+		),
+		// If your plugin is delivered within the theme
+		array(
+			'name'   => 'Haste Toolkit',
+			'slug'   => 'haste-toolkit'
+		),
+		// If your plugin is hosted anywhere
+		array(
+			'name'   => 'Haste Starter',
+			'slug'   => 'haste-toolkit',
+			'source' => 'https://github.com/HasteDesign/Haste-Toolkit/archive/master.zip'
 		),
 	);
 
