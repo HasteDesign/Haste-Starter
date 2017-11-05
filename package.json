@@ -1,14 +1,14 @@
 {
   "name": "haste-starter",
   "version": "1.0.0",
-  "description": "[View the documentation](https://bitbucket.org/hastedesign/haste-starter#readme)",
+  "description": "[View the documentation](https://github.com/HasteDesign/Haste-Starter)",
   "main": "webpack.config.js",
   "scripts": {
     "sass": "node-sass --output-style compressed --source-map true -o assets/css src/scss | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers -r assets/css/*.css | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "lint": "eslint src/js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "uglify:admin": "uglifyjs src/js/admin/*.js -m -c -o assets/js/admin/admin.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
-    "uglify:main": "uglifyjs node_modules/popper.js/dist/umd/popper.min.js node_modules/bootstrap/dist/js/bootstrap.min.js node_modules/fitvids/dist/fitvids.min.js src/js/*.js -m -c -o assets/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
+    "uglify:main": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/bootstrap/dist/js/bootstrap.bundle.js node_modules/fitvids/dist/fitvids.js src/js/*.js -m -c --source-map \"url=main.min.js.map\" -o assets/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "uglify": "npm run uglify:main",
     "imagemin": "imagemin imagemin src/img/* --out-dir=assets/img | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "sync": "browser-sync start --files assets/css/*.css, assets/js/*.js, *.php",
@@ -31,19 +31,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://hastedesign@bitbucket.org/hastedesign/haste-starter.git"
+    "url": "git+https://github.com/HasteDesign/Haste-Starter.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/hastedesign/haste-starter#readme",
+  "homepage": "https://github.com/HasteDesign/Haste-Starter",
   "dependencies": {
     "autoprefixer": "^7.1.4",
     "bootstrap": "^4.0.0-beta",
     "browser-sync": "^2.18.13",
     "concurrently": "^3.5.0",
     "eslint": "^4.8.0",
-    "fitvids": "^2.0.0",
     "imagemin-cli": "^3.0.0",
     "jquery": "^3.2.1",
     "node-sass": "^4.5.3",
