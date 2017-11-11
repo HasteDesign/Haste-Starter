@@ -3,14 +3,15 @@
 //
 
 /// --------------------------------------------------------------
-// Import before variables to fix compilation issues
+// Import functions before variables to fix compilation issues
 // --------------------------------------------------------------
+@import "../../node_modules/bootstrap/scss/functions";
+@import "settings/variables";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 // --------------------------------------------------------------
 // Tools, Variables and Mixins
 // --------------------------------------------------------------
-@import "settings/variables";
 @import "settings/mixins";
 
 // --------------------------------------------------------------
