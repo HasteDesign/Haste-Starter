@@ -26,14 +26,6 @@ if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
 require_once get_template_directory() . '/inc/classes/class-bootstrap-nav.php';
 require_once get_template_directory() . '/inc/classes/class-thumbnail-resizer.php';
 
-
-/**
- * Shortcodes.
- */
-
-require_once get_template_directory() . '/inc/shortcodes/class-shortcodes.php';
-require_once get_template_directory() . '/inc/shortcodes/class-shortcodes-menu.php';
-
 /**
  * Widgets.
  */
