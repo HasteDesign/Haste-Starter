@@ -1,6 +1,6 @@
 <?php
 /**
- * odin WooCommerce hooks
+ * Haste Starter WooCommerce hooks
  *
  * @package HasteStarter
  */

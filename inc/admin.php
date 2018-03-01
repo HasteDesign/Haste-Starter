@@ -1,13 +1,13 @@
 <?php
 /**
- * Odin admin functions.
+ * Haste Starter admin functions.
  */
 
 /**
  * Custom admin scripts.
  */
 function haste_starter_admin_scripts() {
-	wp_enqueue_style( 'odin-inc-admin', get_template_directory_uri() . '/assets/css/admin-style.css' );
+	wp_enqueue_style( 'haste-starter-admin', get_template_directory_uri() . '/assets/css/admin-style.css' );
 }
 
 add_action( 'admin_enqueue_scripts', 'haste_starter_admin_scripts' );

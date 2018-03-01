@@ -6,10 +6,10 @@
  * Inspired by the class Aq_Resize <https://github.com/sy4mil/Aqua-Resizer/>,
  * created by Syamil MJ and with the licence WTFPL.
  *
- * @package  Odin
+ * @package  Haste Starter
  * @category Thumbnail_Resizer
- * @author   WPBrasil
- * @version  2.1.5
+ * @author   Haste
+ * @version  1.0.0
  */
 class Haste_Starter_Thumbnail_Resizer {
 

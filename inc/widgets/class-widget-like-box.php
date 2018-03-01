@@ -4,10 +4,10 @@
  *
  * Facebook like widget.
  *
- * @package  Odin
+ * @package  Haste Starter
  * @category Widget
  * @author   WPBrasil
- * @version  2.2.0
+ * @version  1.0.0
  */
 class Haste_Starter_Widget_Like_Box extends WP_Widget {
 

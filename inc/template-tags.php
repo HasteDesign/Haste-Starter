@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom template tags for Odin.
+ * Custom template tags for Haste Starter.
  *
  * @package HasteStarter
  * @since 2.2.0
@@ -95,7 +95,7 @@ if ( ! function_exists( 'haste_starter_the_custom_logo' ) ) {
 	 *
 	 * Does nothing if the custom logo is not available.
 	 *
-	 * @since Odin 2.2.10
+	 * @since Haste Starter 1.0.0
 	 */
 	function haste_starter_the_custom_logo() {
 		if ( function_exists( 'the_custom_logo' ) ) {

@@ -6,10 +6,10 @@
  * Inspired by the class twitter_bootstrap_nav_walker <https://github.com/twittem/wp-bootstrap-navwalker>,
  * created by Edward McIntyre and with the licence GPLv2.
  *
- * @package  Odin
+ * @package  Haste Starter
  * @category Bootstrap
- * @author   WPBrasil
- * @version  2.1.4
+ * @author   Haste
+ * @version  1.0.0
  */
 class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 

@@ -7,7 +7,7 @@
  * hooks in WordPress to change core functionality.
  *
  * @see https://codex.wordpress.org/Plugin_API for more information on hooks, actions, and filters.
- * @see https://bitbucket.org/hastedesign/haste-starter for documentation Odin Theme.
+ * @see https://bitbucket.org/hastedesign/haste-starter for documentation Haste Starter.
  *
  * @package WordPress\HasteStarter
  */

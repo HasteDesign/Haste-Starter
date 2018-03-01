@@ -209,7 +209,7 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 					if ( has_post_thumbnail() ) {
 						$img = get_the_post_thumbnail( get_the_ID(), 'thumbnail' );
 					} else {
-						$img = '<img src="' . get_template_directory_uri() . '/core/assets/images/odin-thumb-placeholder.jpg" alt="' . get_the_title() . '">';
+						$img = '<img src="' . get_template_directory_uri() . '/assets/img/thumb-placeholder.jpg" alt="' . get_the_title() . '">';
 					}
 					// Filter to replace the image.
 					$image = apply_filters( 'haste_starter_related_posts_thumbnail', $img );

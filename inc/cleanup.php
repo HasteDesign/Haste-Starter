@@ -1,6 +1,6 @@
 <?php
 /**
- * Odin optimize functions.
+ * Haste Starter optimize functions.
  */
 
 /**
