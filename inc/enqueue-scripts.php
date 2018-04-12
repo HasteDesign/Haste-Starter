@@ -61,12 +61,14 @@ add_filter( 'stylesheet_uri', 'haste_starter_stylesheet_uri', 10, 2 );
  * Displays BrowserSync script
  */
 function haste_starter_browser_sync() {
-	?>
-	<script id="__bs_script__">
-	//<![CDATA[
-		document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
-	//]]>
-	</script>
-	<?php
+	if ( in_array( $_SERVER['HTTP_HOST'], array( 'localhost', '127.0.0.1', '127.0.1.1' ) ) ) {
+		?>
+		<script id="__bs_script__">
+		//<![CDATA[
+			document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
+		//]]>
+		</script>
+		<?php
+	}
 }
 add_action( 'wp_footer', 'haste_starter_browser_sync' );
