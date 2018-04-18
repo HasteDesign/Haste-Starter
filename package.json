@@ -2,7 +2,6 @@
   "name": "haste-starter",
   "version": "1.0.0",
   "description": "[View the documentation](https://github.com/HasteDesign/Haste-Starter)",
-  "main": "webpack.config.js",
   "scripts": {
     "sass": "node-sass --output-style compressed --source-map true -o assets/css src/scss | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers -r assets/css/*.css | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
