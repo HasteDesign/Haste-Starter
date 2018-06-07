@@ -97,9 +97,29 @@ if ( ! function_exists( 'haste_starter_the_custom_logo' ) ) {
 	 *
 	 * @since Haste Starter 1.0.0
 	 */
-	function haste_starter_the_custom_logo() {
-		if ( function_exists( 'the_custom_logo' ) ) {
-			the_custom_logo();
-		}
+	 function haste_starter_the_custom_logo() {
+
+		 echo '<a href="' . esc_url( home_url( '/' ) ). '" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" rel="home">';
+
+			 if ( function_exists( 'the_custom_logo' ) ) {
+
+				 $custom_logo_id = get_theme_mod( 'custom_logo' );
+				 $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+
+				 if ( has_custom_logo() ) {
+
+					 echo '<img class="site-logo" alt="Logo ' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" src="'. esc_url( $logo[0] ) .'">';
+
+				 } else {
+
+					 if ( is_front_page() && is_home() ) {
+						 echo '<h1 class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</h1>';
+
+					 } else {
+						 echo '<span class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</span>';
+					 }
+				 }
+	 	 	}
+	 	echo '</a>';
 	}
 }
