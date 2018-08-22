@@ -52,7 +52,7 @@ Reference of tools used in the theme:
 * [Composer](https://getcomposer.org/)
 * [TGM Plugin Activation](http://tgmpluginactivation.com/)
 
-## Bugs and Sugestions ##
+## Bugs and Suggestions ##
 
 The Haste Starter is an **Open Source** project. Anyone can (and should) help us to improve it.
 Report bugs or do suggestions using the [Issues/Project Forum](#)
