@@ -10,10 +10,10 @@
     "lint:admin": "eslint src/j/admin | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
 
     "uglify:admin": "uglifyjs src/js/admin/*.js -m -c -o assets/js/admin/admin.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
-    "uglify:main": "uglifyjs assets/js/main.js -m -c --source-map \"url=main.min.js.map\" -o assets/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
+    "uglify:main": "uglifyjs node_modules/jquery/dist/jquery.js node_modules/bootstrap/dist/js/bootstrap.bundle.js src/js/*.js -m -c --source-map \"url=main.min.js.map\" -o assets/js/main.min.js | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "uglify": "npm run uglify:main",
 
-    "babel": "babel --out-file assets/js/main.js < node_modules/jquery/dist/jquery.js node_modules/popper.js/dist/popper.js node_modules/bootstrap/dist/js/bootstrap.js src/js/*.js --source-maps",
+    "babel": "babel src/js/main.js --out-file assets/js/main.js",
 
     "imagemin": "imagemin imagemin src/img/* --out-dir=assets/img | gnomon --type=elapsed-total --medium=10.0 --high=20.0",
     "sync": "browser-sync start --files assets/css/*.css, assets/js/*.js, *.php",
