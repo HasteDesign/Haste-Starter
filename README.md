@@ -3,6 +3,8 @@
 [![GPL](https://img.shields.io/badge/License-GPL-blue.svg)]()
 [![PluginTerritory](https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg)]()
 
+<p align="center"><img alt="Haste Starter, A WordPress base theme for developers" src="https://github.com/HasteDesign/Haste-Starter/blob/master/screenshot.png" width="600" height="450"></p>
+
 Haste Starter is a base to be used to create custom WordPress themes. It's an open source fork from [Odin Framework](https://wpod.in). 
 
 With this base theme you will have a lot of WordPress pre-made templates from Template Hierarchy, some general initial WordPress theme config that includes: sidebars, menus, definition of theme supports, helper functions and much more. It also includes Bootstrap 4, npm scripts to build Sass (with autoprefixer), uglify JavaScript, browsersync, image optimization and watch tasks, but don't worry, you're free to use only what you need and are comfortable with!
