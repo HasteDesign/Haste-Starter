@@ -45,10 +45,10 @@ Reference of tools used in the theme:
 
 * [Bootstrap](http://getbootstrap.com/)
 * [Sass](http://sass-lang.com/)
-* [FitVids](https://github.com/davatron5000/FitVids.js)
 * [EditorConfig](http://editorconfig.org/)
 * [Eslint](https://eslint.org/)
 * [Npm](https://docs.npmjs.com)
+* [Babel](https://babeljs.io/)
 * [Composer](https://getcomposer.org/)
 * [TGM Plugin Activation](http://tgmpluginactivation.com/)
 
