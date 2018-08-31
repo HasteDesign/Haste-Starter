@@ -1,4 +1,4 @@
-# Haste Starter #
+<p align="center"><img alt="Haste Starter, A WordPress base theme for developers" src="https://github.com/HasteDesign/Haste-Starter/blob/master/screenshot.png" width="600" height="450"></p>
 
 [![GPL](https://img.shields.io/badge/License-GPL-blue.svg)]()
 [![PluginTerritory](https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg)]()
