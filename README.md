@@ -1,4 +1,4 @@
-# Haste Starter #
+<p align="center"><img alt="Haste Starter, A WordPress base theme for developers" src="https://github.com/HasteDesign/Haste-Starter/blob/master/screenshot.png" width="600" height="450"></p>
 
 [![GPL](https://img.shields.io/badge/License-GPL-blue.svg)]()
 [![PluginTerritory](https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg)]()
@@ -45,14 +45,14 @@ Reference of tools used in the theme:
 
 * [Bootstrap](http://getbootstrap.com/)
 * [Sass](http://sass-lang.com/)
-* [FitVids](https://github.com/davatron5000/FitVids.js)
 * [EditorConfig](http://editorconfig.org/)
 * [Eslint](https://eslint.org/)
 * [Npm](https://docs.npmjs.com)
+* [Babel](https://babeljs.io/)
 * [Composer](https://getcomposer.org/)
 * [TGM Plugin Activation](http://tgmpluginactivation.com/)
 
-## Bugs and Sugestions ##
+## Bugs and Suggestions ##
 
 The Haste Starter is an **Open Source** project. Anyone can (and should) help us to improve it.
 Report bugs or do suggestions using the [Issues/Project Forum](#)
