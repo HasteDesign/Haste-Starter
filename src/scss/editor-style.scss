@@ -1,11 +1,13 @@
 //
-// WordPress TinyMCE editor Style
+// WordPress TinyMCE/Gutenberg editor styles
 //
 
 // --------------------------------------------------------------
 // Import Theme Style
+// If you're using TinyMCE/Classic Editor, it's fine to include
+// front-end theme styles, if it's Gutenberg, it'll be a disaster.
 // --------------------------------------------------------------
-@import "main.scss";
+// @import "main.scss";
 
 // --------------------------------------------------------------
 // Extra
