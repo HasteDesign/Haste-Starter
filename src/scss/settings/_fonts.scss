@@ -1,0 +1,15 @@
+@mixin fontface($family, $path, $filename, $style: normal, $weight: normal) {
+	@font-face {
+		$src: $path + $filename;
+		font-family: '#{$family}';
+		src: url('#{$src}.woff2') format('woff2'),
+			 url('#{$src}.woff') format('woff'); // standart formats
+		font-style: $style;
+		font-weight: $weight;
+	}
+}
+
+$your-fonts-path: '../fonts/'; 	// Don't forget the slash at the end
+
+// Example declaration
+// @include fontface( Chivo, $your-fonts-path, chivo-bolditalic, italic, 700 );
