@@ -35,6 +35,7 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 		) );
 
 		// Add custom editor style support.
+		add_theme_support( 'editor-styles' );
 		add_editor_style( 'assets/css/editor-style.css' );
 
 		// Add infinite scroll support.
