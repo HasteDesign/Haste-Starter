@@ -2,6 +2,7 @@
 
 [![GPL](https://img.shields.io/badge/License-GPL-blue.svg?logo=gnu&logoColor=FAFAFA)]()
 [![PluginTerritory](https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg?logo=wordpress&logoColor=FAFAFA)]()
+<a href="https://codeclimate.com/github/HasteDesign/Haste-Starter/maintainability"><img src="https://api.codeclimate.com/v1/badges/b33b74c0718af0cd6041/maintainability" /></a>
 
 Haste Starter is a base to be used to create custom WordPress themes. It's an open source fork from [Odin Framework](https://wpod.in). 
 
