@@ -1,15 +1,15 @@
 <?php
 /**
- * Haste_Starter_Widget_Like_Box class.
+ * Haste_Starter_Widget example class.
  *
- * Facebook like widget.
+ * A Facebook like widget as scaffolding of widget creation.
  *
  * @package  Haste Starter
  * @category Widget
  * @author   WPBrasil
  * @version  1.0.0
  */
-class Haste_Starter_Widget_Like_Box extends WP_Widget {
+class Haste_Starter_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.

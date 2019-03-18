@@ -29,8 +29,8 @@ require_once get_template_directory() . '/inc/classes/class-bootstrap-nav.php';
  * Widgets.
  */
 
-// Facebook like box widget.
-require_once get_template_directory() . '/inc/widgets/class-widget-like-box.php';
+// Haste Widget
+// require_once get_template_directory() . '/inc/widgets/class-widget-haste.php';
 
 /**
  * Hooks.
