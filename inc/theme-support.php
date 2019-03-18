@@ -2,7 +2,7 @@
 
 if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 	/**
-	 * Setup theme support.
+	 * Setup theme supported features.
 	 *
 	 * @link https://codex.wordpress.org/Function_Reference/add_theme_support
 	 */

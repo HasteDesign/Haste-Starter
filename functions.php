@@ -54,9 +54,6 @@ require_once get_template_directory() . '/inc/sidebar.php';
 // Customize the WordPress admin and login menu.
 require_once get_template_directory() . '/inc/admin.php';
 
-// Automatically sets the post thumbnail.
-require_once get_template_directory() . '/inc/autoset-featured.php';
-
 /**
  * Helpers.
  */

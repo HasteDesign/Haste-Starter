@@ -59,7 +59,6 @@ function haste_starter_remove_wp_widget_recent_comments_style() {
 		remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
 	}
 }
-
 add_filter( 'wp_head', 'haste_starter_remove_wp_widget_recent_comments_style', 1);
 
 /**
@@ -72,7 +71,6 @@ function haste_starter_remove_recent_comments_style() {
 		remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 	}
 }
-
 add_action( 'wp_head', 'haste_starter_remove_recent_comments_style', 1 );
 
 /**
@@ -89,7 +87,6 @@ function haste_starter_modify_category_rel( $text ) {
 
 	return $text;
 }
-
 add_filter( 'wp_list_categories', 'haste_starter_modify_category_rel' );
 add_filter( 'the_category', 'haste_starter_modify_category_rel' );
 
@@ -99,7 +96,6 @@ add_filter( 'the_category', 'haste_starter_modify_category_rel' );
 function haste_starter_modify_tag_rel( $taglink ) {
 	return str_replace( 'rel="tag">', 'rel="nofollow">', $taglink );
 }
-
 add_filter( 'wp_tag_cloud', 'haste_starter_modify_tag_rel' );
 add_filter( 'the_tags', 'haste_starter_modify_tag_rel' );
 
@@ -113,5 +109,4 @@ add_filter( 'the_tags', 'haste_starter_modify_tag_rel' );
 function disable_emojis_tinymce( $plugins ) {
 	return is_array( $plugins ) ? array_diff( $plugins, array( 'wpemoji' ) ) : array();
 }
-
 add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
