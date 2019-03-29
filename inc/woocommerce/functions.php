@@ -14,7 +14,7 @@ if ( ! function_exists( 'haste_starter_before_content' ) ) {
 	 */
 	function haste_starter_before_content() {
 		?>
-		<main id="content" class="<?php echo haste_starter_classes_page_sidebar(); ?>" tabindex="-1" role="main">
+		<main id="content" tabindex="-1" role="main">
 		<?php
 	}
 }
