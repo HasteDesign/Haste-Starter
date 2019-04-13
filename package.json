@@ -46,7 +46,7 @@
     "eslint": "^4.8.0",
     "imagemin-cli": "^3.0.0",
     "jquery": "^3.2.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.11.0",
     "onchange": "^3.2.1",
     "popper": "^1.0.0",
     "popper.js": "^1.12.5",
