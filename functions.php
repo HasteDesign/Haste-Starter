@@ -22,7 +22,6 @@ if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
 /**
  * Classes.
  */
-
 require_once get_template_directory() . '/inc/classes/class-bootstrap-nav.php';
 
 /**
@@ -46,10 +45,10 @@ require_once get_template_directory() . '/inc/cleanup.php';
 require_once get_template_directory() . '/inc/enqueue-scripts.php';
 
 // Register custom menus and menu walkers.
-require_once get_template_directory() . '/inc/menu.php';
+require_once get_template_directory() . '/inc/menus.php';
 
 // Register sidebars/widget areas.
-require_once get_template_directory() . '/inc/sidebar.php';
+require_once get_template_directory() . '/inc/sidebars.php';
 
 // Customize the WordPress admin and login menu.
 require_once get_template_directory() . '/inc/admin.php';
