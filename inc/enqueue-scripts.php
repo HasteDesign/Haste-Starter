@@ -8,6 +8,9 @@
 function haste_starter_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
 
+	// Vendor Bundle
+	wp_enqueue_script( 'haste-starter-bundle', $template_url . '/assets/js/vendor/bundle.min.js', array(), null, true );
+
 	// General scripts.
 	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 		// Loads main stylesheet file.
