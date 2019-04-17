@@ -117,7 +117,7 @@
         }
     }
     .gallery-caption {
-        color: $thumbnail-caption-color;
+        color: $figure-caption-color;
         margin-left: 0;
     }
     dl {
@@ -189,8 +189,8 @@ img {
     }
     .wp-caption-text {
         display: inline-block;
-        padding: $thumbnail-caption-padding;
-        color: $thumbnail-caption-color;
+        padding: $thumbnail-padding;
+        color: $figure-caption-color;
         &:before {
             color: #666;
             content: '\2014';
