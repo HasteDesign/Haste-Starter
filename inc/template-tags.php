@@ -48,6 +48,58 @@ if ( ! function_exists( 'haste_starter_classes_page_sidebar_aside' ) ) {
 	}
 }
 
+
+/**
+ * Open and close containers
+ */
+
+
+if ( ! function_exists( 'haste_starter_the_container' ) ) {
+
+	function haste_starter_the_container( $type ) {
+		 if ( $type == 'open' ) { ?>
+
+			 <div class="container content-wrapper">
+ 				<div class="row layout-row">
+
+		<?php } elseif ( $type == 'close' ) { ?>
+
+				</div>
+			</div>
+
+		<?php }
+	}
+}
+
+ if ( ! function_exists( 'haste_starter_open_content_wrapper' ) ) {
+
+ 	function haste_starter_open_content_wrapper( $sidebar = false) {
+
+		haste_starter_the_container( 'open' );
+
+		if ( $sidebar == true || $sidebar == 'sidebar' ) { ?>
+			<div class="<?php echo haste_starter_classes_page_sidebar(); ?>">
+		<?php } else { ?>
+				<div class="<?php echo haste_starter_classes_page_full(); ?>">
+		<?php }
+ 	}
+ }
+
+ if ( ! function_exists( 'haste_starter_close_content_wrapper' ) ) {
+
+ 	function haste_starter_close_content_wrapper( $sidebar = false ) {
+ 		?>
+			</div>
+
+			<?php if ( $sidebar != false ) {
+				get_sidebar( $sidebar );
+			}
+
+		haste_starter_the_container( 'close' );
+ 	}
+ }
+
+
 if ( ! function_exists( 'haste_starter_posted_on' ) ) {
 
 	/**
