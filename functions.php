@@ -66,6 +66,9 @@ require_once get_template_directory() . '/inc/template-tags.php';
 // Custom comments loop.
 require_once get_template_directory() . '/inc/comments-loop.php';
 
+// Embeds
+require_once get_template_directory() . '/inc/embeds.php';
+
 // Replace 'older/newer' post links with numbered navigation.
 require_once get_template_directory() . '/inc/pagination.php';
 
