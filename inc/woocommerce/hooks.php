@@ -52,6 +52,6 @@ add_action( 'haste_starter_content_top', 'woocommerce_breadcrumb', 10 );
  * @see  haste_starter_loop_columns()
  * @since  2.2.6
  */
-add_filter( 'woocommerce_product_thumbnails_columns', 	'haste_starter_thumbnail_columns' );
-add_filter( 'loop_shop_per_page', 						'haste_starter_products_per_page' );
-add_filter( 'loop_shop_columns', 						'haste_starter_loop_columns' );
+add_filter( 'woocommerce_product_thumbnails_columns', 'haste_starter_thumbnail_columns' );
+add_filter( 'loop_shop_per_page', 'haste_starter_products_per_page' );
+add_filter( 'loop_shop_columns', 'haste_starter_loop_columns' );

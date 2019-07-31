@@ -8,15 +8,17 @@
 		</button>
 		<div class="collapse navbar-collapse" id="main-menu">
 			<?php
-				wp_nav_menu( array(
+				wp_nav_menu(
+					array(
 						'theme_location' => 'main-menu',
 						'depth'          => 2,
 						'container'      => false,
 						'menu_class'     => 'navbar-nav mr-auto',
 						'fallback_cb'    => 'Haste_Starter_Bootstrap_Nav_Walker::fallback',
 						'walker'         => new Haste_Starter_Bootstrap_Nav_Walker(),
-				) );
-			?>
+					)
+				);
+				?>
 			<?php get_template_part( 'searchform' ); ?>
 		</div><!-- .navbar-collapse -->
 	</div><!-- .container -->

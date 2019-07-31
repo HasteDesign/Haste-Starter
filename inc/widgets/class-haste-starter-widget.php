@@ -18,7 +18,7 @@ class Haste_Starter_Widget extends WP_Widget {
 		parent::__construct(
 			'haste_starter_facebook_like_box',
 			__( 'Facebook Like Box', 'haste-starter' ),
-			array( 'description' => __( 'This widget includes a facebook like box on your blog', 'haste-starter' ), )
+			array( 'description' => __( 'This widget includes a facebook like box on your blog', 'haste-starter' ) )
 		);
 	}
 
@@ -110,7 +110,7 @@ class Haste_Starter_Widget extends WP_Widget {
 	 * @return array               Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
+		$instance                  = array();
 		$instance['title']         = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 		$instance['url']           = ( ! empty( $new_instance['url'] ) ) ? esc_url( $new_instance['url'] ) : '';
 		$instance['width']         = ( ! empty( $new_instance['width'] ) ) ? intval( $new_instance['width'] ) : 300;

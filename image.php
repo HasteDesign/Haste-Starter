@@ -11,7 +11,8 @@ get_header(); ?>
 
 	<main id="content" tabindex="-1" role="main">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php while ( have_posts() ) : ?>
+			<?php the_post(); ?>
 			<article <?php post_class(); ?>>
 				<header class="entry-header">
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
@@ -30,7 +31,10 @@ get_header(); ?>
 							<?php echo wp_get_attachment_image( $post->ID, 'full' ); ?>
 						</a>
 						<figcaption class="entry-attachment-caption">
-							<?php if ( ! empty( $post->post_excerpt ) ) the_excerpt(); ?>
+							<?php
+							if ( ! empty( $post->post_excerpt ) ) {
+								the_excerpt();}
+							?>
 						</figcaption>
 					</figure>
 

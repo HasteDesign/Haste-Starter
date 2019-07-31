@@ -2,7 +2,7 @@
 /**
  * Haste_Starter_Bootstrap_Nav_Walker class.
  *
- * A custom Wordpress nav walker to implement the Bootstrap 3 dropdown navigation using the Wordpress built in menu manager.
+ * A custom WordPress nav walker to implement the Bootstrap 3 dropdown navigation using the WordPress built in menu manager.
  * Inspired by the class twitter_bootstrap_nav_walker <https://github.com/twittem/wp-bootstrap-navwalker>,
  * created by Edward McIntyre and with the licence GPLv2.
  *
@@ -20,7 +20,7 @@ class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	 * @param int $depth Depth of page. Used for padding.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent = str_repeat( "\t", $depth );
+		$indent  = str_repeat( "\t", $depth );
 		$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu\">\n";
 	}
 
@@ -34,7 +34,9 @@ class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	 * @param object $args
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+		$class_names = '';
+		$value       = '';
+		$indent      = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
 		/**
 		 * Dividers, Headers or Disabled
@@ -44,19 +46,17 @@ class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 		 * comparison that is not case sensitive. The strcasecmp() function returns
 		 * a 0 if the strings are equal.
 		 */
-		if ( strcasecmp( $item->attr_title, 'divider' ) == 0 && $depth === 1 ) {
+		if ( strcasecmp( $item->attr_title, 'divider' ) === 0 && 1 === $depth ) {
 			$output .= $indent . '<li role="presentation" class="dropdown-divider">';
-		} else if ( strcasecmp( $item->title, 'divider' ) == 0 && $depth === 1 ) {
+		} elseif ( strcasecmp( $item->title, 'divider' ) === 0 && 1 === $depth ) {
 			$output .= $indent . '<li role="presentation" class="dropdown-divider">';
-		} else if ( strcasecmp( $item->attr_title, 'dropdown-header' ) == 0 && $depth === 1 ) {
+		} elseif ( strcasecmp( $item->attr_title, 'dropdown-header' ) === 0 && 1 === $depth ) {
 			$output .= $indent . '<li role="presentation" class="dropdown-header">' . esc_attr( $item->title );
-		} else if ( strcasecmp( $item->attr_title, 'disabled' ) == 0 ) {
+		} elseif ( strcasecmp( $item->attr_title, 'disabled' ) === 0 ) {
 			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
 		} else {
 
-			$class_names = $value = '';
-
-			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[] = 'nav-item menu-item-' . $item->ID;
 
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
@@ -65,32 +65,32 @@ class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 				$class_names .= ' dropdown';
 			}
 
-			if ( in_array( 'current-menu-item', $classes ) ) {
+			if ( in_array( 'current-menu-item', $classes, true ) ) {
 				$class_names .= ' active';
 			}
 
-			if ( $depth > 0) {
+			if ( $depth > 0 ) {
 				$class_names .= ' dropdown-item';
 			}
 
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-			$output .= $indent . '<li' . $id . $value . $class_names .'>';
+			$output .= $indent . '<li' . $id . $value . $class_names . '>';
 
-			$atts = array();
+			$atts           = array();
 			$atts['title']  = ! empty( $item->title ) ? strip_tags( $item->title ) : '';
 			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
 			$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
 			$atts['class']  = 'nav-link';
 
 			// If item has_children add atts to a.
-			if ( $args->has_children && $depth === 0) {
+			if ( $args->has_children && 0 === $depth ) {
 				$atts['href']        = '#';
 				$atts['data-toggle'] = 'dropdown';
-				$atts['class']       .= ' dropdown-toggle';
+				$atts['class']      .= ' dropdown-toggle';
 			} else {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
 			}
@@ -100,7 +100,7 @@ class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			$attributes = '';
 			foreach ( $atts as $attr => $value ) {
 				if ( ! empty( $value ) ) {
-					$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+					$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
 					$attributes .= ' ' . $attr . '="' . $value . '"';
 				}
 			}
@@ -115,9 +115,9 @@ class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			 * property is NOT null we apply it as the class name for the glyphicon.
 			 */
 			if ( ! empty( $item->attr_title ) ) {
-				$item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
+				$item_output .= '<a' . $attributes . '><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
 			} else {
-				$item_output .= '<a'. $attributes .'>';
+				$item_output .= '<a' . $attributes . '>';
 			}
 
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;

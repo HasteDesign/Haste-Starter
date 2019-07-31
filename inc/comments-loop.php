@@ -14,15 +14,15 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 		$GLOBALS['comment'] = $comment;
 
 		switch ( $comment->comment_type ) {
-			case 'pingback' :
-			case 'trackback' :
-?>
+			case 'pingback':
+			case 'trackback':
+				?>
 				<li class="media post pingback">
 					<p><?php _e( 'Pingback:', 'haste-starter' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'haste-starter' ), '<span class="edit-link">', '</span>' ); ?></p>
-<?php
-			break;
-			default :
-?>
+				<?php
+				break;
+			default:
+				?>
 				<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
 					<article id="div-comment-<?php comment_ID(); ?>" class="comment-body comment-author vcard">
 						<div class="media-left">
@@ -31,19 +31,26 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 						<div class="media-body">
 							<footer class="comment-meta">
 								<h5 class="media-heading">
-									<?php echo sprintf( '<strong><span class="fn">%1$s</span></strong>
+									<?php
+									echo sprintf(
+										'<strong><span class="fn">%1$s</span></strong>
 														 %2$s <a href="%3$s"><time datetime="%4$s">%5$s %6$s </time></a>
 														 <span class="says"> %7$s</span>',
-														 get_comment_author_link(), __( 'in', 'haste-starter' ),
-														 esc_url( get_comment_link( $comment->comment_ID ) ),
-														 get_comment_time( 'c' ),
-														 get_comment_date(), __( 'at', 'haste-starter' ),
-														 get_comment_time(), __( 'said:', 'haste-starter' ) ); ?>
+										get_comment_author_link(),
+										__( 'in', 'haste-starter' ),
+										esc_url( get_comment_link( $comment->comment_ID ) ),
+										get_comment_time( 'c' ),
+										get_comment_date(),
+										__( 'at', 'haste-starter' ),
+										get_comment_time(),
+										__( 'said:', 'haste-starter' )
+									);
+									?>
 								</h5>
 
 								<?php edit_comment_link( __( 'Edit', 'haste-starter' ), '<span class="edit-link">', ' </span>' ); ?>
 
-								<?php if ( $comment->comment_approved == '0' ) : ?>
+								<?php if ( '0' === $comment->comment_approved ) : ?>
 								<p class="comment-awaiting-moderation alert alert-info"><?php _e( 'Your comment is awaiting moderation.', 'haste-starter' ); ?></p>
 								<?php endif; ?>
 							</footer><!-- .comment-meta -->
@@ -53,12 +60,25 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 							</div><!-- .comment-content -->
 
 							<div class="comment-metadata">
-								<span class="reply-link"><?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Respond', 'haste-starter' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></span>
+								<span class="reply-link">
+								<?php
+								comment_reply_link(
+									array_merge(
+										$args,
+										array(
+											'reply_text' => __( 'Respond', 'haste-starter' ),
+											'depth'      => $depth,
+											'max_depth'  => $args['max_depth'],
+										)
+									)
+								);
+								?>
+															</span>
 							</div><!-- .comment-metadata -->
 						</div>
 					</article><!-- .comment-body -->
-<?php
-			break;
+				<?php
+				break;
 		}
 	}
 }

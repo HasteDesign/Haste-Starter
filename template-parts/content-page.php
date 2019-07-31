@@ -15,15 +15,17 @@
 	</header>
 
 	<div class="entry-content">
-		<?php
-			the_content();
+		<?php the_content(); ?>
 
-			wp_link_pages( array(
+		<?php
+		wp_link_pages(
+			array(
 				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'haste-starter' ) . '</span>',
 				'after'       => '</div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',
-			) );
+			)
+		);
 		?>
 	</div>
 </article><!-- #post-## -->

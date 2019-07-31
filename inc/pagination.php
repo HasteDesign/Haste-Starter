@@ -17,22 +17,24 @@
 function haste_starter_pagination( $mid = 2, $end = 1, $show = false, $query = null ) {
 
 	// Prevent show pagination number if Infinite Scroll of JetPack is active.
-	if ( ! isset( $_GET[ 'infinity' ] ) ) {
+	if ( ! isset( $_GET['infinity'] ) ) {
 
 		global $wp_query, $wp_rewrite;
 
 		$total_pages = $wp_query->max_num_pages;
 
-		if ( is_object( $query ) && null != $query ) {
+		if ( is_object( $query ) && null !== $query ) {
 			$total_pages = $query->max_num_pages;
 		}
 
 		if ( $total_pages > 1 ) {
 			$url_base = $wp_rewrite->pagination_base;
-			$big = 999999999;
+			$big      = 999999999;
 
 			// Sets the paginate_links arguments.
-			$arguments = apply_filters( 'haste_starter_pagination_args', array(
+			$arguments = apply_filters(
+				'haste_starter_pagination_args',
+				array(
 					'base'      => esc_url_raw( str_replace( $big, '%#%', get_pagenum_link( $big, false ) ) ),
 					'format'    => '',
 					'current'   => max( 1, get_query_var( 'paged' ) ),
@@ -57,4 +59,3 @@ function haste_starter_pagination( $mid = 2, $end = 1, $show = false, $query = n
 		}
 	}
 }
-

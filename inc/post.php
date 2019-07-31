@@ -14,8 +14,9 @@
  * @return string               Field value
  */
 function haste_starter_get_term_meta( $term_id, $field ) {
+	$value = get_term_meta( $term_id, $field, true );
 	// First try to get value in the new Term Meta WP API.
-	if ( $value = get_term_meta( $term_id, $field, true ) ) {
+	if ( $value ) {
 		return $value;
 	}
 
@@ -54,7 +55,7 @@ function haste_starter_excerpt( $type = 'excerpt', $limit = 40 ) {
 			$excerpt = get_the_title();
 			break;
 
-		default :
+		default:
 			$excerpt = get_the_excerpt();
 			break;
 	}
@@ -85,10 +86,9 @@ function haste_starter_excerpt( $type = 'excerpt', $limit = 40 ) {
  */
 function haste_starter_related_posts( $display = 'category', $qty = 4, $title = '', $thumb = true, $post_type = 'post' ) {
 	global $post;
-
-	$show = false;
+	$title    = ! empty( $title ) ?? __( 'Related Posts', 'haste-starter' );
+	$show     = false;
 	$post_qty = (int) $qty;
-	! empty( $title ) || $title = __( 'Related Posts', 'haste-starter' );
 
 	// Creates arguments for WP_Query.
 	switch ( $display ) {
@@ -105,16 +105,16 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 				}
 
 				$args = array(
-					'tag__in' => $tag_ids,
-					'post__not_in' => array( $post->ID ),
-					'posts_per_page' => $post_qty,
-					'post_type' => $post_type,
-					'ignore_sticky_posts' => 1
+					'tag__in'             => $tag_ids,
+					'post__not_in'        => array( $post->ID ),
+					'posts_per_page'      => $post_qty,
+					'post_type'           => $post_type,
+					'ignore_sticky_posts' => 1,
 				);
 			}
 			break;
 
-		default :
+		default:
 			$categories = get_the_category( $post->ID );
 
 			if ( $categories ) {
@@ -128,10 +128,10 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 				}
 
 				$args = array(
-					'category__in' => $category_ids,
-					'post__not_in' => array( $post->ID ),
-					'posts_per_page' => $post_qty,
-					'post_type' => $post_type,
+					'category__in'        => $category_ids,
+					'post__not_in'        => array( $post->ID ),
+					'posts_per_page'      => $post_qty,
+					'post_type'           => $post_type,
 					'ignore_sticky_posts' => 1,
 				);
 			}
@@ -143,7 +143,7 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 		$related = new WP_Query( $args );
 		if ( $related->have_posts() ) {
 
-			$layout = '<div id="related-post">';
+			$layout  = '<div id="related-post">';
 			$layout .= '<h3>' . esc_attr( $title ) . '</h3>';
 			$layout .= ( $thumb ) ? '<div class="row">' : '<ul>';
 

@@ -54,7 +54,7 @@ add_filter( 'stylesheet_uri', 'haste_starter_stylesheet_uri', 10, 2 );
  * Displays BrowserSync script
  */
 function haste_starter_browser_sync() {
-	if ( in_array( $_SERVER['HTTP_HOST'], array( 'localhost', '127.0.0.1', '127.0.1.1' ) ) ) {
+	if ( in_array( $_SERVER['HTTP_HOST'], array( 'localhost', '127.0.0.1', '127.0.1.1' ), true ) ) {
 		?>
 		<script id="__bs_script__">
 		//<![CDATA[

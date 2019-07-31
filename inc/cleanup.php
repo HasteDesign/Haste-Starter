@@ -59,7 +59,7 @@ function haste_starter_remove_wp_widget_recent_comments_style() {
 		remove_filter( 'wp_head', 'wp_widget_recent_comments_style' );
 	}
 }
-add_filter( 'wp_head', 'haste_starter_remove_wp_widget_recent_comments_style', 1);
+add_filter( 'wp_head', 'haste_starter_remove_wp_widget_recent_comments_style', 1 );
 
 /**
  * Remove injected CSS from recent comments widget.
@@ -83,7 +83,7 @@ add_filter( 'use_default_gallery_style', '__return_false' );
  */
 function haste_starter_modify_category_rel( $text ) {
 	$search = array( 'rel="category"', 'rel="category tag"' );
-	$text = str_replace( $search, 'rel="nofollow"', $text );
+	$text   = str_replace( $search, 'rel="nofollow"', $text );
 
 	return $text;
 }

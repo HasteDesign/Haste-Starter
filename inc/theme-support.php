@@ -18,35 +18,44 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 		add_theme_support( 'automatic-feed-links' );
 
 		// Add support custom header support.
-		add_theme_support( 'custom-header', array(
-			'width'         => 1200,
-			'height'        => 400,
-			'flex-width'    => true,
-			'flex-height'   => true,
-			'header-text'   => false,
-			'default-image' => '',
-			'uploads'       => true,
-		) );
+		add_theme_support(
+			'custom-header',
+			array(
+				'width'         => 1200,
+				'height'        => 400,
+				'flex-width'    => true,
+				'flex-height'   => true,
+				'header-text'   => false,
+				'default-image' => '',
+				'uploads'       => true,
+			)
+		);
 
 		// Add support custom background support.
-		add_theme_support( 'custom-background', array(
-			'default-color' => '',
-			'default-image' => '',
-		) );
+		add_theme_support(
+			'custom-background',
+			array(
+				'default-color' => '',
+				'default-image' => '',
+			)
+		);
 
 		// Add custom editor style support.
 		add_theme_support( 'editor-styles' );
 		add_editor_style( 'assets/css/editor-style.css' );
 
 		// Add infinite scroll support.
-		add_theme_support( 'infinite-scroll', array(
-			'type'           => 'scroll',
-			'footer_widgets' => false,
-			'container'      => 'content',
-			'wrapper'        => false,
-			'render'         => false,
-			'posts_per_page' => get_option( 'posts_per_page' ),
-		) );
+		add_theme_support(
+			'infinite-scroll',
+			array(
+				'type'           => 'scroll',
+				'footer_widgets' => false,
+				'container'      => 'content',
+				'wrapper'        => false,
+				'render'         => false,
+				'posts_per_page' => get_option( 'posts_per_page' ),
+			)
+		);
 
 		// Add support for Post Formats.
 		// add_theme_support( 'post-formats', array(
@@ -65,13 +74,16 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 		// add_post_type_support( 'page', 'excerpt' );
 
 		// Switch default core markup for search form, comment form, and comments to output valid HTML5.
-		add_theme_support( 'html5', array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		) );
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			)
+		);
 
 		/**
 		 * Let WordPress manage the document title.
@@ -82,13 +94,16 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 		add_theme_support( 'title-tag' );
 
 		// Add custom logo support.
-		add_theme_support( 'custom-logo', array(
-			'height'      => 240,
-			'width'       => 240,
-			'flex-height' => true,
-			'flex-width' => true,
-			'header-text' => array( 'site-title', 'site-description' ),
-		) );
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'      => 240,
+				'width'       => 240,
+				'flex-height' => true,
+				'flex-width'  => true,
+				'header-text' => array( 'site-title', 'site-description' ),
+			)
+		);
 
 	} /* end theme support */
 }
@@ -124,28 +139,31 @@ if ( ! function_exists( 'haste_starter_gutenberg_support' ) ) {
 
 		//add_theme_support( 'disable-custom-colors' );
 
-		add_theme_support( 'editor-color-palette', array(
+		add_theme_support(
+			'editor-color-palette',
 			array(
-				'name' => __( 'haste starter cyan', 'haste-starter' ),
-				'slug' => 'haste-starter-cyan',
-				'color' => '#00C9C8',
-			),
-			array(
-				'name' => __( 'haste starter violet', 'haste-starter' ),
-				'slug' => 'haste-starter-violet',
-				'color' => '#6428FF',
-			),
-			array(
-				'name' => __( 'haste starter red', 'haste-starter' ),
-				'slug' => 'haste-starter-red',
-				'color' => '#FF2C18',
-			),
-			array(
-				'name' => __( 'haste starter light gray', 'haste-starter' ),
-				'slug' => 'haste-starter-light-gray',
-				'color' => '#FAFAFA',
-			),
-		) );
+				array(
+					'name'  => __( 'haste starter cyan', 'haste-starter' ),
+					'slug'  => 'haste-starter-cyan',
+					'color' => '#00C9C8',
+				),
+				array(
+					'name'  => __( 'haste starter violet', 'haste-starter' ),
+					'slug'  => 'haste-starter-violet',
+					'color' => '#6428FF',
+				),
+				array(
+					'name'  => __( 'haste starter red', 'haste-starter' ),
+					'slug'  => 'haste-starter-red',
+					'color' => '#FF2C18',
+				),
+				array(
+					'name'  => __( 'haste starter light gray', 'haste-starter' ),
+					'slug'  => 'haste-starter-light-gray',
+					'color' => '#FAFAFA',
+				),
+			)
+		);
 
 		// Wide alignment
 		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
@@ -157,32 +175,35 @@ if ( ! function_exists( 'haste_starter_gutenberg_support' ) ) {
 
 		// add_theme_support('disable-custom-font-sizes');
 
-		add_theme_support( 'editor-font-sizes', array(
+		add_theme_support(
+			'editor-font-sizes',
 			array(
-				'name' => __( 'small', 'haste-starter' ),
-				'shortName' => __( 'S', 'haste-starter' ),
-				'size' => 12,
-				'slug' => 'small'
-			),
-			array(
-				'name' => __( 'regular', 'haste-starter' ),
-				'shortName' => __( 'M', 'haste-starter' ),
-				'size' => 16,
-				'slug' => 'regular'
-			),
-			array(
-				'name' => __( 'large', 'haste-starter' ),
-				'shortName' => __( 'L', 'haste-starter' ),
-				'size' => 36,
-				'slug' => 'large'
-			),
-			array(
-				'name' => __( 'larger', 'haste-starter' ),
-				'shortName' => __( 'XL', 'haste-starter' ),
-				'size' => 50,
-				'slug' => 'larger'
+				array(
+					'name'      => __( 'small', 'haste-starter' ),
+					'shortName' => __( 'S', 'haste-starter' ),
+					'size'      => 12,
+					'slug'      => 'small',
+				),
+				array(
+					'name'      => __( 'regular', 'haste-starter' ),
+					'shortName' => __( 'M', 'haste-starter' ),
+					'size'      => 16,
+					'slug'      => 'regular',
+				),
+				array(
+					'name'      => __( 'large', 'haste-starter' ),
+					'shortName' => __( 'L', 'haste-starter' ),
+					'size'      => 36,
+					'slug'      => 'large',
+				),
+				array(
+					'name'      => __( 'larger', 'haste-starter' ),
+					'shortName' => __( 'XL', 'haste-starter' ),
+					'size'      => 50,
+					'slug'      => 'larger',
+				),
 			)
-		) );
+		);
 
 		// Editor styles
 		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#dark-backgrounds

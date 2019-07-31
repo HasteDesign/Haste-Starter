@@ -56,48 +56,52 @@ if ( ! function_exists( 'haste_starter_classes_page_sidebar_aside' ) ) {
 
 if ( ! function_exists( 'haste_starter_the_container' ) ) {
 
-	function haste_starter_the_container( $type ) {
-		 if ( $type == 'open' ) { ?>
+	function haste_starter_the_container( $type ) { ?>
+		<?php if ( 'open' === $type ) { ?>
 
-			 <div class="container content-wrapper">
- 				<div class="row layout-row">
+			<div class="container content-wrapper">
+				<div class="row layout-row">
 
-		<?php } elseif ( $type == 'close' ) { ?>
+		<?php } elseif ( 'close' === $type ) { ?>
 
 				</div>
 			</div>
 
-		<?php }
-	}
+		<?php } ?>
+	<?php } ?>
+	<?php
 }
 
- if ( ! function_exists( 'haste_starter_open_content_wrapper' ) ) {
+if ( ! function_exists( 'haste_starter_open_content_wrapper' ) ) {
 
- 	function haste_starter_open_content_wrapper( $sidebar = false) {
+	function haste_starter_open_content_wrapper( $sidebar = false ) {
 
 		haste_starter_the_container( 'open' );
 
-		if ( $sidebar == true || $sidebar == 'sidebar' ) { ?>
+		if ( true === $sidebar || 'sidebar' === $sidebar ) {
+			?>
 			<div class="<?php echo haste_starter_classes_page_sidebar(); ?>">
 		<?php } else { ?>
 				<div class="<?php echo haste_starter_classes_page_full(); ?>">
-		<?php }
- 	}
- }
+			<?php
+		}
+	}
+}
 
- if ( ! function_exists( 'haste_starter_close_content_wrapper' ) ) {
+if ( ! function_exists( 'haste_starter_close_content_wrapper' ) ) {
 
- 	function haste_starter_close_content_wrapper( $sidebar = false ) {
- 		?>
+	function haste_starter_close_content_wrapper( $sidebar = false ) {
+		?>
 			</div>
 
-			<?php if ( $sidebar != false ) {
+			<?php
+			if ( false !== $sidebar ) {
 				get_sidebar( $sidebar );
 			}
 
-		haste_starter_the_container( 'close' );
- 	}
- }
+			haste_starter_the_container( 'close' );
+	}
+}
 
 
 if ( ! function_exists( 'haste_starter_posted_on' ) ) {
@@ -113,7 +117,8 @@ if ( ! function_exists( 'haste_starter_posted_on' ) ) {
 		}
 
 		// Set up and print post meta information.
-		printf( '<span class="entry-date">%s <time datetime="%s">%s</time></span> <span class="entry-byline byline">%s <span class="entry-author author vcard"><a class="url fn n" href="%s" rel="author">%s</a></span>.</span>',
+		printf(
+			'<span class="entry-date">%s <time datetime="%s">%s</time></span> <span class="entry-byline byline">%s <span class="entry-author author vcard"><a class="url fn n" href="%s" rel="author">%s</a></span>.</span>',
 			__( 'Posted in', 'haste-starter' ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() ),
@@ -149,29 +154,29 @@ if ( ! function_exists( 'haste_starter_the_custom_logo' ) ) {
 	 *
 	 * @since Haste Starter 1.0.0
 	 */
-	 function haste_starter_the_custom_logo() {
+	function haste_starter_the_custom_logo() {
 
-		 echo '<a href="' . esc_url( home_url( '/' ) ). '" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" rel="home">';
+		echo '<a href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" rel="home">';
 
-			 if ( function_exists( 'the_custom_logo' ) ) {
+		if ( function_exists( 'the_custom_logo' ) ) {
 
-				 $custom_logo_id = get_theme_mod( 'custom_logo' );
-				 $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+			$custom_logo_id = get_theme_mod( 'custom_logo' );
+			$logo           = wp_get_attachment_image_src( $custom_logo_id, 'full' );
 
-				 if ( has_custom_logo() ) {
+			if ( has_custom_logo() ) {
 
-					 echo '<img class="site-logo" alt="Logo ' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" src="'. esc_url( $logo[0] ) .'">';
+					echo '<img class="site-logo" alt="Logo ' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" src="' . esc_url( $logo[0] ) . '">';
 
-				 } else {
+			} else {
 
-					 if ( is_front_page() && is_home() ) {
-						 echo '<h1 class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</h1>';
+				if ( is_front_page() && is_home() ) {
+					echo '<h1 class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</h1>';
 
-					 } else {
-						 echo '<span class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</span>';
-					 }
-				 }
-	 	 	}
-	 	echo '</a>';
+				} else {
+					echo '<span class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</span>';
+				}
+			}
+		}
+		echo '</a>';
 	}
 }
