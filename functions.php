@@ -22,14 +22,14 @@ if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
 /**
  * Classes.
  */
-require_once get_template_directory() . '/inc/classes/class-bootstrap-nav.php';
+require_once get_template_directory() . '/inc/classes/class-haste-starter-bootstrap-nav-walker.php';
 
 /**
  * Widgets.
  */
 
 // Haste Widget
-// require_once get_template_directory() . '/inc/widgets/class-widget-haste.php';
+// require_once get_template_directory() . '/inc/widgets/class-haste-starter-widget.php';
 
 /**
  * Hooks.
