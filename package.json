@@ -21,7 +21,13 @@
     "watch": "concurrently --names \"SASS,JS\" -c \"white.bgMagenta.bold,black.bgYellow.bold\" \"npm run watch:sass\" \"npm run watch:js\"",
     "watch:sass": "onchange \"src/**/*.scss\" -- npm run build:sass",
     "watch:js": "onchange \"src/**/*.js\" -- npm run build:js",
-    "watch:sync": "concurrently --names \"SASS,JS,SYNC\" -c \"white.bgMagenta.bold,black.bgYellow.bold,black.bgWhite.bold\" \"npm run watch:sass\" \"npm run watch:js\" \"npm run sync\""
+    "watch:sync": "concurrently --names \"SASS,JS,SYNC\" -c \"white.bgMagenta.bold,black.bgYellow.bold,black.bgWhite.bold\" \"npm run watch:sass\" \"npm run watch:js\" \"npm run sync\"",
+    "mix-dev": "npm run mix-development",
+    "mix-development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "mix-watch": "npm run mix-development -- --watch",
+    "mix-hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "mix-prod": "npm run mix-production",
+    "mix-production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "browserslist": {
     "production": [
@@ -59,6 +65,11 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.2.0",
+    "laravel-mix": "^4.1.2",
+    "resolve-url-loader": "^3.1.0",
+    "sass-loader": "^7.2.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }
