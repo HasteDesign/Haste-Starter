@@ -11,8 +11,7 @@
 
 ?>
 
-		</div><!-- .row -->
-	</div><!-- #wrapper.container -->
+	</div><!-- .row -->
 
 	<footer id="footer" role="contentinfo">
 		<div class="container">
