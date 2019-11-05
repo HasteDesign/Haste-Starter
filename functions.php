@@ -53,6 +53,9 @@ require_once get_template_directory() . '/inc/sidebars.php';
 // Customize the WordPress admin and login menu.
 require_once get_template_directory() . '/inc/admin.php';
 
+// Custom filters.
+require_once get_template_directory() . '/inc/filters.php';
+
 /**
  * Helpers.
  */
