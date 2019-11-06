@@ -17,20 +17,6 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 		// Add feed link support.
 		add_theme_support( 'automatic-feed-links' );
 
-		// Add support custom header support.
-		add_theme_support(
-			'custom-header',
-			array(
-				'width'         => 1200,
-				'height'        => 400,
-				'flex-width'    => true,
-				'flex-height'   => true,
-				'header-text'   => false,
-				'default-image' => '',
-				'uploads'       => true,
-			)
-		);
-
 		// Add support custom background support.
 		add_theme_support(
 			'custom-background',

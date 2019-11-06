@@ -30,8 +30,6 @@
 
 		<?php get_template_part( 'template-parts/header', 'navigation' ); ?>
 
-		<?php get_template_part( 'template-parts/header', 'image' ); ?>
-
 		<div class="dropdown">
 	</header><!-- #header -->
 
