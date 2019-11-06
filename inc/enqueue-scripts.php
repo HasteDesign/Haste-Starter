@@ -51,16 +51,12 @@ function haste_starter_stylesheet_uri( $uri, $dir ) {
 add_filter( 'stylesheet_uri', 'haste_starter_stylesheet_uri', 10, 2 );
 
 /**
- * Displays BrowserSync script
+ * Enqueue LaravelMix LiveReload script
  */
 function haste_starter_browser_sync() {
 	if ( in_array( $_SERVER['HTTP_HOST'], array( 'localhost', '127.0.0.1', '127.0.1.1' ), true ) ) {
 		?>
-		<script id="__bs_script__">
-		//<![CDATA[
-			document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
-		//]]>
-		</script>
+		<script src="http://localhost:35729/livereload.js"></script>
 		<?php
 	}
 }
