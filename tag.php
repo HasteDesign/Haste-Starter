@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<main id="content" class="<?php echo haste_starter_classes_page_sidebar(); ?>" tabindex="-1" role="main">
+	<main id="content" tabindex="-1" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
