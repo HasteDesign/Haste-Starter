@@ -23,7 +23,6 @@
 // CSS and Components
 // --------------------------------------------------------------
 @import "shared/base";
-@import "shared/wordpress";
 @import "shared/gutenberg";
 @import "shared/forms";
 @import "shared/pagination";
@@ -32,17 +31,8 @@
 // Layout
 // --------------------------------------------------------------
 @import "shared/navigation-skiplink";
-@import "shared/header-branding";
-@import "shared/header-image";
 @import "shared/navigation-top";
-@import "shared/wrapper";
 @import "shared/content";
 @import "shared/sidebar";
 @import "shared/footer";
 @import "shared/animation";
-
-// --------------------------------------------------------------
-// Helpers
-// --------------------------------------------------------------
-@import "shared/queries";
-@import "shared/helpers";
