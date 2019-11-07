@@ -19,6 +19,18 @@ mix.sourceMaps()
    .js('src/js/main.js', 'assets/js')
    .sass('src/scss/main.scss', 'assets/css', { sourceMap: true } );
 
+mix.options({
+   processCssUrls: false
+});
+
+var LiveReloadPlugin = require('webpack-livereload-plugin');
+
+mix.webpackConfig({
+   plugins: [
+	   new LiveReloadPlugin()
+   ]
+});
+
 // Full API
 // mix.js(src, output);
 // mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.
@@ -56,11 +68,3 @@ mix.sourceMaps()
 //   terser: {}, // Terser-specific options. https://github.com/webpack-contrib/terser-webpack-plugin#options
 //   postCss: [] // Post-CSS options: https://github.com/postcss/postcss/blob/master/docs/plugins.md
 // });
-
-var LiveReloadPlugin = require('webpack-livereload-plugin');
-
-mix.webpackConfig({
-    plugins: [
-        new LiveReloadPlugin()
-    ]
-});
