@@ -32,5 +32,3 @@
 
 		<div class="dropdown">
 	</header><!-- #header -->
-
-	<div class="row">

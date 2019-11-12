@@ -11,8 +11,6 @@
 
 ?>
 
-	</div><!-- .row -->
-
 	<footer id="footer" role="contentinfo">
 		<div class="container">
 			<p>&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( home_url() ); ?>"><?php bloginfo( 'name' ); ?></a> -
