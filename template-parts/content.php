@@ -19,6 +19,12 @@
 		endif;
 		?>
 
+		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ), true ) ) : ?>
+			<span class="cat-links">
+				<?php echo __( 'Posted in:', 'haste-starter' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'haste-starter' ) ); ?>
+			</span>
+		<?php endif; ?>
+
 		<?php if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta">
 				<?php haste_starter_posted_on(); ?>
@@ -47,12 +53,6 @@
 	<?php endif; ?>
 
 	<footer class="entry-footer">
-		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ), true ) ) : ?>
-			<span class="cat-links">
-				<?php echo __( 'Posted in:', 'haste-starter' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'haste-starter' ) ); ?>
-			</span>
-		<?php endif; ?>
-
 		<?php the_tags( '<ul class="tags"><li class="tag">', '</li><li class="tag">', '</li></ul>' ); ?>
 
 		<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
