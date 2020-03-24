@@ -53,7 +53,7 @@
 			</span>
 		<?php endif; ?>
 
-		<?php the_tags( '<span class="tag-links">' . __( 'Tagged as:', 'haste-starter' ) . ' ', ', ', '</span>' ); ?>
+		<?php the_tags( '<ul class="tags"><li class="tag">', '</li><li class="tag">', '</li></ul>' ); ?>
 
 		<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
 			<span class="comments-link">
