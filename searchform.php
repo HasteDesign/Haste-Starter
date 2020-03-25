@@ -13,7 +13,7 @@
 	<input type="search" class="form-control" name="s" id="s" value="<?php echo get_search_query(); ?>" aria-label="<?php esc_attr_e( 'Search', 'haste_starter' ); ?>" />
 
 	<div class="input-group-append">
-		<button type="submit" class="btn btn-primary my-2 my-sm-0" value="<?php esc_attr_e( 'Search', 'haste-starter' ); ?>">
+		<button type="submit" class="btn btn-primary" value="<?php esc_attr_e( 'Search', 'haste-starter' ); ?>">
 			<?php esc_attr_e( 'Search', 'haste-starter' ); ?>
 		</button>
 	</div>
