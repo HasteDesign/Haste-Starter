@@ -15,7 +15,7 @@
 						'container'      => false,
 						'menu_class'     => 'navbar-nav mr-auto',
 						'fallback_cb'    => 'Haste_Starter_Bootstrap_Nav_Walker::fallback',
-						'walker'         => new Haste_Starter_Bootstrap_Nav_Walker(),
+						'walker'         => new Bootstrap_Nav_Walker(),
 					)
 				);
 				?>

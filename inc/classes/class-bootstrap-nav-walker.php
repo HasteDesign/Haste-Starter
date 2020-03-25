@@ -11,7 +11,7 @@
  * @author   Haste
  * @version  1.0.0
  */
-class Haste_Starter_Bootstrap_Nav_Walker extends Walker_Nav_Menu {
+class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 
 	/**
 	 * @see Walker::start_lvl()
