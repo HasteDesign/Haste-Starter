@@ -21,6 +21,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<?php if ( function_exists( 'wp_body_open' ) ) { ?>
+		<?php wp_body_open(); ?>
+	<?php } else { ?>
+		<?php do_action( 'wp_body_open' ); ?>
+	<?php } ?>
 	<nav class="navigation-skiplink" role="navigation">
 		<a class="navigation-skiplink-link" href="#content"><?php _e( 'Skip to content', 'haste-starter' ); ?></a>
 	</nav>
