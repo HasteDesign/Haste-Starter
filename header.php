@@ -34,5 +34,4 @@
 
 		<?php get_template_part( 'template-parts/header', 'navigation' ); ?>
 
-		<div class="dropdown">
 	</header><!-- #header -->
