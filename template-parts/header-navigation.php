@@ -1,8 +1,7 @@
 <nav id="navigation-top" class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
 	<div class="container">
-		<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-			<?php bloginfo( 'name' ); ?>
-		</a>
+		<?php haste_starter_the_custom_logo(); ?>
+
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>

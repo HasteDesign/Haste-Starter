@@ -31,7 +31,6 @@
 	</nav>
 
 	<header id="header" role="banner">
-		<?php get_template_part( 'template-parts/header', 'branding' ); ?>
 
 		<?php get_template_part( 'template-parts/header', 'navigation' ); ?>
 
