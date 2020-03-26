@@ -9,3 +9,7 @@
 /* ES6 Example code */
 // let a = 40;
 // console.log(a);
+
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+import 'bootstrap';
