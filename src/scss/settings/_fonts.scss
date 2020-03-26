@@ -6,6 +6,7 @@
 			 url('#{$src}.woff') format('woff'); // standart formats
 		font-style: $style;
 		font-weight: $weight;
+		font-display: swap;
 	}
 }
 
