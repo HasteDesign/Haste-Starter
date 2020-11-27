@@ -57,6 +57,13 @@ require_once get_template_directory() . '/inc/admin.php';
 require_once get_template_directory() . '/inc/filters.php';
 
 /**
+ * Queries.
+ */
+
+// Post queries.
+require_once get_template_directory() . '/inc/queries/post.php';
+
+/**
  * Helpers.
  */
 
@@ -77,9 +84,6 @@ require_once get_template_directory() . '/inc/pagination.php';
 
 // WooCommerce compatibility files.
 require_once get_template_directory() . '/inc/woocommerce.php';
-
-// Post functions.
-require_once get_template_directory() . '/inc/post.php';
 
 // Breadcrumbs function - no need to rely on plugins.
 require_once get_template_directory() . '/inc/breadcrumbs.php';

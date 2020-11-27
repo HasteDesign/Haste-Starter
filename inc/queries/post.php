@@ -1,67 +1,9 @@
 <?php
-
 /**
- * Get term meta fields
+ * General queries used to integrate this theme with WooCommerce.
  *
- * Usage:
- * <?php echo haste_starter_get_term_meta( $term_id, $field );?>
- *
- * @since  2.2.7
- *
- * @param  int    $term_id      Term ID
- * @param  string $field        Field slug
- *
- * @return string               Field value
+ * @package HasteStarter
  */
-function haste_starter_get_term_meta( $term_id, $field ) {
-	$value = get_term_meta( $term_id, $field, true );
-	// First try to get value in the new Term Meta WP API.
-	if ( $value ) {
-		return $value;
-	}
-
-	// After, try to get in the old way (option API).
-	$option_name = sprintf( 'haste_starter_term_meta_%s_%s', $term_id, $field );
-	$value       = get_option( $name );
-
-	// Upgrade to new update_term_meta().
-	if ( false !== $value ) {
-		update_term_meta( $term_id, $field, $value );
-		delete_option( $option_name );
-	}
-
-	return $value;
-}
-
-/**
- * Custom excerpt for content or title.
- *
- * Usage:
- * Place: <?php echo haste_starter_excerpt( 'excerpt', value ); ?>
- *
- * @since  2.2.0
- *
- * @param  string $type  Sets excerpt or title.
- * @param  int    $limit Sets the length of excerpt.
- *
- * @return string       Return the excerpt.
- */
-function haste_starter_excerpt( $type = 'excerpt', $limit = 40 ) {
-	$limit = (int) $limit;
-
-	// Set excerpt type.
-	switch ( $type ) {
-		case 'title':
-			$excerpt = get_the_title();
-			break;
-
-		default:
-			$excerpt = get_the_excerpt();
-			break;
-	}
-
-	return wp_trim_words( $excerpt, $limit );
-}
 
 /**
  * Related Posts.
