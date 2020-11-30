@@ -25,13 +25,6 @@ if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
 require_once get_template_directory() . '/inc/classes/class-bootstrap-nav-walker.php';
 
 /**
- * Widgets.
- */
-
-// Haste Widget
-// require_once get_template_directory() . '/inc/widgets/class-haste-starter-widget.php';
-
-/**
  * Hooks.
  */
 
