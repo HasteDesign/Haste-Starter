@@ -49,7 +49,7 @@ function haste_starter_admin_logo_title() {
 	return get_bloginfo( 'name' );
 }
 
-add_filter( 'login_headertitle', 'haste_starter_admin_logo_title' );
+add_filter( 'login_headertext', 'haste_starter_admin_logo_title' );
 
 /**
  * Remove widgets dashboard.
