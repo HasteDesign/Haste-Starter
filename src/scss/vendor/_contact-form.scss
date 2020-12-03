@@ -1,0 +1,94 @@
+//
+// Contact Form 7
+//
+// Forms
+//
+select,
+textarea {
+	width: 100%;
+}
+
+.form-control {
+	box-sizing: border-box;
+}
+
+.form-group {
+	margin-bottom: 20px;
+
+	> label {
+		font-size: 0.630rem;
+		margin-bottom: 0;
+		display: block;
+	}
+
+	.form-control {
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+	@extend .btn;
+	@extend .btn-primary;
+}
+
+.form-text {
+	font-weight: 400;
+	line-height: 1.4;
+	opacity: .65;
+}
+
+input {
+	&:not([type="submit"]) {
+		&:not([type="reset"]) {
+			&:not([type="button"]) {
+				&:not([type="hidden"]) {
+					&:not([type="radio"]) {
+						&:not([type="checkbox"]) {
+							&:not([type="range"]) {
+								@extend .form-control;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.wpcf7-form-control {
+	&:not(.wpcf7-checkbox) {
+		&:not(.wpcf7-radio) {
+			&:not(.wpcf7-submit) {
+				@extend .form-control;
+			}
+		}
+	}
+}
+
+.select2.select2-container--default .select2-selection--single {
+	@extend .form-control;
+}
+
+// Validação
+.wpcf7-not-valid {
+	border: 2px solid red;
+}
+
+.wpcf7-not-valid-tip {
+    color: red;
+    font-size: 1em;
+    font-weight: normal;
+    display: block;
+    padding: 0 5px;
+    width: max-content;
+}
+
+// Checkout
+.woocommerce-input-wrapper {
+	@extend .form-group;
+}

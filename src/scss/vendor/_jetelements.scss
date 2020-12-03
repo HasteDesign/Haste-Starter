@@ -1,0 +1,19 @@
+//
+// JetElements Plugin for Elementor
+//
+#wrapper {
+	.elementor-element {
+		.jet-hor-timeline {
+			.jet-arrow.jet-prev-arrow {
+				left: unset !important;
+				right: 50px !important;
+				top: 5px !important;
+			}
+			
+			.jet-arrow.jet-next-arrow {
+				top: 5px !important;
+				right: 10px !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,170 @@
+//
+// WooCommerce
+//
+// Mini cart
+.woocommerce-mini-cart__buttons {
+	a {
+		@include btn;
+
+		&:nth-of-type(1) {
+			@include button-variant($white, $white);
+		}
+
+		&:nth-of-type(2) {
+			@include button-variant($dark, $dark);
+		}
+	}
+}
+
+// My Account
+body {
+	&.woocommerce-account {
+		.woocommerce {
+			display: grid;
+			grid-template-columns: 1fr 1fr 2fr;
+			grid-gap: 45px;
+
+			@include media-breakpoint-down(md) {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+		}
+	}
+}
+
+.woocommerce-MyAccount-navigation {
+	grid-column: 1;
+
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		display: grid;
+	}
+
+	li {
+		border: 1px solid $dark;
+		margin-bottom: -4px;
+		background: $white;
+	}
+
+	a {
+		padding: 1em 2em;
+	    display: block;
+		color: $dark;
+	}
+}
+
+.woocommerce-MyAccount-content {
+	grid-column: 2 / span 2;
+}
+
+// Login
+.woocommerce-notices-wrapper {
+	grid-column: 1 / span 3;
+}
+
+#customer_login {
+	grid-column: 1 / span 3;
+	grid-template-columns: repeat(2, 50%);
+	grid-gap: 45px;
+
+	@include media-breakpoint-up(md) {
+		display: grid;
+	}
+
+	.col-1 {
+		max-width: 100%;
+
+		@include media-breakpoint-up(md) {
+			max-width: 75%;
+		}
+	}
+
+	.login {
+		:nth-of-type(3) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	.col-2 {
+		max-width: 75%;
+
+		@include media-breakpoint-down(md) {
+			margin-top: 50px;
+			max-width: 100%;
+		}
+
+		.woocommerce-password-strength {
+			padding: 10px;
+			transition: $transition-soft;
+			color: $black;
+			font-weight: $font-weight-bold;
+
+			&.short,
+			&.bad {
+				background-color: $danger;
+			}
+			&.good {
+				background-color: $warning;
+			}
+			&.strong {
+				background-color: $success;
+			}
+		}
+
+		.button {
+			align-self: flex-end;
+		}
+	}
+
+	.woocommerce-form {
+		margin-top: 70px;
+	}
+
+	.woocommerce-Input--text {
+		background-color: $white;
+	}
+
+	.form-row {
+		flex-direction: column;
+
+		label {
+			font-size: $font-size-base;
+		}
+
+		span {
+			font-size: $font-size-base;
+			color: $dark;
+		}
+	}
+
+	.button {
+		width: 250px;
+
+		@include media-breakpoint-down(md) {
+		    margin: 15px 0;
+			width: 100%;
+		}
+		@extend .btn, .btn-dark;
+	}
+
+	.lost_password {
+		text-align: right;
+
+		@include media-breakpoint-down(md) {
+		    margin-left: -10px;
+		}
+
+		a {
+			width: 250px;
+			margin-right: -5px;
+
+			@include media-breakpoint-down(md) {
+				width: 100%;
+			}
+			@extend .btn, .btn-outline-dark;
+		}
+	}
+}

@@ -1,0 +1,42 @@
+//
+// Elementor Page Builder
+//
+.fa, .fab, .fal, .far, .fas {
+	font-family: "fontawesome";
+}
+
+.elementor {
+	.elementor-widget-heading {
+		.elementor-heading-title {
+			line-height: $headings-line-height;
+		}
+	}
+}
+
+#wrapper {
+	.elementor-bg-transform-zoom-in:hover,
+	.elementor-bg-transform-zoom-out {
+		.elementor-bg {
+			transform: scale(1.08);
+		}
+	}
+}
+
+.elementor-widget-testimonial-carousel {
+	.swiper-slide {
+	    display: flex;
+		align-items: center;
+	}
+}
+
+.has-button-full-width {
+	.elementor-button {
+		width: 100%;
+	}
+}
+
+.slider-img-not-cropped {
+	img {
+		object-fit: contain !important;
+	}
+}
