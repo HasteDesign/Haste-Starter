@@ -181,6 +181,28 @@ if ( ! function_exists( 'haste_starter_the_custom_logo' ) ) {
 	}
 }
 
+if ( ! function_exists( 'haste_starter_the_icon' ) ) {
+
+	/**
+	* Displays inline SVG icons
+	*
+	* @param  string $file_name The SVG file name without the extesion
+	* @param  string $label     Descriptive label for accessibility
+	* @param  string $size      'base' = 1em, 'lg' = 1.5em, 'auto' = no resizing
+	* @return string            Echoes the icon HTML
+	*/
+
+	function haste_starter_the_icon( $file_name, $label = '', $size = 'base' ) {
+		if ( empty( $label ) ) {
+			$label = esc_html__( 'Ícone', 'haste_starter' );
+		}
+
+		echo '<span role="img" class="svg-icon icon-' . $size . ' ' . $file_name . '" aria-label="' . $label . '">';
+		include( get_template_directory() . '/assets/img/' . $file_name . '.svg' );
+		echo '</span>';
+	}
+}
+
 if ( ! function_exists( 'haste_starter_the_svg' ) ) {
 	/**
 	 * Displays inline SVG images (without recoloring)
