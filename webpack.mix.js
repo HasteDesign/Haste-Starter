@@ -12,15 +12,15 @@ let mix = require('laravel-mix');
  */
 
 if ( mix.inProduction() ) {
-	var cssMain = 'assets/css/main.min.css';
+	var cssMain   = 'assets/css/main.min.css';
 	var cssEditor = 'assets/css/editor.min.css';
-	var cssAdmin = 'assets/css/admin.min.css';
-	var jsMain = 'assets/js/main.min.js';
+	var cssAdmin  = 'assets/css/admin.min.css';
+	var jsMain    = 'assets/js/main.min.js';
 } else {
-	var cssMain = 'assets/css/main.css';
+	var cssMain   = 'assets/css/main.css';
 	var cssEditor = 'assets/css/editor.css';
-	var cssAdmin = 'assets/css/admin.css';
-	var jsMain = 'assets/js/main.js';
+	var cssAdmin  = 'assets/css/admin.css';
+	var jsMain    = 'assets/js/main.js';
 
 	mix.webpackConfig({
 		devtool: "inline-source-map"
