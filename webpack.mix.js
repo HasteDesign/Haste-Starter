@@ -11,13 +11,28 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.webpackConfig({
- devtool: "inline-source-map"
-});
+if ( mix.inProduction() ) {
+	var cssMain = 'assets/css/main.min.css';
+	var cssEditor = 'assets/css/editor.min.css';
+	var cssAdmin = 'assets/css/admin.min.css';
+	var jsMain = 'assets/js/main.min.js';
+} else {
+	var cssMain = 'assets/css/main.css';
+	var cssEditor = 'assets/css/editor.css';
+	var cssAdmin = 'assets/css/admin.css';
+	var jsMain = 'assets/js/main.js';
+
+	mix.webpackConfig({
+		devtool: "inline-source-map"
+	});
+}
 
 mix.sourceMaps()
-   .js('src/js/main.js', 'assets/js')
-   .sass('src/scss/main.scss', 'assets/css', { sourceMap: true } );
+   .js('src/js/main.js', jsMain )
+   .sass('src/scss/main.scss', cssMain, { sourceMap: true } )
+   .sass('src/scss/editor-style.scss', cssEditor, { sourceMap: true } )
+   .sass('src/scss/admin-style.scss', cssAdmin, { sourceMap: true } );
+
 
 mix.options({
    processCssUrls: false

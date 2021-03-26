@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"file": "editor-style.css",
-	"sources": [
-		"../../src/scss/editor-style.scss"
-	],
-	"names": [],
-	"mappings": "AAcA,AAAA,IAAI,AAAC,CACJ,SAAS,CAAE,MAAM,CACjB,WAAW,CAAE,IAAI,CACjB,YAAY,CAAE,IAAI,CAClB,OAAO,CAAE,IACV,CAAC"
-}

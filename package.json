@@ -27,9 +27,8 @@
   "author": "",
   "license": "ISC",
   "homepage": "https://github.com/HasteDesign/Haste-Starter",
-  "dependencies": {},
   "devDependencies": {
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^5.0.0-beta3",
     "cross-env": "^5.2.1",
     "jquery": "^3.5.1",
     "laravel-mix": "^5.0.9",
