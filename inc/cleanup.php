@@ -98,15 +98,3 @@ function haste_starter_modify_tag_rel( $taglink ) {
 }
 add_filter( 'wp_tag_cloud', 'haste_starter_modify_tag_rel' );
 add_filter( 'the_tags', 'haste_starter_modify_tag_rel' );
-
-/**
- * Filter function used to remove the tinymce emoji plugin.
- *
- * @param  array $plugins
- *
- * @return array Difference betwen the two arrays
- */
-function disable_emojis_tinymce( $plugins ) {
-	return is_array( $plugins ) ? array_diff( $plugins, array( 'wpemoji' ) ) : array();
-}
-add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
