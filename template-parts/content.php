@@ -57,7 +57,7 @@
 
 		<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
 			<span class="comments-link">
-				<?php comments_popup_link( __( 'Leave a comment', 'haste-starter' ), __( '1 Comment', 'haste-starter' ), __( '% Comments', 'haste-starter' ) ); ?>
+				<?php comments_popup_link( __( 'Leave a comment', 'haste-starter' ), __( 'See Comment (1)', 'haste-starter' ), __( 'See Comments (%)', 'haste-starter' ), 'btn btn-primary' ); ?>
 			</span>
 		<?php endif; ?>
 	</footer>

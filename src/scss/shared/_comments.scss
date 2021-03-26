@@ -1,0 +1,46 @@
+//
+// Comments
+//
+
+#comments {
+    .media-list {
+        padding-left: 0;
+
+        li {
+            padding: 30px;
+
+            &:nth-child(even) {
+                background-color: $gray-200;
+                margin-top: 30px;
+            }
+        }
+    }
+
+    .media-meta {
+        display: grid;
+        grid-template-columns: max-content auto;
+        grid-gap: .5rem 1.25rem;
+    }
+
+    .avatar {
+        grid-row: 1 / span 2;
+        border-radius: 50%;
+        border: 1px solid $gray-500;
+    }
+
+    .media-author {
+        grid-column: 2;
+    }
+    
+    .media-date {
+        font-size: $font-size-sm;
+    }
+
+    .media-body {
+        margin-top: 15px;
+    }
+
+    .comment-content {
+        font-size: $font-size-lg;
+    }
+}
