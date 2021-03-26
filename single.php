@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<main id="content" tabindex="-1" role="main">
+	<main id="single-content" tabindex="-1" role="main">
 
 		<?php while ( have_posts() ) : ?>
 			<?php the_post(); ?>

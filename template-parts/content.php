@@ -10,10 +10,10 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header class="<?php echo is_single() ? 'single-header' : 'entry-header'?>">
 		<?php
 		if ( is_single() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
+			the_title( '<h1 id="single-title">', '</h1>' );
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
@@ -37,7 +37,7 @@
 			<?php the_excerpt(); ?>
 		</div>
 	<?php else : ?>
-		<div class="entry-content">
+		<div class="<?php echo is_single() ? 'single-content' : 'entry-content'?>">
 			<?php
 				the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'haste-starter' ) );
 				wp_link_pages(
@@ -52,7 +52,7 @@
 		</div>
 	<?php endif; ?>
 
-	<footer class="entry-footer">
+	<footer class="<?php echo is_single() ? 'single-footer' : 'entry-footer'?>">
 		<?php the_tags( '<ul class="tags"><li class="tag">', '</li><li class="tag">', '</li></ul>' ); ?>
 
 		<?php if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) : ?>
