@@ -1,6 +1,6 @@
 {
-    "/assets/js/main.js": "/assets/js/main.js",
-    "/assets/css/main.css": "/assets/css/main.css",
-    "/assets/css/editor.css": "/assets/css/editor.css",
-    "/assets/css/admin.css": "/assets/css/admin.css"
+    "/assets/dist/js/main.js": "/assets/dist/js/main.js",
+    "/assets/dist/css/editor.css": "/assets/dist/css/editor.css",
+    "/assets/dist/css/admin.css": "/assets/dist/css/admin.css",
+    "/assets/dist/css/main.css": "/assets/dist/css/main.css"
 }

@@ -12,15 +12,15 @@ let mix = require('laravel-mix');
  */
 
 if ( mix.inProduction() ) {
-	var cssMain   = 'assets/css/main.min.css';
-	var cssEditor = 'assets/css/editor.min.css';
-	var cssAdmin  = 'assets/css/admin.min.css';
-	var jsMain    = 'assets/js/main.min.js';
+	var cssMain   = 'assets/dist/css/main.min.css';
+	var cssEditor = 'assets/dist/css/editor.min.css';
+	var cssAdmin  = 'assets/dist/css/admin.min.css';
+	var jsMain    = 'assets/dist/js/main.min.js';
 } else {
-	var cssMain   = 'assets/css/main.css';
-	var cssEditor = 'assets/css/editor.css';
-	var cssAdmin  = 'assets/css/admin.css';
-	var jsMain    = 'assets/js/main.js';
+	var cssMain   = 'assets/dist/css/main.css';
+	var cssEditor = 'assets/dist/css/editor.css';
+	var cssAdmin  = 'assets/dist/css/admin.css';
+	var jsMain    = 'assets/dist/js/main.js';
 
 	mix.webpackConfig({
 		devtool: "inline-source-map"
@@ -28,10 +28,10 @@ if ( mix.inProduction() ) {
 }
 
 mix.sourceMaps()
-   .js('src/js/main.js', jsMain )
-   .sass('src/scss/main.scss', cssMain, { sourceMap: true } )
-   .sass('src/scss/editor-style.scss', cssEditor, { sourceMap: true } )
-   .sass('src/scss/admin-style.scss', cssAdmin, { sourceMap: true } );
+   .js('assets/src/js/main.js', jsMain )
+   .sass('assets/src/scss/main.scss', cssMain, { sourceMap: true } )
+   .sass('assets/src/scss/editor-style.scss', cssEditor, { sourceMap: true } )
+   .sass('assets/src/scss/admin-style.scss', cssAdmin, { sourceMap: true } );
 
 
 mix.options({

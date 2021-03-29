@@ -5,9 +5,9 @@
 /// --------------------------------------------------------------
 // Import functions before variables to fix compilation issues
 // --------------------------------------------------------------
-@import "../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/functions";
 @import "settings/variables";
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
 
 // --------------------------------------------------------------
 // Tools, Variables and Mixins

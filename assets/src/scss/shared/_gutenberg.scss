@@ -1,0 +1,29 @@
+$editor-pallete: (
+	haste-starter-cyan: #00C9C8,
+	haste-starter-violet: #6428FF,
+	haste-starter-red: #FF2C18,
+	haste-starter-light-gray: #FAFAFA,
+);
+
+@each $color, $value in $editor-pallete {
+	.has-#{$color}-background-color {
+		background-color: $value;
+	}
+
+	.has-#{$color}-color {
+		color: $value;
+	}
+}
+
+$editor-font-sizes: (
+	small: 12,
+	regular: 16,
+	large: 32,
+	larger: 50,
+);
+
+@each $size, $value in $editor-font-sizes {
+	.has-#{$size}-font-size {
+		font-size: $value;
+	}
+}
