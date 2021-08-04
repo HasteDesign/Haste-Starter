@@ -27,23 +27,18 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 
 			// Checks if is a custom post type.
 			if ( 'post' !== $post->post_type ) {
+				$taxonomies = get_object_taxonomies( $post->post_type );
+
 				// But if Woocommerce
 				if ( 'product' === $post->post_type ) {
-					if ( is_woocommerce_activated() ) {
-						$shop_page = get_post( wc_get_page_id( 'shop' ) );
-						echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
-					}
+					get_breadcrumb_wc( $post );
 
 					// Gets post type taxonomies.
-					$taxonomies = get_object_taxonomies( 'product' );
-					$taxonomy   = 'product_cat';
+					$taxonomy = 'product_cat';
 				} else {
 					$post_type = get_post_type_object( $post->post_type );
 
 					echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
-
-					// Gets post type taxonomies.
-					$taxonomies = get_object_taxonomies( $post_type->name );
 				}
 
 				if ( $taxonomies ) {
@@ -85,7 +80,7 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 			}
 
 			echo $current_before . get_the_title() . $current_after;
-
+			var_dump( $taxonomies );
 			// Single attachment.
 		} elseif ( is_attachment() ) {
 			$parent   = get_post( $post->post_parent );
@@ -221,5 +216,25 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 		}
 
 		echo '</ol>';
+	}
+}
+
+
+function breadcrumb_first_level() {
+	$homepage = ! empty( $homepage ) ?? __( 'Home', 'haste-starter' );
+	echo '<li><a href="' . home_url() . '" rel="nofollow">' . $homepage . '</a></li>';
+}
+
+/**
+ * Create a link in the list for woocommerce
+ *
+ * @return HTML li with link
+ */
+function get_breadcrumb_wc( $post ) {
+	if ( 'product' === $post->post_type ) {
+		if ( is_woocommerce_activated() ) {
+			$shop_page = get_post( wc_get_page_id( 'shop' ) );
+			echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
+		}
 	}
 }
