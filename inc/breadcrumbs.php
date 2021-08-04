@@ -32,9 +32,6 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 				// But if Woocommerce
 				if ( 'product' === $post->post_type ) {
 					get_breadcrumb_wc( $post );
-
-					// Gets post type taxonomies.
-					$taxonomy = 'product_cat';
 				} else {
 					$post_type = get_post_type_object( $post->post_type );
 
@@ -43,21 +40,15 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 
 				if ( $taxonomies ) {
 					// If is woocommerce product post type, $taxonomy already defined
-					if ( 'product' !== $post->post_type ) {
-						$taxonomy = $taxonomies[0];
-					}
+					$taxonomy = $taxonomies[0];
+
 					// Gets post terms.
 					$terms = get_the_terms( $post->ID, $taxonomy );
 					$term  = $terms ? array_shift( $terms ) : '';
 					// Gets parent post terms.
 					$parent_term = get_term( $term->parent, $taxonomy );
 
-					if ( $term ) {
-						if ( $term->parent ) {
-							echo '<li><a href="' . get_term_link( $parent_term ) . '">' . $parent_term->name . '</a></li> ';
-						}
-						echo '<li><a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li> ';
-					}
+					create_breadcrumb_parent( $term, $parent_term );
 				}
 			} else {
 				$category = get_the_category();
@@ -69,18 +60,12 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 				$top_cat  = explode( ':', $cat_tree );
 				$top_cat  = $top_cat[0];
 
-				if ( $category->parent ) {
-					if ( $parent_cat->parent ) {
-						echo '<li><a href="' . get_term_link( $top_cat, 'category' ) . '">' . $top_cat . '</a></li>';
-					}
-					echo '<li><a href="' . get_term_link( $parent_cat ) . '">' . $parent_cat->name . '</a></li>';
-				}
+				create_breadcrumb_parent( $category, $top_cat );
 
 				echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 			}
 
 			echo $current_before . get_the_title() . $current_after;
-			var_dump( $taxonomies );
 			// Single attachment.
 		} elseif ( is_attachment() ) {
 			$parent   = get_post( $post->post_parent );
@@ -236,5 +221,14 @@ function get_breadcrumb_wc( $post ) {
 			$shop_page = get_post( wc_get_page_id( 'shop' ) );
 			echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
 		}
+	}
+}
+
+function create_breadcrumb_parent( $term_or_cat, $parent ) {
+	if ( $term_or_cat ) {
+		if ( $term_or_cat->parent ) {
+			echo '<li><a href="' . get_term_link( $parent ) . '">' . $parent->name . '</a></li> ';
+		}
+		echo '<li><a href="' . get_term_link( $term_or_cat ) . '">' . $term_or_cat->name . '</a></li> ';
 	}
 }
