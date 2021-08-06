@@ -12,10 +12,6 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 	global $wp_query, $post, $author;
 	$homepage = ! empty( $homepage ) ? $homepage : __( 'Home', 'haste-starter' );
 
-	// Default html.
-	$current_before = '<li class="active">';
-	$current_after  = '</li>';
-
 	if ( ! is_home() && ! is_front_page() || is_paged() ) {
 
 		// First level.
@@ -117,7 +113,7 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 		echo ' (' . sprintf( __( 'Page %s', 'haste-starter' ), get_query_var( 'paged' ) ) . ')';
 	}
 
-		echo '</ol>';
+	echo '</ol>';
 }
 
 
@@ -183,30 +179,28 @@ function haste_active_li( $content ) {
  * @return html
  */
 function haste_breadcrumb_page() {
-	if ( is_page() ) {
-		global $post;
-		if ( is_page() && ! $post->post_parent ) {
-			haste_active_li( get_the_title() );
-			return;
-		}
+	global $post;
+	if ( is_page() && ! $post->post_parent ) {
+		haste_active_li( get_the_title() );
+		return;
+	}
 		// Page with parents.
 		$parent_id   = $post->post_parent;
 		$breadcrumbs = array();
 
-		while ( $parent_id ) {
-			$page = get_post( $parent_id );
+	while ( $parent_id ) {
+		$page = get_post( $parent_id );
 
-			$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
-			$parent_id     = $page->post_parent;
-		}
+		$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
+		$parent_id     = $page->post_parent;
+	}
 
 		$breadcrumbs = array_reverse( $breadcrumbs );
 
-		foreach ( $breadcrumbs as $crumb ) {
-			echo $crumb . ' ';
-		}
-		haste_active_li( get_the_title() );
+	foreach ( $breadcrumbs as $crumb ) {
+		echo $crumb . ' ';
 	}
+		haste_active_li( get_the_title() );
 }
 
 function haste_breadcrumb_category_archive() {
@@ -245,6 +239,7 @@ function haste_breadcrumb_wc_archive() {
 }
 
 function haste_breadcrumb_author_archive() {
+	global $author;
 	$userdata = get_userdata( $author );
 
 	haste_active_li( __( 'Posted by', 'haste-starter' ) . ' ' . $userdata->display_name );
