@@ -67,98 +67,99 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 
 			haste_active_li( get_the_title() );
 			// Single attachment.
-		} elseif ( is_attachment() ) {
+		} else {
 			haste_breadcrumb_attachment();
+
 			// Page without parents.
-		} elseif ( is_page() ) {
 			haste_breadcrumb_page();
 
-			// Category archive.
-		} elseif ( is_category() ) {
+			// category archives
 			haste_breadcrumb_category_archive();
-			// Tags archive.
-		} elseif ( is_tag() ) {
-			printf( __( '%1$sTag: %2$s%3$s', 'haste-starter' ), $current_before, single_tag_title( '', false ), $current_after );
 
-			// Custom post type archive.
-		} elseif ( is_post_type_archive() ) {
-			// Check if Woocommerce Shop
-			if ( is_woocommerce_activated() && is_shop() ) {
-				$shop_page_id = wc_get_page_id( 'shop' );
-				echo $current_before . get_the_title( $shop_page_id ) . $current_after;
-
-			} else {
-				echo $current_before . post_type_archive_title( '', false ) . $current_after;
+			//tag archives
+			if ( is_tag() ) {
+				printf( __( '%1$sTag: %2$s%3$s', 'haste-starter' ), haste_active_li( single_tag_title( '', false ) ) );
 			}
-
-			// Search page.
-		} elseif ( is_search() ) {
-			printf( __( '%1$sSearch result for: &quot;%2$s&quot;%3$s', 'haste-starter' ), $current_before, get_search_query(), $current_after );
-
-			// Author archive.
-		} elseif ( is_author() ) {
-			$userdata = get_userdata( $author );
-
-			echo $current_before . __( 'Posted by', 'haste-starter' ) . ' ' . $userdata->display_name . $current_after;
-
-			// Archives per days.
-		} elseif ( is_day() ) {
-			echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
-
-			echo '<li><a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a></li>';
-
-			echo $current_before . get_the_time( 'd' ) . $current_after;
-
-			// Archives per month.
-		} elseif ( is_month() ) {
-			echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
-
-			echo $current_before . get_the_time( 'F' ) . $current_after;
-
-			// Archives per year.
-		} elseif ( is_year() ) {
-			echo $current_before . get_the_time( 'Y' ) . $current_after;
-
-			// Archive fallback for custom taxonomies.
-		} elseif ( is_archive() ) {
-			$current_object = $wp_query->get_queried_object();
-			$taxonomy       = get_taxonomy( $current_object->taxonomy );
-			$term_name      = $current_object->name;
-
-			// Displays the post type that the taxonomy belongs.
-			if ( ! empty( $taxonomy->object_type ) ) {
-				// Get correct Woocommerce Post Type crumb
-				if ( is_woocommerce() ) {
-					$shop_page = get_post( wc_get_page_id( 'shop' ) );
-					echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
-				} else {
-					$_post_type = array_shift( $taxonomy->object_type );
-					$post_type  = get_post_type_object( $_post_type );
-					echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
-				}
-			}
-
-			// Displays parent term.
-			if ( 0 !== $current_object->parent ) {
-				$parent_term = get_term( $current_object->parent, $current_object->taxonomy );
-
-				echo '<li><a href="' . get_term_link( $parent_term ) . '">' . $parent_term->name . '</a></li>';
-			}
-
-			haste_active_li( $taxonomy->label . ': ' . $term_name );
-
-			// 404 page.
-		} elseif ( is_404() ) {
-			echo $current_before . __( '404 Error', 'haste-starter' ) . $current_after;
 		}
+		// Custom post type archive.
+	} elseif ( is_post_type_archive() ) {
+		// Check if Woocommerce Shop
+		if ( is_woocommerce_activated() && is_shop() ) {
+			$shop_page_id = wc_get_page_id( 'shop' );
+			echo $current_before . get_the_title( $shop_page_id ) . $current_after;
+
+		} else {
+			echo $current_before . post_type_archive_title( '', false ) . $current_after;
+		}
+
+		// Search page.
+	} elseif ( is_search() ) {
+		printf( __( '%1$sSearch result for: &quot;%2$s&quot;%3$s', 'haste-starter' ), $current_before, get_search_query(), $current_after );
+
+		// Author archive.
+	} elseif ( is_author() ) {
+		$userdata = get_userdata( $author );
+
+		echo $current_before . __( 'Posted by', 'haste-starter' ) . ' ' . $userdata->display_name . $current_after;
+
+		// Archives per days.
+	} elseif ( is_day() ) {
+		echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
+
+		echo '<li><a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a></li>';
+
+		echo $current_before . get_the_time( 'd' ) . $current_after;
+
+		// Archives per month.
+	} elseif ( is_month() ) {
+		echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
+
+		echo $current_before . get_the_time( 'F' ) . $current_after;
+
+		// Archives per year.
+	} elseif ( is_year() ) {
+		echo $current_before . get_the_time( 'Y' ) . $current_after;
+
+		// Archive fallback for custom taxonomies.
+	} elseif ( is_archive() ) {
+		$current_object = $wp_query->get_queried_object();
+		$taxonomy       = get_taxonomy( $current_object->taxonomy );
+		$term_name      = $current_object->name;
+
+		// Displays the post type that the taxonomy belongs.
+		if ( ! empty( $taxonomy->object_type ) ) {
+			// Get correct Woocommerce Post Type crumb
+			if ( is_woocommerce() ) {
+				$shop_page = get_post( wc_get_page_id( 'shop' ) );
+				echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
+			} else {
+				$_post_type = array_shift( $taxonomy->object_type );
+				$post_type  = get_post_type_object( $_post_type );
+				echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
+			}
+		}
+
+		// Displays parent term.
+		if ( 0 !== $current_object->parent ) {
+			$parent_term = get_term( $current_object->parent, $current_object->taxonomy );
+
+			echo '<li><a href="' . get_term_link( $parent_term ) . '">' . $parent_term->name . '</a></li>';
+		}
+
+		haste_active_li( $taxonomy->label . ': ' . $term_name );
+
+		// 404 page.
+	} elseif ( is_404() ) {
+		echo $current_before . __( '404 Error', 'haste-starter' ) . $current_after;
+	}
 
 		// Gets pagination.
-		if ( get_query_var( 'paged' ) ) {
-			echo ' (' . sprintf( __( 'Page %s', 'haste-starter' ), get_query_var( 'paged' ) ) . ')';
-		}
+	if ( get_query_var( 'paged' ) ) {
+		echo ' (' . sprintf( __( 'Page %s', 'haste-starter' ), get_query_var( 'paged' ) ) . ')';
+	}
 
 		echo '</ol>';
-	}
+}
 }
 
 
@@ -196,16 +197,19 @@ function haste_create_breadcrumb_parent( $term_or_cat, $parent ) {
  * @return HTML
  */
 function haste_breadcrumb_attachment() {
-	global $post;
-	$parent   = get_post( $post->post_parent );
-	$category = get_the_category( $parent->ID );
-	$category = $category[0];
+	if ( is_attachment() ) {
+		global $post;
+		$parent   = get_post( $post->post_parent );
+		$category = get_the_category( $parent->ID );
+		$category = $category[0];
 
-	echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
+		echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 
-	echo '<li><a href="' . esc_url( get_permalink( $parent ) ) . '">' . $parent->post_title . '</a></li>';
+		echo '<li><a href="' . esc_url( get_permalink( $parent ) ) . '">' . $parent->post_title . '</a></li>';
 
-	haste_active_li( get_the_title() );
+		haste_active_li( get_the_title() );
+	}
+
 }
 
 function haste_active_li( $content ) {
@@ -221,29 +225,30 @@ function haste_active_li( $content ) {
  * @return html
  */
 function haste_breadcrumb_page() {
-	global $post;
-	if ( is_page() && ! $post->post_parent ) {
-		haste_active_li( get_the_title() );
-		return;
-	}
-	// Page with parents.
+	if ( is_page() ) {
+		global $post;
+		if ( is_page() && ! $post->post_parent ) {
+			haste_active_li( get_the_title() );
+			return;
+		}
+		// Page with parents.
 		$parent_id   = $post->post_parent;
 		$breadcrumbs = array();
 
-	while ( $parent_id ) {
-		$page = get_post( $parent_id );
+		while ( $parent_id ) {
+			$page = get_post( $parent_id );
 
-		$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
-		$parent_id     = $page->post_parent;
-	}
+			$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
+			$parent_id     = $page->post_parent;
+		}
 
 		$breadcrumbs = array_reverse( $breadcrumbs );
 
-	foreach ( $breadcrumbs as $crumb ) {
-		echo $crumb . ' ';
-	}
+		foreach ( $breadcrumbs as $crumb ) {
+			echo $crumb . ' ';
+		}
 		haste_active_li( get_the_title() );
-
+	}
 }
 
 function haste_breadcrumb_category_archive() {
