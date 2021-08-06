@@ -75,21 +75,7 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 
 			// Category archive.
 		} elseif ( is_category() ) {
-			$category_object  = $wp_query->get_queried_object();
-			$category_id      = $category_object->term_id;
-			$current_category = get_category( $category_id );
-			$parent_category  = get_category( $current_category->parent );
-
-			// Displays parent category.
-			if ( 0 !== $current_category->parent ) {
-				$parents = get_category_parents( $parent_category, true, false );
-				$parents = str_replace( '<a', '<li><a', $parents );
-				$parents = str_replace( '</a>', '</a></li>', $parents );
-				echo $parents;
-			}
-
-			printf( __( '%1$sCategory: %2$s%3$s', 'haste-starter' ), $current_before, single_cat_title( '', false ), $current_after );
-
+			haste_breadcrumb_category_archive();
 			// Tags archive.
 		} elseif ( is_tag() ) {
 			printf( __( '%1$sTag: %2$s%3$s', 'haste-starter' ), $current_before, single_tag_title( '', false ), $current_after );
@@ -231,6 +217,7 @@ function haste_active_li( $content ) {
 
 /**
  * Create the breadcrumb for page and verify if the page with parents or not
+ *
  * @return html
  */
 function haste_breadcrumb_page() {
@@ -256,5 +243,24 @@ function haste_breadcrumb_page() {
 		echo $crumb . ' ';
 	}
 		haste_active_li( get_the_title() );
+
+}
+
+function haste_breadcrumb_category_archive() {
+	global $wp_query;
+	$category_object  = $wp_query->get_queried_object();
+	$category_id      = $category_object->term_id;
+	$current_category = get_category( $category_id );
+	$parent_category  = get_category( $current_category->parent );
+
+	// Displays parent category.
+	if ( 0 !== $current_category->parent ) {
+		$parents = get_category_parents( $parent_category, true, false );
+		$parents = str_replace( '<a', '<li><a', $parents );
+		$parents = str_replace( '</a>', '</a></li>', $parents );
+		echo $parents;
+	}
+
+	printf( __( '%1$sCategory: %2$s%3$s', 'haste-starter' ), haste_active_li( single_cat_title( '', false ) ) );
 
 }
