@@ -10,7 +10,7 @@
  */
 function haste_starter_breadcrumbs( $homepage = '' ) {
 	global $wp_query, $post, $author;
-	$homepage = ! empty( $homepage ) ?? __( 'Home', 'haste-starter' );
+	$homepage = ! empty( $homepage ) ? $homepage : __( 'Home', 'haste-starter' );
 
 	// Default html.
 	$current_before = '<li class="active">';
@@ -48,7 +48,7 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 					// Gets parent post terms.
 					$parent_term = get_term( $term->parent, $taxonomy );
 
-					create_breadcrumb_parent( $term, $parent_term );
+					haste_create_breadcrumb_parent( $term, $parent_term );
 				}
 			} else {
 				$category = get_the_category();
@@ -60,38 +60,18 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 				$top_cat  = explode( ':', $cat_tree );
 				$top_cat  = $top_cat[0];
 
-				create_breadcrumb_parent( $category, $top_cat );
+				haste_create_breadcrumb_parent( $category, $top_cat );
 
 				echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 			}
 
-			echo $current_before . get_the_title() . $current_after;
+			haste_active_li( get_the_title() );
 			// Single attachment.
 		} elseif ( is_attachment() ) {
-
+			haste_breadcrumb_attachment();
 			// Page without parents.
-		} elseif ( is_page() && ! $post->post_parent ) {
-			echo $current_before . get_the_title() . $current_after;
-
-			// Page with parents.
-		} elseif ( is_page() && $post->post_parent ) {
-			$parent_id   = $post->post_parent;
-			$breadcrumbs = array();
-
-			while ( $parent_id ) {
-				$page = get_page( $parent_id );
-
-				$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
-				$parent_id     = $page->post_parent;
-			}
-
-			$breadcrumbs = array_reverse( $breadcrumbs );
-
-			foreach ( $breadcrumbs as $crumb ) {
-				echo $crumb . ' ';
-			}
-
-			echo $current_before . get_the_title() . $current_after;
+		} elseif ( is_page() ) {
+			haste_breadcrumb_page();
 
 			// Category archive.
 		} elseif ( is_category() ) {
@@ -179,7 +159,7 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 				echo '<li><a href="' . get_term_link( $parent_term ) . '">' . $parent_term->name . '</a></li>';
 			}
 
-			echo $current_before . $taxonomy->label . ': ' . $term_name . $current_after;
+			haste_active_li( $taxonomy->label . ': ' . $term_name );
 
 			// 404 page.
 		} elseif ( is_404() ) {
@@ -224,6 +204,11 @@ function haste_create_breadcrumb_parent( $term_or_cat, $parent ) {
 	}
 }
 
+/**
+ * Create the breadcrumb for attachment
+ *
+ * @return HTML
+ */
 function haste_breadcrumb_attachment() {
 	global $post;
 	$parent   = get_post( $post->post_parent );
@@ -242,4 +227,34 @@ function haste_active_li( $content ) {
 	$current_after  = '</li>';
 
 	echo $current_before . $content . $current_after;
+}
+
+/**
+ * Create the breadcrumb for page and verify if the page with parents or not
+ * @return html
+ */
+function haste_breadcrumb_page() {
+	global $post;
+	if ( is_page() && ! $post->post_parent ) {
+		haste_active_li( get_the_title() );
+		return;
+	}
+	// Page with parents.
+		$parent_id   = $post->post_parent;
+		$breadcrumbs = array();
+
+	while ( $parent_id ) {
+		$page = get_post( $parent_id );
+
+		$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
+		$parent_id     = $page->post_parent;
+	}
+
+		$breadcrumbs = array_reverse( $breadcrumbs );
+
+	foreach ( $breadcrumbs as $crumb ) {
+		echo $crumb . ' ';
+	}
+		haste_active_li( get_the_title() );
+
 }

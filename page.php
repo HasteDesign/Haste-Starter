@@ -15,7 +15,7 @@
 get_header(); ?>
 
 	<main id="content" tabindex="-1" role="main">
-
+	<?php haste_starter_breadcrumbs(); ?>
 		<?php while ( have_posts() ) : ?>
 			<?php the_post(); ?>
 
