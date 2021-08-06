@@ -68,15 +68,6 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 			echo $current_before . get_the_title() . $current_after;
 			// Single attachment.
 		} elseif ( is_attachment() ) {
-			$parent   = get_post( $post->post_parent );
-			$category = get_the_category( $parent->ID );
-			$category = $category[0];
-
-			echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
-
-			echo '<li><a href="' . esc_url( get_permalink( $parent ) ) . '">' . $parent->post_title . '</a></li>';
-
-			echo $current_before . get_the_title() . $current_after;
 
 			// Page without parents.
 		} elseif ( is_page() && ! $post->post_parent ) {
@@ -215,7 +206,7 @@ function breadcrumb_first_level() {
  *
  * @return HTML li with link
  */
-function get_breadcrumb_wc( $post ) {
+function haste_get_breadcrumb_wc( $post ) {
 	if ( 'product' === $post->post_type ) {
 		if ( is_woocommerce_activated() ) {
 			$shop_page = get_post( wc_get_page_id( 'shop' ) );
@@ -224,11 +215,31 @@ function get_breadcrumb_wc( $post ) {
 	}
 }
 
-function create_breadcrumb_parent( $term_or_cat, $parent ) {
+function haste_create_breadcrumb_parent( $term_or_cat, $parent ) {
 	if ( $term_or_cat ) {
 		if ( $term_or_cat->parent ) {
 			echo '<li><a href="' . get_term_link( $parent ) . '">' . $parent->name . '</a></li> ';
 		}
 		echo '<li><a href="' . get_term_link( $term_or_cat ) . '">' . $term_or_cat->name . '</a></li> ';
 	}
+}
+
+function haste_breadcrumb_attachment() {
+	global $post;
+	$parent   = get_post( $post->post_parent );
+	$category = get_the_category( $parent->ID );
+	$category = $category[0];
+
+	echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
+
+	echo '<li><a href="' . esc_url( get_permalink( $parent ) ) . '">' . $parent->post_title . '</a></li>';
+
+	haste_active_li( get_the_title() );
+}
+
+function haste_active_li( $content ) {
+	$current_before = '<li class="active">';
+	$current_after  = '</li>';
+
+	echo $current_before . $content . $current_after;
 }
