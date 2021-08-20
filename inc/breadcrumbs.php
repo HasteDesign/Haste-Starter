@@ -23,42 +23,9 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 
 			// Checks if is a custom post type.
 			if ( 'post' !== $post->post_type ) {
-				$taxonomies = get_object_taxonomies( $post->post_type );
-
-				// But if Woocommerce
-				if ( 'product' === $post->post_type ) {
-					haste_get_breadcrumb_wc( $post );
-				} else {
-					$post_type = get_post_type_object( $post->post_type );
-
-					echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
-				}
-
-				if ( $taxonomies ) {
-					// If is woocommerce product post type, $taxonomy already defined
-					$taxonomy = $taxonomies[0];
-
-					// Gets post terms.
-					$terms = get_the_terms( $post->ID, $taxonomy );
-					$term  = $terms ? array_shift( $terms ) : '';
-					// Gets parent post terms.
-					$parent_term = get_term( $term->parent, $taxonomy );
-
-					haste_create_breadcrumb_parent( $term, $parent_term );
-				}
+				haste_breadcrump_cpt_single();
 			} else {
-				$category = get_the_category();
-				$category = $category[0];
-				// Gets parent post terms.
-				$parent_cat = get_term( $category->parent, 'category' );
-				// Gets top term
-				$cat_tree = get_category_parents( $category, false, ':' );
-				$top_cat  = explode( ':', $cat_tree );
-				$top_cat  = $top_cat[0];
-
-				haste_create_breadcrumb_parent( $category, $top_cat );
-
-				echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
+				haste_breadcrumb_single();
 			}
 
 			haste_active_li( get_the_title() );
@@ -218,7 +185,7 @@ function haste_breadcrumb_category_archive() {
 		echo $parents;
 	}
 
-	printf( __( '%1$sCategory: %2$s%3$s', 'haste-starter' ), haste_active_li( single_cat_title( '', false ) ) );
+	haste_active_li( __( 'Category: ', 'haste-starter' ) . single_cat_title( '', false ) );
 
 }
 
@@ -289,4 +256,47 @@ function haste_breadcrumb_archive() {
 
 	haste_active_li( $taxonomy->label . ': ' . $term_name );
 
+}
+
+function haste_breadcrump_cpt_single() {
+	global $post;
+	$taxonomies = get_object_taxonomies( $post->post_type );
+
+	// But if Woocommerce
+	if ( 'product' === $post->post_type ) {
+		haste_get_breadcrumb_wc( $post );
+	} else {
+		$post_type = get_post_type_object( $post->post_type );
+
+		echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
+	}
+
+	if ( $taxonomies ) {
+		// If is woocommerce product post type, $taxonomy already defined
+		$taxonomy = $taxonomies[0];
+
+		// Gets post terms.
+		$terms = get_the_terms( $post->ID, $taxonomy );
+		$term  = $terms ? array_shift( $terms ) : '';
+		// Gets parent post terms.
+		$parent_term = get_term( $term->parent, $taxonomy );
+
+		haste_create_breadcrumb_parent( $term, $parent_term );
+	}
+}
+
+
+function haste_breadcrumb_single() {
+	$category = get_the_category();
+	$category = $category[0];
+	// Gets parent post terms.
+	$parent_cat = get_term( $category->parent, 'category' );
+	// Gets top term
+	$cat_tree = get_category_parents( $category, false, ':' );
+	$top_cat  = explode( ':', $cat_tree );
+	$top_cat  = $top_cat[0];
+
+	haste_create_breadcrumb_parent( $category, $top_cat );
+
+	echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 }
