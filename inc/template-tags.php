@@ -168,29 +168,35 @@ if ( ! function_exists( 'haste_starter_the_custom_logo' ) ) {
 					echo '<img class="site-logo" alt="Logo ' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '" src="' . esc_url( $logo[0] ) . '">';
 
 			} else {
-
-				if ( is_front_page() && is_home() ) {
-					echo '<h1 class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</h1>';
-
-				} else {
-					echo '<span class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</span>';
-				}
+				echo haste_starter_custom_logo_name();
 			}
 		}
 		echo '</a>';
 	}
 }
 
+if ( ! function_exists( 'haste_starter_custom_logo_name' ) ) {
+	function haste_starter_custom_logo_name() {
+		if ( is_front_page() && is_home() ) {
+			return '<h1 class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</h1>';
+
+		}
+		return '<span class="site-title">' . esc_attr( get_bloginfo( 'name', 'display' ) ) . '</span>';
+
+	}
+}
+
+
 if ( ! function_exists( 'haste_starter_the_icon' ) ) {
 
 	/**
-	* Displays inline SVG icons
-	*
-	* @param  string $file_name The SVG file name without the extesion
-	* @param  string $label     Descriptive label for accessibility
-	* @param  string $size      'base' = 1em, 'lg' = 1.5em, 'auto' = no resizing
-	* @return string            Echoes the icon HTML
-	*/
+	 * Displays inline SVG icons
+	 *
+	 * @param  string $file_name The SVG file name without the extesion
+	 * @param  string $label     Descriptive label for accessibility
+	 * @param  string $size      'base' = 1em, 'lg' = 1.5em, 'auto' = no resizing
+	 * @return string            Echoes the icon HTML
+	 */
 
 	function haste_starter_the_icon( $file_name, $label = '', $size = 'base' ) {
 		if ( empty( $label ) ) {
@@ -198,7 +204,7 @@ if ( ! function_exists( 'haste_starter_the_icon' ) ) {
 		}
 
 		echo '<span role="img" class="svg-icon icon-' . $size . ' ' . $file_name . '" aria-label="' . $label . '">';
-		include( get_template_directory() . '/assets/img/' . $file_name . '.svg' );
+		include get_template_directory() . '/assets/img/' . $file_name . '.svg';
 		echo '</span>';
 	}
 }
@@ -223,7 +229,7 @@ if ( ! function_exists( 'haste_starter_the_svg' ) ) {
 		$classes .= isset( $args['classes'] ) ? ' ' . $args['classes'] : '';
 
 		echo '<span role="img"' . $classes . $label . '">';
-		include( get_template_directory() . '/assets/img/' . $filename . '.svg' );
+		include get_template_directory() . '/assets/img/' . $filename . '.svg';
 		echo '</span>';
 	}
 }

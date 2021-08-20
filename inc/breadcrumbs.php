@@ -9,24 +9,17 @@
  * @return string            HTML of breadcrumbs.
  */
 function haste_starter_breadcrumbs( $homepage = '' ) {
-	global $wp_query, $post, $author;
+	global $post;
 	$homepage = ! empty( $homepage ) ? $homepage : __( 'Home', 'haste-starter' );
-
 	if ( ! is_home() && ! is_front_page() || is_paged() ) {
 
 		// First level.
-		echo '<ol id="breadcrumbs" class="breadcrumb">';
-		echo '<li><a href="' . home_url() . '" rel="nofollow">' . $homepage . '</a></li>';
+		breadcrumb_first_level( $homepage );
 
 		// Single post.
 		if ( is_single() && ! is_attachment() ) {
 
-			// Checks if is a custom post type.
-			if ( 'post' !== $post->post_type ) {
-				haste_breadcrump_cpt_single();
-			} else {
-				haste_breadcrumb_single();
-			}
+			haste_breadcrumb_post_single();
 
 			haste_active_li( get_the_title() );
 			// Single attachment.
@@ -84,8 +77,8 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 }
 
 
-function breadcrumb_first_level() {
-	$homepage = ! empty( $homepage ) ?? __( 'Home', 'haste-starter' );
+function breadcrumb_first_level( $homepage ) {
+	echo '<ol id="breadcrumbs" class="breadcrumb">';
 	echo '<li><a href="' . home_url() . '" rel="nofollow">' . $homepage . '</a></li>';
 }
 
@@ -258,7 +251,7 @@ function haste_breadcrumb_archive() {
 
 }
 
-function haste_breadcrump_cpt_single() {
+function haste_breadcrumb_cpt_single() {
 	global $post;
 	$taxonomies = get_object_taxonomies( $post->post_type );
 
@@ -299,4 +292,15 @@ function haste_breadcrumb_single() {
 	haste_create_breadcrumb_parent( $category, $top_cat );
 
 	echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
+}
+
+
+/**
+ * Return 'haste_breadcrumb_single' if post type is post otherwise return 'haste_breadcrumb_cpt_single'
+ *
+ * @return [type]
+ */
+function haste_breadcrumb_post_single() {
+	global $post;
+	return 'post' === $post->post_type ? haste_breadcrumb_single() : haste_breadcrumb_cpt_single();
 }
