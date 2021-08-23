@@ -42,17 +42,17 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			return $output .= $this->item_menu_el( $item, $depth, $indent );
 
 		}
-			$class_names = $this->item_menu_classes( $item, $args, $depth );
+		$class_names = $this->item_menu_classes( $item, $args, $depth );
 
-			$id = $this->item_menu_id( $item, $args );
+		$id = $this->item_menu_id( $item, $args );
 
-			$output .= $indent . '<li' . $id . $value . $class_names . '>';
+		$output .= $indent . '<li' . $id . $value . $class_names . '>';
 
-			$atts = $this->item_menu_atts( $item, $args, $depth );
+		$atts = $this->item_menu_atts( $item, $args, $depth );
 
-			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
+		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
 
-			$attributes = '';
+		$attributes = '';
 		foreach ( $atts as $attr => $value ) {
 			if ( ! empty( $value ) ) {
 				$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
@@ -60,11 +60,11 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			}
 		}
 
-			$item_output = $args->before;
+		$item_output = $args->before;
 
-			$item_output .= $this->item_menu_glyphicons( $item, $item_output, $attributes, $args );
+		$item_output .= $this->item_menu_glyphicons( $item, $item_output, $attributes, $args );
 
-			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 
 	}
 
