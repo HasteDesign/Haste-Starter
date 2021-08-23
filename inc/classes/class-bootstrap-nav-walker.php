@@ -17,7 +17,7 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	 * @see Walker::start_lvl()
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param int $depth Depth of page. Used for padding.
+	 * @param int    $depth Depth of page. Used for padding.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent  = str_repeat( "\t", $depth );
@@ -29,8 +29,8 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param object $item Menu item data object.
-	 * @param int $depth Depth of menu item. Used for padding.
-	 * @param int $current_page Menu item ID.
+	 * @param int    $depth Depth of menu item. Used for padding.
+	 * @param int    $current_page Menu item ID.
 	 * @param object $args
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -46,14 +46,9 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 		 * comparison that is not case sensitive. The strcasecmp() function returns
 		 * a 0 if the strings are equal.
 		 */
-		if ( strcasecmp( $item->attr_title, 'divider' ) === 0 && 1 === $depth ) {
-			$output .= $indent . '<li role="presentation" class="dropdown-divider">';
-		} elseif ( strcasecmp( $item->title, 'divider' ) === 0 && 1 === $depth ) {
-			$output .= $indent . '<li role="presentation" class="dropdown-divider">';
-		} elseif ( strcasecmp( $item->attr_title, 'dropdown-header' ) === 0 && 1 === $depth ) {
-			$output .= $indent . '<li role="presentation" class="dropdown-header">' . esc_attr( $item->title );
-		} elseif ( strcasecmp( $item->attr_title, 'disabled' ) === 0 ) {
-			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
+		if ( $this->item_menu_el( $item, $depth, $indent ) ) {
+			$output .= $this->item_menu_el( $item, $depth, $indent );
+
 		} else {
 
 			$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
@@ -129,6 +124,29 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	}
 
 	/**
+	 * Check if the item is divider, header or disabled
+	 *
+	 * @param mixed $item
+	 * @param mixed $depth
+	 * @param mixed $indent
+	 *
+	 * @return HTML
+	 */
+	protected function item_menu_el( $item, $depth, $indent ) {
+		$output = '';
+		if ( strcasecmp( $item->attr_title, 'divider' ) === 0 && 1 === $depth ) {
+			return $output .= $indent . '<li role="presentation" class="dropdown-divider">';
+		}
+		if ( strcasecmp( $item->attr_title, 'dropdown-header' ) === 0 && 1 === $depth ) {
+			return $output .= $indent . '<li role="presentation" class="dropdown-header">' . esc_attr( $item->title );
+		}
+		if ( strcasecmp( $item->attr_title, 'disabled' ) === 0 ) {
+			return $output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
+		}
+		return false;
+	}
+
+	/**
 	 * Traverse elements to create list from elements.
 	 *
 	 * Display one element if the element doesn't have any children otherwise,
@@ -140,10 +158,10 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	 * @see Walker::start_el()
 	 *
 	 * @param object $element Data object.
-	 * @param array $children_elements List of elements to continue traversing.
-	 * @param int $max_depth Max depth to traverse.
-	 * @param int $depth Depth of current element.
-	 * @param array $args
+	 * @param array  $children_elements List of elements to continue traversing.
+	 * @param int    $max_depth Max depth to traverse.
+	 * @param int    $depth Depth of current element.
+	 * @param array  $args
 	 * @param string $output Passed by reference. Used to append additional content.
 	 *
 	 * @return null Null on failure with no changes to parameters.
