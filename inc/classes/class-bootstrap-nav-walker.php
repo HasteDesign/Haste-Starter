@@ -75,11 +75,12 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 
 			$output .= $indent . '<li' . $id . $value . $class_names . '>';
 
-			$atts           = array();
-			$atts['title']  = ! empty( $item->title ) ? strip_tags( $item->title ) : '';
-			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
-			$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
-			$atts['class']  = 'nav-link';
+			$atts = array(
+				'title'  => ! empty( $item->title ) ? strip_tags( $item->title ) : '',
+				'target' => ! empty( $item->target ) ? $item->target : '',
+				'rel'    => ! empty( $item->xfn ) ? $item->xfn : '',
+				'class'  => 'nav-link',
+			);
 
 			// If item has_children add atts to a.
 			if ( $args->has_children && 0 === $depth ) {
@@ -102,27 +103,31 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 
 			$item_output = $args->before;
 
-			/*
+			$item_output .= $this->item_menu_glyphicons( $item, $item_output, $attributes, $args );
+
+			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		}
+
+	}
+				/*
 			 * Glyphicons
 			 * ===========
 			 * Since the the menu item is NOT a Divider or Header we check the see
 			 * if there is a value in the attr_title property. If the attr_title
 			 * property is NOT null we apply it as the class name for the glyphicon.
 			 */
-			if ( ! empty( $item->attr_title ) ) {
-				$item_output .= '<a' . $attributes . '><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
-			} else {
-				$item_output .= '<a' . $attributes . '>';
-			}
-
-			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-			$item_output .= '</a>';
-			$item_output .= $args->after;
-
-			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	protected function item_menu_glyphicons( $item, $item_output, $attributes, $args ) {
+		if ( ! empty( $item->attr_title ) ) {
+			$item_output .= '<a' . $attributes . '><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
+		} else {
+			$item_output .= '<a' . $attributes . '>';
 		}
-	}
 
+		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+		$item_output .= '</a>';
+		$item_output .= $args->after;
+		return $item_output;
+	}
 	/**
 	 * Check if the item is divider, header or disabled
 	 *
