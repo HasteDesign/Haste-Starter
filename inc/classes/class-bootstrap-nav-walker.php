@@ -44,8 +44,7 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 		} else {
 			$class_names = $this->item_menu_classes( $item, $args, $depth );
 
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
-			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+			$id = $this->item_menu_id( $item, $args );
 
 			$output .= $indent . '<li' . $id . $value . $class_names . '>';
 
@@ -68,6 +67,11 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
 
+	}
+
+	protected function item_menu_id( $item, $args ) {
+		$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
+		return $id ? ' id="' . esc_attr( $id ) . '"' : '';
 	}
 
 	protected function item_menu_atts( $item, $args, $depth ) {
