@@ -38,58 +38,18 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 		$value       = '';
 		$indent      = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-		/**
-		 * Dividers, Headers or Disabled
-		 * =============================
-		 * Determine whether the item is a Divider, Header, Disabled or regular
-		 * menu item. To prevent errors we use the strcasecmp() function to so a
-		 * comparison that is not case sensitive. The strcasecmp() function returns
-		 * a 0 if the strings are equal.
-		 */
 		if ( $this->item_menu_el( $item, $depth, $indent ) ) {
 			$output .= $this->item_menu_el( $item, $depth, $indent );
 
 		} else {
-
-			$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
-			$classes[] = 'nav-item menu-item-' . $item->ID;
-
-			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-
-			if ( $args->has_children ) {
-				$class_names .= ' dropdown';
-			}
-
-			if ( in_array( 'current-menu-item', $classes, true ) ) {
-				$class_names .= ' active';
-			}
-
-			if ( $depth > 0 ) {
-				$class_names .= ' dropdown-item';
-			}
-
-			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+			$class_names = $this->item_menu_classes( $item, $args, $depth );
 
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
 			$output .= $indent . '<li' . $id . $value . $class_names . '>';
 
-			$atts = array(
-				'title'  => ! empty( $item->title ) ? strip_tags( $item->title ) : '',
-				'target' => ! empty( $item->target ) ? $item->target : '',
-				'rel'    => ! empty( $item->xfn ) ? $item->xfn : '',
-				'class'  => 'nav-link',
-			);
-
-			// If item has_children add atts to a.
-			if ( $args->has_children && 0 === $depth ) {
-				$atts['href']        = '#';
-				$atts['data-toggle'] = 'dropdown';
-				$atts['class']      .= ' dropdown-toggle';
-			} else {
-				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
-			}
+			$atts = $this->item_menu_atts( $item, $args, $depth );
 
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
 
@@ -108,6 +68,45 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
 
+	}
+
+	protected function item_menu_atts( $item, $args, $depth ) {
+		$atts = array(
+			'title'  => ! empty( $item->title ) ? strip_tags( $item->title ) : '',
+			'target' => ! empty( $item->target ) ? $item->target : '',
+			'rel'    => ! empty( $item->xfn ) ? $item->xfn : '',
+			'class'  => 'nav-link',
+		);
+		// If item has_children add atts to a.
+		if ( $args->has_children && 0 === $depth ) {
+			$atts['href']        = '#';
+			$atts['data-toggle'] = 'dropdown';
+			$atts['class']      .= ' dropdown-toggle';
+		} else {
+			$atts['href'] = ! empty( $item->url ) ? $item->url : '';
+		}
+		return $atts;
+	}
+
+	protected function item_menu_classes( $item, $args, $depth ) {
+		$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
+		$classes[] = 'nav-item menu-item-' . $item->ID;
+
+		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+
+		if ( $args->has_children ) {
+			$class_names .= ' dropdown';
+		}
+
+		if ( in_array( 'current-menu-item', $classes, true ) ) {
+			$class_names .= ' active';
+		}
+
+		if ( $depth > 0 ) {
+			$class_names .= ' dropdown-item';
+		}
+
+		return $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 	}
 				/*
 			 * Glyphicons
@@ -130,6 +129,13 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	}
 	/**
 	 * Check if the item is divider, header or disabled
+	 *
+	 * Dividers, Headers or Disabled
+	 * =============================
+	 * Determine whether the item is a Divider, Header, Disabled or regular
+	 * menu item. To prevent errors we use the strcasecmp() function to so a
+	 * comparison that is not case sensitive. The strcasecmp() function returns
+	 * a 0 if the strings are equal.
 	 *
 	 * @param mixed $item
 	 * @param mixed $depth
