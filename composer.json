@@ -1,5 +1,9 @@
 {
-    "require": {
+  "name": "Haste-Starter",
+  "type": "wordpress-theme",
+  "description": "WordPress starter theme - Haste",
+  "homepage": "https://www.hastedesign.com.br/",
+  "require": {
         "tgmpa/tgm-plugin-activation": "^2.6.1"
     }
 }

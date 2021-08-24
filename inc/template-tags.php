@@ -68,8 +68,7 @@ if ( ! function_exists( 'haste_starter_the_container' ) ) {
 			</div>
 
 		<?php } ?>
-	<?php } ?>
-	<?php
+	<?php }
 }
 
 if ( ! function_exists( 'haste_starter_open_content_wrapper' ) ) {
