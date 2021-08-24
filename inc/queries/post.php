@@ -33,51 +33,9 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 	$post_qty = (int) $qty;
 
 	// Creates arguments for WP_Query.
-	switch ( $display ) {
-		case 'tag':
-			$tags = wp_get_post_tags( $post->ID );
-
-			if ( $tags ) {
-				// Enables the display.
-				$show = true;
-
-				$tag_ids = array();
-				foreach ( $tags as $tag ) {
-					$tag_ids[] = $tag->term_id;
-				}
-
-				$args = array(
-					'tag__in'             => $tag_ids,
-					'post__not_in'        => array( $post->ID ),
-					'posts_per_page'      => $post_qty,
-					'post_type'           => $post_type,
-					'ignore_sticky_posts' => 1,
-				);
-			}
-			break;
-
-		default:
-			$categories = get_the_category( $post->ID );
-
-			if ( $categories ) {
-
-				// Enables the display.
-				$show = true;
-
-				$category_ids = array();
-				foreach ( $categories as $category ) {
-					$category_ids[] = $category->term_id;
-				}
-
-				$args = array(
-					'category__in'        => $category_ids,
-					'post__not_in'        => array( $post->ID ),
-					'posts_per_page'      => $post_qty,
-					'post_type'           => $post_type,
-					'ignore_sticky_posts' => 1,
-				);
-			}
-			break;
+	if ( haste_related_posts_args( $display, $post, $post_qty, $post_type ) ) {
+		$show = true;
+		$args = haste_related_posts_args( $display, $post, $post_qty, $post_type );
 	}
 
 	if ( $show ) {
@@ -122,4 +80,28 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 		}
 		wp_reset_postdata();
 	}
+}
+
+function haste_related_posts_args( $display, $post, $post_qty, $post_type ) {
+	$args = array(
+		'post__not_in'        => array( $post->ID ),
+		'posts_per_page'      => $post_qty,
+		'post_type'           => $post_type,
+		'ignore_sticky_posts' => 1,
+	);
+
+	$cat_or_tag = 'tag' === $display ? wp_get_post_tags( $post->ID ) : get_the_category( $post->ID );
+
+	if ( $cat_or_tag ) {
+
+		$ids = array();
+
+		foreach ( $cat_or_tag as $ct ) {
+			$ids[] = $ct->term_id;
+		}
+
+		$args = 'tag' === $display ? $args['tag__in'] = $ids : $args['category__in'] = $ids;
+		return $args;
+	}
+	return false;
 }
