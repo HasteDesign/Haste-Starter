@@ -45,15 +45,15 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 
 		// Add support for Post Formats.
 		// add_theme_support( 'post-formats', array(
-		//     'aside',
-		//     'gallery',
-		//     'link',
-		//     'image',
-		//     'quote',
-		//     'status',
-		//     'video',
-		//     'audio',
-		//     'chat',
+		// 'aside',
+		// 'gallery',
+		// 'link',
+		// 'image',
+		// 'quote',
+		// 'status',
+		// 'video',
+		// 'audio',
+		// 'chat',
 		// ) );
 
 		// Add the excerpt on pages.
@@ -114,90 +114,26 @@ add_action( 'after_setup_theme', 'haste_starter_content_width', 0 );
 if ( ! function_exists( 'haste_starter_gutenberg_support' ) ) {
 	/**
 	 * Setup theme support.
+	 * Most of the supports have been moved to the theme.json file
 	 *
+	 * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/#backward-compatibility-with-add_theme_support
 	 * @link https://codex.wordpress.org/Function_Reference/add_theme_support
 	 */
 	function haste_starter_gutenberg_support() {
 
-		// Editor color palette
-		// You can disable or provide your customn collor palette, choose the one you want for your theme.
-		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#block-color-palettes
-
-		//add_theme_support( 'disable-custom-colors' );
-
-		add_theme_support(
-			'editor-color-palette',
-			array(
-				array(
-					'name'  => __( 'haste starter cyan', 'haste-starter' ),
-					'slug'  => 'haste-starter-cyan',
-					'color' => '#00C9C8',
-				),
-				array(
-					'name'  => __( 'haste starter violet', 'haste-starter' ),
-					'slug'  => 'haste-starter-violet',
-					'color' => '#6428FF',
-				),
-				array(
-					'name'  => __( 'haste starter red', 'haste-starter' ),
-					'slug'  => 'haste-starter-red',
-					'color' => '#FF2C18',
-				),
-				array(
-					'name'  => __( 'haste starter light gray', 'haste-starter' ),
-					'slug'  => 'haste-starter-light-gray',
-					'color' => '#FAFAFA',
-				),
-			)
-		);
+		// Most of the supports have been moved to the theme.json file
 
 		// Wide alignment
 		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
 		// add_theme_support( 'align-wide' );
 
-		// Font sizes
-		// You can disable or provide your customn font sizes, choose the one you want for your theme.
-		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#block-font-sizes
-
-		// add_theme_support('disable-custom-font-sizes');
-
-		add_theme_support(
-			'editor-font-sizes',
-			array(
-				array(
-					'name'      => __( 'small', 'haste-starter' ),
-					'shortName' => __( 'S', 'haste-starter' ),
-					'size'      => 12,
-					'slug'      => 'small',
-				),
-				array(
-					'name'      => __( 'regular', 'haste-starter' ),
-					'shortName' => __( 'M', 'haste-starter' ),
-					'size'      => 16,
-					'slug'      => 'regular',
-				),
-				array(
-					'name'      => __( 'large', 'haste-starter' ),
-					'shortName' => __( 'L', 'haste-starter' ),
-					'size'      => 36,
-					'slug'      => 'large',
-				),
-				array(
-					'name'      => __( 'larger', 'haste-starter' ),
-					'shortName' => __( 'XL', 'haste-starter' ),
-					'size'      => 50,
-					'slug'      => 'larger',
-				),
-			)
-		);
-
 		// Editor styles
 		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#dark-backgrounds
-		//add_theme_support( 'editor-styles' );
-		//add_theme_support( 'dark-editor-style' );
+		// add_theme_support( 'editor-styles' );
+		// add_theme_support( 'dark-editor-style' );
 
 		// WP block styles
-		//add_theme_support( 'wp-block-styles' );
+		// add_theme_support( 'wp-block-styles' );
 
 		// Responsive embeds
 		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
