@@ -34,11 +34,7 @@ function haste_starter_pagination( $mid = 2, $end = 1, $show = false, $query = n
 			$pagination = '<div class="pagination-wrap">' . paginate_links( $arguments ) . '</div>';
 
 			// Prevents duplicate bars in the middle of the url.
-			if ( $url_base ) {
-				$pagination = str_replace( '//' . $url_base . '/', '/' . $url_base . '/', $pagination );
-			}
-
-			return $pagination;
+			return $url_base ? str_replace( '//' . $url_base . '/', '/' . $url_base . '/', $pagination ) : $pagination;
 		}
 	}
 }
