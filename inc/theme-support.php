@@ -11,24 +11,14 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 		// Add multiple languages support.
 		load_theme_textdomain( 'haste-starter', get_template_directory() . '/languages' );
 
-		// Add post_thumbnails suport.
-		add_theme_support( 'post-thumbnails' );
+		// All related a styles support
+		haste_starter_theme_style();
 
-		// Add feed link support.
-		add_theme_support( 'automatic-feed-links' );
+		// All supports related a post type
+		haste_starter_theme_post_type();
 
-		// Add support custom background support.
-		add_theme_support(
-			'custom-background',
-			array(
-				'default-color' => '',
-				'default-image' => '',
-			)
-		);
-
-		// Add custom editor style support.
-		add_theme_support( 'editor-styles' );
-		add_editor_style( 'assets/css/editor-style.css' );
+		// All supports related a custom configuration
+		haste_starter_theme_custom();
 
 		// Add infinite scroll support.
 		add_theme_support(
@@ -43,21 +33,13 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 			)
 		);
 
-		// Add support for Post Formats.
-		// add_theme_support( 'post-formats', array(
-		// 'aside',
-		// 'gallery',
-		// 'link',
-		// 'image',
-		// 'quote',
-		// 'status',
-		// 'video',
-		// 'audio',
-		// 'chat',
-		// ) );
-
-		// Add the excerpt on pages.
-		// add_post_type_support( 'page', 'excerpt' );
+		/**
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
 
 		// Switch default core markup for search form, comment form, and comments to output valid HTML5.
 		add_theme_support(
@@ -71,14 +53,18 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 			)
 		);
 
-		/**
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support( 'title-tag' );
+	} /* end theme support */
+}
 
+add_action( 'after_setup_theme', 'haste_starter_theme_support' );
+
+
+/**
+ * All supports related a custom configuration
+ *
+ * @return [type]
+ */
+function haste_starter_theme_custom() {
 		// Add custom logo support.
 		add_theme_support(
 			'custom-logo',
@@ -91,10 +77,53 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 			)
 		);
 
-	} /* end theme support */
+		// Add support custom background support.
+		add_theme_support(
+			'custom-background',
+			array(
+				'default-color' => '',
+				'default-image' => '',
+			)
+		);
 }
 
-add_action( 'after_setup_theme', 'haste_starter_theme_support' );
+/**
+ * All supports related a post type
+ *
+ * @return [type]
+ */
+function haste_starter_theme_post_type() {
+	// Add support for Post Formats.
+
+	// add_theme_support( 'post-formats', array(
+	// 'aside',
+	// 'gallery',
+	// 'link',
+	// 'image',
+	// 'quote',
+	// 'status',
+	// 'video',
+	// 'audio',
+	// 'chat',
+	// ) );
+
+	// Add post_thumbnails suport.
+	add_theme_support( 'post-thumbnails' );
+
+	// Add feed link support.
+	add_theme_support( 'automatic-feed-links' );
+
+	// Add the excerpt on pages.
+	// add_post_type_support( 'page', 'excerpt' );
+}
+
+/**
+ * Support for styles
+ */
+function haste_starter_theme_style() {
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'assets/css/editor-style.css' );
+}
 
 if ( ! function_exists( 'haste_starter_content_width' ) ) {
 	/**
