@@ -1,4 +1,4 @@
-<p align="center"><img alt="Haste Starter, A WordPress base theme for developers" src="https://github.com/HasteDesign/Haste-Starter/blob/master/screenshot.png" width="600" height="450"></p>
+<p align="center"><img alt="Haste Starter, A WordPress base theme for developers" src="https://github.com/HasteDesign/Haste-Starter/blob/main/screenshot.png" width="600" height="450"></p>
 
 [![GPL](https://img.shields.io/badge/License-GPL-blue.svg?logo=gnu&logoColor=FAFAFA)]()
 [![PluginTerritory](https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg?logo=wordpress&logoColor=FAFAFA)]()
@@ -11,22 +11,22 @@ With this base theme you will have a lot of WordPress pre-made templates from Te
 Here are some things you'll find in Haste Starter:
 
 - Templates
-	- HTML5, clean and well-coded, as in Odin
+	- HTML5, clean and well-coded
 - Initial theme configuration 
-	- add\_theme\_supports
+	- theme.json
 	- menus
-	- sidebars
+	- theme supports
 	- ...and much more
-- TGM Plugin Activation 
-	- Define required or recommended plugins for your theme
-- Bootstrap 4
-	- A good style framework (but it's not mandatory)
-- npm scripts
-	- A set of npm tasks configured to deal with your styles and scripts
+- Bootstrap 5
+	- The great style framework everyone knows (but it's not mandatory)
+- Laravel Mix
+	- All the assets build managed with Laravel Mix. Don't worry about Webpack complex stuff.
 - Translation-ready
 	- Ready to be translated to any language
 - Helper functions
-	- A lot of helper functions and custom template tags to make coding even easier in WordPress
+	- A lot of helper functions and custom template tags to make coding even easier
+- Coding Standards
+	- EditorConfig and PHPCS files according to WordPress Coding Standards
 
 ## Installation ##
 
@@ -44,14 +44,13 @@ Our documentation is under construction, but you can find some information about
 
 Reference of tools used in the theme:
 
-* [Bootstrap](http://getbootstrap.com/)
+* [Bootstrap 5](http://getbootstrap.com/)
 * [Sass](http://sass-lang.com/)
+* [Npm](https://docs.npmjs.com)
+* [LaravelMix](https://babeljs.io/)
+* [Composer](https://getcomposer.org/)
 * [EditorConfig](http://editorconfig.org/)
 * [Eslint](https://eslint.org/)
-* [Npm](https://docs.npmjs.com)
-* [Babel](https://babeljs.io/)
-* [Composer](https://getcomposer.org/)
-* [TGM Plugin Activation](http://tgmpluginactivation.com/)
 
 ## Bugs and Suggestions ##
 
