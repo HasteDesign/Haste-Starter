@@ -21,11 +21,7 @@ function haste_starter_pagination( $mid = 2, $end = 1, $show = false, $query = n
 
 		global $wp_query, $wp_rewrite;
 
-		$total_pages = $wp_query->max_num_pages;
-
-		if ( is_object( $query ) && null !== $query ) {
-			$total_pages = $query->max_num_pages;
-		}
+		$total_pages = is_object( $query ) && null !== $query ? $query->max_num_pages : $wp_query->max_num_pages;
 
 		if ( $total_pages > 1 ) {
 			$url_base  = $wp_rewrite->pagination_base;
