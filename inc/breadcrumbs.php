@@ -9,35 +9,15 @@
  * @return string            HTML of breadcrumbs.
  */
 function haste_starter_breadcrumbs( $homepage = '' ) {
-	global $post;
 	$homepage = ! empty( $homepage ) ? $homepage : __( 'Home', 'haste-starter' );
 	if ( ! is_home() && ! is_front_page() || is_paged() ) {
 
 		// First level.
 		breadcrumb_first_level( $homepage );
 
-		// Single post.
-		if ( is_single() && ! is_attachment() ) {
+		// Single post type.
+		haste_breadcrumb_post_type_single();
 
-			haste_breadcrumb_post_single();
-
-			haste_active_li( get_the_title() );
-			// Single attachment.
-		} else {
-			haste_breadcrumb_attachment();
-
-			// Page without parents.
-			haste_breadcrumb_page();
-
-			// category archives
-			haste_breadcrumb_category_archive();
-
-			// tag archives
-			if ( is_tag() ) {
-				printf( __( '%1$sTag: %2$s%3$s', 'haste-starter' ), haste_active_li( single_tag_title( '', false ) ) );
-			}
-		}
-		// Custom post type archive.
 	} else {
 		// Check if Woocommerce Shop
 		haste_breadcrumb_wc_archive();
@@ -74,6 +54,35 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 	}
 
 	echo '</ol>';
+}
+
+/**
+ * For breadcrumb when is a post type single
+ *
+ * @return [type]
+ */
+function haste_breadcrumb_post_type_single() {
+	if ( is_single() && ! is_attachment() ) {
+
+		haste_breadcrumb_post_single();
+
+		haste_active_li( get_the_title() );
+		// Single attachment.
+		return;
+	}
+	haste_breadcrumb_attachment();
+
+	// Page without parents.
+	haste_breadcrumb_page();
+
+	// category archives
+	haste_breadcrumb_category_archive();
+
+		// tag archives
+	if ( is_tag() ) {
+		printf( __( '%1$sTag: %2$s%3$s', 'haste-starter' ), haste_active_li( single_tag_title( '', false ) ) );
+	}
+
 }
 
 
