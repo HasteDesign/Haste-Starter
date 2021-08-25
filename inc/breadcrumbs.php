@@ -44,16 +44,14 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 	// Archive fallback for custom taxonomies.
 	haste_breadcrumb_archive();
 
-		// 404 page.
-	if ( is_404() ) {
-		haste_active_li( __( '404 Error', 'haste-starter' ) );
-	}
+	// 404 page.
+	haste_breadcrumb_404();
 
 	breadcrumb_final_level();
 }
-
+// 404 page.
 function haste_breadcrumb_404() {
-
+	return haste_active_li( __( '404 Error', 'haste-starter' ) );
 }
 
 function haste_breadcrumb_pagination() {
