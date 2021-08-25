@@ -18,42 +18,49 @@ function haste_starter_breadcrumbs( $homepage = '' ) {
 		// Single post type.
 		haste_breadcrumb_post_type_single();
 
-	} else {
-		// Check if Woocommerce Shop
-		haste_breadcrumb_wc_archive();
+		breadcrumb_final_level();
+		return;
+	}
+	// Check if Woocommerce Shop
+	haste_breadcrumb_wc_archive();
 
 		// Search page.
-		if ( is_search() ) {
-			printf( __( '%1$sSearch result for: &quot;%2$s&quot;%3$s', 'haste-starter' ), haste_active_li( get_search_query() ) );
-		}
-		// Author archive.
-		haste_breadcrumb_author_archive();
+	if ( is_search() ) {
+		printf( __( '%1$sSearch result for: &quot;%2$s&quot;%3$s', 'haste-starter' ), haste_active_li( get_search_query() ) );
+	}
+	// Author archive.
+	haste_breadcrumb_author_archive();
 
-		// Day archive.
-		haste_breadcrumb_day_archive();
+	// Day archive.
+	haste_breadcrumb_day_archive();
 
-		// Archives per month.
-		haste_breadcrumb_month_archive();
+	// Archives per month.
+	haste_breadcrumb_month_archive();
 
 		// Archives per year.
-		if ( is_year() ) {
-			haste_active_li( get_the_time( 'Y' ) );
-		}
-		// Archive fallback for custom taxonomies.
-		haste_breadcrumb_archive();
+	if ( is_year() ) {
+		haste_active_li( get_the_time( 'Y' ) );
+	}
+	// Archive fallback for custom taxonomies.
+	haste_breadcrumb_archive();
 
 		// 404 page.
-		if ( is_404() ) {
-			haste_active_li( __( '404 Error', 'haste-starter' ) );
-		}
+	if ( is_404() ) {
+		haste_active_li( __( '404 Error', 'haste-starter' ) );
 	}
 
-		// Gets pagination.
+	breadcrumb_final_level();
+}
+
+function haste_breadcrumb_404() {
+
+}
+
+function haste_breadcrumb_pagination() {
+			// Gets pagination.
 	if ( get_query_var( 'paged' ) ) {
 		echo ' (' . sprintf( __( 'Page %s', 'haste-starter' ), get_query_var( 'paged' ) ) . ')';
 	}
-
-	echo '</ol>';
 }
 
 /**
@@ -86,9 +93,28 @@ function haste_breadcrumb_post_type_single() {
 }
 
 
+/**
+ * The initial of breadcrumb list
+ *
+ * @param mixed $homepage
+ *
+ * @return [type]
+ */
 function breadcrumb_first_level( $homepage ) {
 	echo '<ol id="breadcrumbs" class="breadcrumb">';
 	echo '<li><a href="' . home_url() . '" rel="nofollow">' . $homepage . '</a></li>';
+}
+
+/**
+ * The final of breadcrumb list
+ *
+ * @return [type]
+ */
+function breadcrumb_final_level() {
+			// Gets pagination.
+			haste_breadcrumb_pagination();
+
+			echo '</ol>';
 }
 
 /**
