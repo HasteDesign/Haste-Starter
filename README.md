@@ -44,14 +44,13 @@ Our documentation is under construction, but you can find some information about
 
 Reference of tools used in the theme:
 
-* [Bootstrap](http://getbootstrap.com/)
+* [Bootstrap 5](http://getbootstrap.com/)
 * [Sass](http://sass-lang.com/)
+* [Npm](https://docs.npmjs.com)
+* [LaravelMix](https://babeljs.io/)
+* [Composer](https://getcomposer.org/)
 * [EditorConfig](http://editorconfig.org/)
 * [Eslint](https://eslint.org/)
-* [Npm](https://docs.npmjs.com)
-* [Babel](https://babeljs.io/)
-* [Composer](https://getcomposer.org/)
-* [TGM Plugin Activation](http://tgmpluginactivation.com/)
 
 ## Bugs and Suggestions ##
 
