@@ -11,22 +11,22 @@ With this base theme you will have a lot of WordPress pre-made templates from Te
 Here are some things you'll find in Haste Starter:
 
 - Templates
-	- HTML5, clean and well-coded, as in Odin
+	- HTML5, clean and well-coded
 - Initial theme configuration 
-	- add\_theme\_supports
+	- theme.json
 	- menus
-	- sidebars
+	- theme supports
 	- ...and much more
-- TGM Plugin Activation 
-	- Define required or recommended plugins for your theme
-- Bootstrap 4
-	- A good style framework (but it's not mandatory)
-- npm scripts
-	- A set of npm tasks configured to deal with your styles and scripts
+- Bootstrap 5
+	- The great style framework everyone knows (but it's not mandatory)
+- Laravel Mix
+	- All the assets build managed with Laravel Mix. Don't worry about Webpack complex stuff.
 - Translation-ready
 	- Ready to be translated to any language
 - Helper functions
-	- A lot of helper functions and custom template tags to make coding even easier in WordPress
+	- A lot of helper functions and custom template tags to make coding even easier
+- Coding Standards
+	- EditorConfig and PHPCS files according to WordPress Coding Standards
 
 ## Installation ##
 
