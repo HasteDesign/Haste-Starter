@@ -20,44 +20,54 @@ if ( ! function_exists( 'haste_starter_theme_support' ) ) {
 		// All supports related a custom configuration
 		haste_starter_theme_custom();
 
-		// Add infinite scroll support.
-		add_theme_support(
-			'infinite-scroll',
-			array(
-				'type'           => 'scroll',
-				'footer_widgets' => false,
-				'container'      => 'content',
-				'wrapper'        => false,
-				'render'         => false,
-				'posts_per_page' => get_option( 'posts_per_page' ),
-			)
-		);
-
-		/**
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
-		add_theme_support( 'title-tag' );
-
-		// Switch default core markup for search form, comment form, and comments to output valid HTML5.
-		add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-			)
-		);
-
+		// All supports related to the project itself
+		haste_starter_theme_project();
 	} /* end theme support */
 }
 
 add_action( 'after_setup_theme', 'haste_starter_theme_support' );
 
+
+/**
+ * All supports related to the project itself
+ *
+ * @return [type]
+ */
+function haste_starter_theme_project() {
+
+	// Add infinite scroll support.
+	add_theme_support(
+		'infinite-scroll',
+		array(
+			'type'           => 'scroll',
+			'footer_widgets' => false,
+			'container'      => 'content',
+			'wrapper'        => false,
+			'render'         => false,
+			'posts_per_page' => get_option( 'posts_per_page' ),
+		)
+	);
+
+	/**
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
+	add_theme_support(
+		'html5',
+		array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		)
+	);
+}
 
 /**
  * All supports related a custom configuration
