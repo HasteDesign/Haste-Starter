@@ -43,29 +43,12 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 		$related = new WP_Query( $args );
 		if ( $related->have_posts() ) {
 
-			$layout  = '<div id="related-post">';
-			$layout .= '<h3>' . esc_attr( $title ) . '</h3>';
-			$layout .= ( $thumb ) ? '<div class="row">' : '<ul>';
+			$layout = haste_starter_first_level_related_posts( $thumb, $title );
 
 			while ( $related->have_posts() ) {
 				$related->the_post();
 
-				$layout .= ( $thumb ) ? '<div class="col-md-' . ceil( 12 / $qty ) . '">' : '<li>';
-
-				if ( $thumb ) {
-					if ( has_post_thumbnail() ) {
-						$img = get_the_post_thumbnail( get_the_ID(), 'thumbnail' );
-					} else {
-						$img = '<img src="' . get_template_directory_uri() . '/assets/img/thumb-placeholder.jpg" alt="' . get_the_title() . '">';
-					}
-					// Filter to replace the image.
-					$image = apply_filters( 'haste_starter_related_posts_thumbnail', $img );
-
-					$layout .= '<span class="thumb">';
-					$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', esc_url( get_permalink() ), get_the_title(), $image );
-					$layout .= '</span>';
-				}
-
+				$layout .= haste_starter_thumb_related_posts( $thumb, $qty );
 				$layout .= '<span class="text">';
 				$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', esc_url( get_permalink() ), get_the_title() );
 				$layout .= '</span>';
@@ -82,6 +65,53 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 	}
 }
 
+
+/**
+ * Create thumbnail img tag with link of related posts
+ *
+ * @param mixed $thumb
+ * @param mixed $qty
+ *
+ * @return [type]
+ */
+function haste_starter_thumb_related_posts( $thumb, $qty ) {
+	$layout  = '';
+	$layout .= ( $thumb ) ? '<div class="col-md-' . ceil( 12 / $qty ) . '">' : '<li>';
+
+	if ( $thumb ) {
+		if ( has_post_thumbnail() ) {
+			$img = get_the_post_thumbnail( get_the_ID(), 'thumbnail' );
+		} else {
+			$img = '<img src="' . get_template_directory_uri() . '/assets/img/thumb-placeholder.jpg" alt="' . get_the_title() . '">';
+		}
+		// Filter to replace the image.
+		$image = apply_filters( 'haste_starter_related_posts_thumbnail', $img );
+
+		$layout .= '<span class="thumb">';
+		$layout .= sprintf( '<a href="%s" title="%s" class="thumbnail">%s</a>', esc_url( get_permalink() ), get_the_title(), $image );
+		$layout .= '</span>';
+		return $layout;
+	}
+}
+
+function haste_starter_first_level_related_posts( $thumb, $title ) {
+
+	$layout  = '<div id="related-post">';
+	$layout .= '<h3>' . esc_attr( $title ) . '</h3>';
+	$layout .= ( $thumb ) ? '<div class="row">' : '<ul>';
+	return $layout;
+}
+
+/**
+ * args for display tag or category
+ *
+ * @param mixed $display
+ * @param mixed $post
+ * @param mixed $post_qty
+ * @param mixed $post_type
+ *
+ * @return [type]
+ */
 function haste_related_posts_args( $display, $post, $post_qty, $post_type ) {
 	$args = array(
 		'post__not_in'        => array( $post->ID ),
