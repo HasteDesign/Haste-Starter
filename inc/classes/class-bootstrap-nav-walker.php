@@ -208,43 +208,65 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	public static function fallback( $args ) {
 		if ( current_user_can( 'manage_options' ) ) {
 
-			extract( $args );
+			$args = (object) $args;
 
 			$fb_output = null;
-
-			if ( $container ) {
-				$fb_output = '<' . $container;
-
-				if ( $container_id ) {
-					$fb_output .= ' id="' . $container_id . '"';
-				}
-
-				if ( $container_class ) {
-					$fb_output .= ' class="' . $container_class . '"';
-				}
-
-				$fb_output .= '>';
+			if ( $args->container ) {
+				$fb_output .= self::haste_starter_fb_container( $args, $fb_output );
 			}
 
 			$fb_output .= '<ul';
 
-			if ( $menu_id ) {
-				$fb_output .= ' id="' . $menu_id . '"';
-			}
-
-			if ( $menu_class ) {
-				$fb_output .= ' class="' . $menu_class . '"';
-			}
+			$fb_output .= self::haste_starter_fb_attributes( $args, $fb_output );
 
 			$fb_output .= '>';
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'haste-starter' ) . '</a></li>';
 			$fb_output .= '</ul>';
 
-			if ( $container ) {
-				$fb_output .= '</' . $container . '>';
+			if ( $args->container ) {
+				$fb_output .= '</' . $args->container . '>';
 			}
 
 			echo $fb_output;
 		}
+	}
+
+	/**
+	 * Create fallback list (ul) with id and classes
+	 *
+	 * @param mixed $args
+	 * @param mixed $fb_output
+	 *
+	 * @return [type]
+	 */
+	private static function haste_starter_fb_attributes( $args, $fb_output ) {
+		if ( $args->menu_id ) {
+			$fb_output .= ' id="' . $args->menu_id . '"';
+		}
+
+		if ( $args->menu_class ) {
+			$fb_output .= ' class="' . $args->menu_class . '"';
+		}
+		return $fb_output;
+	}
+
+	/**
+	 * Create fallback container with id and classes
+	 *
+	 * @param mixed $args
+	 * @param mixed $fb_output
+	 *
+	 * @return [type]
+	 */
+	private static function haste_starter_fb_container( $args, $fb_output ) {
+		$fb_output = '<' . $args->container;
+		if ( $args->container_id ) {
+			$fb_output .= ' id="' . $args->container_id . '"';
+		}
+		if ( $args->container_class ) {
+			$fb_output .= ' class="' . $args->container_class . '"';
+		}
+		$fb_output .= '>';
+		return $fb_output;
 	}
 }
