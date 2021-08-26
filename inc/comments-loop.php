@@ -31,19 +31,7 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 							<?php echo haste_starter_comment_date( $comment ); ?>
 							</h5>
 						</div>
-						<div class="media-body">
-						<?php haste_starter_footer_comments( $comment ); ?>
-
-							<div class="comment-content">
-								<?php comment_text(); ?>
-							</div><!-- .comment-content -->
-
-							<div class="comment-metadata">
-								<span class="btn btn-outline-primary reply-link">
-									<?php haste_starter_reply_link( $args, $depth ); ?>
-								</span>
-							</div><!-- .comment-metadata -->
-						</div>
+						<?php haste_starter_comments_body( $comment, $args, $depth ); ?>
 					</article><!-- .comment-body -->
 					<?php
 				break;
@@ -51,6 +39,38 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 	}
 }
 
+/**
+ * The body content of comment
+ *
+ * @param mixed $comment
+ * @param mixed $args
+ * @param mixed $depth
+ *
+ * @return [type]
+ */
+function haste_starter_comments_body( $comment, $args, $depth ) {
+	?>
+	<div class="media-body">
+	<?php haste_starter_footer_comments( $comment ); ?>
+
+		<div class="comment-content">
+			<?php comment_text(); ?>
+		</div><!-- .comment-content -->
+
+		<div class="comment-metadata">
+			<span class="btn btn-outline-primary reply-link">
+				<?php haste_starter_reply_link( $args, $depth ); ?>
+			</span>
+		</div><!-- .comment-metadata -->
+	</div>
+	<?php
+}
+
+/**
+ * Display the author name
+ *
+ * @return [type]
+ */
 function haste_starter_comments_author_name() {
 	return sprintf(
 		'<strong><span class="fn">%1$s</span></strong>',
@@ -58,10 +78,24 @@ function haste_starter_comments_author_name() {
 	);
 }
 
+/**
+ * Display avatar of comment
+ *
+ * @param mixed $comment
+ *
+ * @return [type]
+ */
 function haste_starter_avatar_comments( $comment ) {
 	return str_replace( "class='avatar", "class='media-object avatar", get_avatar( $comment, 64 ) );
 }
 
+/**
+ * display meta informations
+ *
+ * @param mixed $comment
+ *
+ * @return [type]
+ */
 function haste_starter_footer_comments( $comment ) {
 	?>
 	<footer class="comment-meta">
