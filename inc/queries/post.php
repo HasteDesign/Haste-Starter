@@ -45,24 +45,39 @@ function haste_starter_related_posts( $display = 'category', $qty = 4, $title = 
 
 			$layout = haste_starter_first_level_related_posts( $thumb, $title );
 
-			while ( $related->have_posts() ) {
-				$related->the_post();
+			$layout .= haste_starter_related_posts_list( $related, $thumb, $qty, $layout );
 
-				$layout .= haste_starter_thumb_related_posts( $thumb, $qty );
-				$layout .= '<span class="text">';
-				$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', esc_url( get_permalink() ), get_the_title() );
-				$layout .= '</span>';
-
-				$layout .= ( $thumb ) ? '</div>' : '</li>';
-			}
-
-			$layout .= ( $thumb ) ? '</div>' : '</ul>';
-			$layout .= '</div>';
+			$layout .= haste_starter_final_level_related_posts( $thumb );
 
 			echo $layout;
 		}
 		wp_reset_postdata();
 	}
+}
+
+
+/**
+ * Return a list of related posts
+ *
+ * @param mixed $related
+ * @param mixed $thumb
+ * @param mixed $qty
+ * @param mixed $layout
+ *
+ * @return [type]
+ */
+function haste_starter_related_posts_list( $related, $thumb, $qty, $layout ) {
+	while ( $related->have_posts() ) {
+		$related->the_post();
+
+		$layout .= haste_starter_thumb_related_posts( $thumb, $qty );
+		$layout .= '<span class="text">';
+		$layout .= sprintf( '<a href="%1$s" title="%2$s">%2$s</a>', esc_url( get_permalink() ), get_the_title() );
+		$layout .= '</span>';
+
+		$layout .= ( $thumb ) ? '</div>' : '</li>';
+	}
+	return $layout;
 }
 
 
@@ -92,6 +107,13 @@ function haste_starter_thumb_related_posts( $thumb, $qty ) {
 		$layout .= '</span>';
 		return $layout;
 	}
+}
+
+function haste_starter_final_level_related_posts( $thumb ) {
+	$layout  = '';
+	$layout .= ( $thumb ) ? '</div>' : '</ul>';
+	$layout .= '</div>';
+	return $layout;
 }
 
 function haste_starter_first_level_related_posts( $thumb, $title ) {
