@@ -23,27 +23,16 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 				<li <?php comment_class( 'media' ); ?> id="li-comment-<?php comment_ID(); ?>">
 					<article id="div-comment-<?php comment_ID(); ?>" class="comment-body comment-author vcard">
 						<div class="media-meta">
-						<?php echo str_replace( "class='avatar", "class='media-object avatar", get_avatar( $comment, 64 ) ); ?>
+						<?php echo haste_starter_avatar_comments( $comment ); ?>
 							<h5 class="media-author">
-						<?php
-						echo sprintf(
-							'<strong><span class="fn">%1$s</span></strong>',
-							get_comment_author_link()
-						);
-						?>
+						<?php echo haste_starter_comments_author_name(); ?>
 							</h5>
 							<h5 class="media-date">
-							<?php
-							echo haste_starter_comment_date( $comment );
-							?>
+							<?php echo haste_starter_comment_date( $comment ); ?>
 							</h5>
 						</div>
 						<div class="media-body">
-							<footer class="comment-meta">
-							<?php edit_comment_link( __( 'Edit comment', 'haste-starter' ), '<span class="edit-link">', ' </span>' ); ?>
-
-								<?php haste_starter_comment_approve( $comment ); ?>
-							</footer><!-- .comment-meta -->
+						<?php haste_starter_footer_comments( $comment ); ?>
 
 							<div class="comment-content">
 								<?php comment_text(); ?>
@@ -51,18 +40,7 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 
 							<div class="comment-metadata">
 								<span class="btn btn-outline-primary reply-link">
-								<?php
-								comment_reply_link(
-									array_merge(
-										$args,
-										array(
-											'reply_text' => __( 'Respond', 'haste-starter' ),
-											'depth'      => $depth,
-											'max_depth'  => $args['max_depth'],
-										)
-									)
-								);
-								?>
+									<?php haste_starter_reply_link( $args, $depth ); ?>
 								</span>
 							</div><!-- .comment-metadata -->
 						</div>
@@ -73,6 +51,39 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 	}
 }
 
+function haste_starter_comments_author_name() {
+	return sprintf(
+		'<strong><span class="fn">%1$s</span></strong>',
+		get_comment_author_link()
+	);
+}
+
+function haste_starter_avatar_comments( $comment ) {
+	return str_replace( "class='avatar", "class='media-object avatar", get_avatar( $comment, 64 ) );
+}
+
+function haste_starter_footer_comments( $comment ) {
+	?>
+	<footer class="comment-meta">
+	<?php edit_comment_link( __( 'Edit comment', 'haste-starter' ), '<span class="edit-link">', ' </span>' ); ?>
+
+		<?php haste_starter_comment_approve( $comment ); ?>
+	</footer><!-- .comment-meta -->
+	<?php
+}
+
+function haste_starter_reply_link( $args, $depth ) {
+	comment_reply_link(
+		array_merge(
+			$args,
+			array(
+				'reply_text' => __( 'Respond', 'haste-starter' ),
+				'depth'      => $depth,
+				'max_depth'  => $args['max_depth'],
+			)
+		)
+	);
+}
 
 function haste_starter_comment_date( $comment ) {
 	return sprintf(
