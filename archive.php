@@ -10,7 +10,7 @@
 get_header(); ?>
 
 	<main id="content" tabindex="-1" role="main">
-	<?php haste_starter_breadcrumbs(); ?>
+		<?php haste_starter_breadcrumbs(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<?php get_template_part( 'template-parts/header', 'title' ); ?>

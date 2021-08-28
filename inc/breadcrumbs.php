@@ -10,52 +10,73 @@
  */
 function haste_starter_breadcrumbs( $homepage = '' ) {
 	$homepage = ! empty( $homepage ) ? $homepage : __( 'Home', 'haste-starter' );
-	if ( ! is_home() && ! is_front_page() || is_paged() ) {
 
-		// First level.
-		breadcrumb_first_level( $homepage );
+	// First level.
+	breadcrumb_first_level( $homepage );
 
-		// Single post type.
-		haste_breadcrumb_post_type_single();
+	// Single
+	haste_breadcrumb_post_type_single();
 
-		breadcrumb_final_level();
-		return;
+	// Page
+	haste_breadcrumb_page();
+
+	// Attachment
+	haste_breadcrumb_attachment();
+
+	// Category archive
+	haste_breadcrumb_category_archive();
+
+	// Tag archive
+	if ( is_tag() ) {
+		printf( __( 'Tag: %1$s', 'haste-starter' ), haste_active_li( single_tag_title( '', false ), false ) );
 	}
-	// Check if Woocommerce Shop
-	haste_breadcrumb_wc_archive();
 
-		// Search page.
+	// Search
 	if ( is_search() ) {
-		printf( __( '%1$sSearch result for: &quot;%2$s&quot;%3$s', 'haste-starter' ), haste_active_li( get_search_query() ) );
+		printf( __( 'Search result for: &quot;%1$s&quot;', 'haste-starter' ), haste_active_li( get_search_query(), false ) );
 	}
+
 	// Author archive.
 	haste_breadcrumb_author_archive();
 
 	// Day archive.
 	haste_breadcrumb_day_archive();
 
-	// Archives per month.
+	// Month archive
 	haste_breadcrumb_month_archive();
 
-		// Archives per year.
+	// Archives per year.
 	if ( is_year() ) {
 		haste_active_li( get_the_time( 'Y' ) );
 	}
+
 	// Archive fallback for custom taxonomies.
 	haste_breadcrumb_archive();
 
 	// 404 page.
 	haste_breadcrumb_404();
 
+	// Woocommerce
+	haste_breadcrumb_wc_archive();
+
+	// Final level
 	breadcrumb_final_level();
 }
-// 404 page.
+
+/**
+ * Return breadcrumb 404 item
+ *
+ * @return string
+ */
 function haste_breadcrumb_404() {
 	return haste_active_li( __( '404 Error', 'haste-starter' ) );
 }
 
+/**
+ * Return breadcrumb pagination item
+ */
 function haste_breadcrumb_pagination() {
-			// Gets pagination.
+	// Gets pagination.
 	if ( get_query_var( 'paged' ) ) {
 		echo ' (' . sprintf( __( 'Page %s', 'haste-starter' ), get_query_var( 'paged' ) ) . ')';
 	}
@@ -63,31 +84,13 @@ function haste_breadcrumb_pagination() {
 
 /**
  * For breadcrumb when is a post type single
- *
- * @return [type]
  */
 function haste_breadcrumb_post_type_single() {
 	if ( is_single() && ! is_attachment() ) {
-
 		haste_breadcrumb_post_single();
-
 		haste_active_li( get_the_title() );
-		// Single attachment.
 		return;
 	}
-	haste_breadcrumb_attachment();
-
-	// Page without parents.
-	haste_breadcrumb_page();
-
-	// category archives
-	haste_breadcrumb_category_archive();
-
-		// tag archives
-	if ( is_tag() ) {
-		printf( __( '%1$sTag: %2$s%3$s', 'haste-starter' ), haste_active_li( single_tag_title( '', false ) ) );
-	}
-
 }
 
 
@@ -109,10 +112,10 @@ function breadcrumb_first_level( $homepage ) {
  * @return [type]
  */
 function breadcrumb_final_level() {
-			// Gets pagination.
-			haste_breadcrumb_pagination();
+	// Gets pagination.
+	haste_breadcrumb_pagination();
 
-			echo '</ol>';
+	echo '</ol>';
 }
 
 /**
@@ -126,15 +129,6 @@ function haste_get_breadcrumb_wc( $post ) {
 			$shop_page = get_post( wc_get_page_id( 'shop' ) );
 			echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
 		}
-	}
-}
-
-function haste_create_breadcrumb_parent( $term_or_cat, $parent ) {
-	if ( $term_or_cat ) {
-		if ( $term_or_cat->parent ) {
-			echo '<li><a href="' . get_term_link( $parent ) . '">' . $parent->name . '</a></li> ';
-		}
-		echo '<li><a href="' . get_term_link( $term_or_cat ) . '">' . $term_or_cat->name . '</a></li> ';
 	}
 }
 
@@ -159,11 +153,20 @@ function haste_breadcrumb_attachment() {
 
 }
 
-function haste_active_li( $content ) {
+/**
+ * Render li item if active
+ *
+ * @param [type] $content
+ */
+function haste_active_li( $content, $echo = true ) {
 	$current_before = '<li class="active">';
 	$current_after  = '</li>';
 
-	echo $current_before . $content . $current_after;
+	if ( $echo ) {
+		echo $current_before . $content . $current_after;
+	} else {
+		return $current_before . $content . $current_after;
+	}
 }
 
 /**
@@ -173,46 +176,57 @@ function haste_active_li( $content ) {
  */
 function haste_breadcrumb_page() {
 	global $post;
-	if ( is_page() && ! $post->post_parent ) {
-		haste_active_li( get_the_title() );
-		return;
-	}
+
+	if ( is_page() ) {
+
+		if ( ! $post->post_parent ) {
+			haste_active_li( get_the_title() );
+			return;
+		}
+
 		// Page with parents.
 		$parent_id   = $post->post_parent;
 		$breadcrumbs = array();
 
-	while ( $parent_id ) {
-		$page = get_post( $parent_id );
+		while ( $parent_id ) {
+			$page = get_post( $parent_id );
 
-		$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
-		$parent_id     = $page->post_parent;
-	}
+			$breadcrumbs[] = '<li><a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a></li>';
+			$parent_id     = $page->post_parent;
+		}
 
 		$breadcrumbs = array_reverse( $breadcrumbs );
 
-	foreach ( $breadcrumbs as $crumb ) {
-		echo $crumb . ' ';
-	}
+		foreach ( $breadcrumbs as $crumb ) {
+			echo $crumb . ' ';
+		}
+
 		haste_active_li( get_the_title() );
+	}
 }
 
+/**
+ * Undocumented function
+ */
 function haste_breadcrumb_category_archive() {
 	global $wp_query;
-	$category_object  = $wp_query->get_queried_object();
-	$category_id      = $category_object->term_id;
-	$current_category = get_category( $category_id );
-	$parent_category  = get_category( $current_category->parent );
 
-	// Displays parent category.
-	if ( 0 !== $current_category->parent ) {
-		$parents = get_category_parents( $parent_category, true, false );
-		$parents = str_replace( '<a', '<li><a', $parents );
-		$parents = str_replace( '</a>', '</a></li>', $parents );
-		echo $parents;
+	if ( is_category() ) {
+		$category_object  = $wp_query->get_queried_object();
+		$category_id      = $category_object->term_id;
+		$current_category = get_category( $category_id );
+		$parent_category  = get_category( $current_category->parent );
+
+		// Displays parent category.
+		if ( 0 !== $current_category->parent ) {
+			$parents = get_category_parents( $parent_category, true, false );
+			$parents = str_replace( '<a', '<li><a', $parents );
+			$parents = str_replace( '</a>', '</a></li>', $parents );
+			echo $parents;
+		}
+
+		haste_active_li( __( 'Category: ', 'haste-starter' ) . single_cat_title( '', false ) );
 	}
-
-	haste_active_li( __( 'Category: ', 'haste-starter' ) . single_cat_title( '', false ) );
-
 }
 
 /**
@@ -221,7 +235,7 @@ function haste_breadcrumb_category_archive() {
  * @return html
  */
 function haste_breadcrumb_wc_archive() {
-		// Check if Woocommerce Shop
+	// Check if Woocommerce Shop
 	if ( is_woocommerce_activated() && is_shop() ) {
 		$shop_page_id = wc_get_page_id( 'shop' );
 		haste_active_li( get_the_title( $shop_page_id ) );
@@ -233,55 +247,67 @@ function haste_breadcrumb_wc_archive() {
 
 function haste_breadcrumb_author_archive() {
 	global $author;
-	$userdata = get_userdata( $author );
 
-	haste_active_li( __( 'Posted by', 'haste-starter' ) . ' ' . $userdata->display_name );
+	if ( is_author() ) {
+		$userdata = get_userdata( $author );
+		haste_active_li( __( 'Posted by', 'haste-starter' ) . ' ' . $userdata->display_name );
+	}
 }
 
+/**
+ * Render breadcrumb for day archive
+ */
 function haste_breadcrumb_day_archive() {
-	echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
-
-	echo '<li><a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a></li>';
-
-	haste_active_li( get_the_time( 'd' ) );
-
+	if ( is_day() ) {
+		echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
+		echo '<li><a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a></li>';
+		haste_active_li( get_the_time( 'd' ) );
+	}
 }
 
+/**
+ * Render breadcrumb for month archive
+ */
 function haste_breadcrumb_month_archive() {
-	echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
-
-	haste_active_li( get_the_time( 'F' ) );
-
+	if ( is_month() ) {
+		echo '<li><a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a></li>';
+		haste_active_li( get_the_time( 'F' ) );
+	}
 }
 
+/**
+ * Breadcrumb for generic archiver or custom taxonomies
+ */
 function haste_breadcrumb_archive() {
 	global $wp_query;
-	$current_object = $wp_query->get_queried_object();
-	$taxonomy       = get_taxonomy( $current_object->taxonomy );
-	$term_name      = $current_object->name;
 
-	// Displays the post type that the taxonomy belongs.
-	if ( ! empty( $taxonomy->object_type ) ) {
-		// Get correct Woocommerce Post Type crumb
-		if ( is_woocommerce() ) {
-			$shop_page = get_post( wc_get_page_id( 'shop' ) );
-			echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
-		} else {
-			$_post_type = array_shift( $taxonomy->object_type );
-			$post_type  = get_post_type_object( $_post_type );
-			echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
+	if ( ! is_category() && ! is_tag() && ! is_author() && ! is_search() && ! is_home() && is_archive() ) {
+		$current_object = $wp_query->get_queried_object();
+		$taxonomy       = get_taxonomy( $current_object->taxonomy );
+		$term_name      = $current_object->name;
+
+		// Displays the post type that the taxonomy belongs.
+		if ( ! empty( $taxonomy->object_type ) ) {
+			// Get correct Woocommerce Post Type crumb
+			if ( is_woocommerce() ) {
+				$shop_page = get_post( wc_get_page_id( 'shop' ) );
+				echo '<li><a href="' . esc_url( get_permalink( $shop_page ) ) . '">' . get_the_title( $shop_page ) . '</a></li>';
+			} else {
+				$_post_type = array_shift( $taxonomy->object_type );
+				$post_type  = get_post_type_object( $_post_type );
+				echo '<li><a href="' . get_post_type_archive_link( $post_type->name ) . '">' . $post_type->label . '</a></li> ';
+			}
 		}
+
+		// Displays parent term.
+		if ( 0 !== $current_object->parent ) {
+			$parent_term = get_term( $current_object->parent, $current_object->taxonomy );
+
+			echo '<li><a href="' . get_term_link( $parent_term ) . '">' . $parent_term->name . '</a></li>';
+		}
+
+		haste_active_li( $taxonomy->label . ': ' . $term_name );
 	}
-
-	// Displays parent term.
-	if ( 0 !== $current_object->parent ) {
-		$parent_term = get_term( $current_object->parent, $current_object->taxonomy );
-
-		echo '<li><a href="' . get_term_link( $parent_term ) . '">' . $parent_term->name . '</a></li>';
-	}
-
-	haste_active_li( $taxonomy->label . ': ' . $term_name );
-
 }
 
 function haste_breadcrumb_cpt_single() {
@@ -311,22 +337,42 @@ function haste_breadcrumb_cpt_single() {
 	}
 }
 
-
+/**
+ * Render the single breadcrumb.
+ */
 function haste_breadcrumb_single() {
 	$category = get_the_category();
 	$category = $category[0];
-	// Gets parent post terms.
-	$parent_cat = get_term( $category->parent, 'category' );
-	// Gets top term
-	$cat_tree = get_category_parents( $category, false, ':' );
-	$top_cat  = explode( ':', $cat_tree );
-	$top_cat  = $top_cat[0];
 
-	haste_create_breadcrumb_parent( $category, $top_cat );
+	if ( 1 === $category->parent ) {
+		// Gets parent post terms.
+		$parent_cat = get_term( $category->parent, 'category' );
+		// Gets top term
+		$cat_tree = get_category_parents( $category, false, ':' );
+		$top_cat  = explode( ':', $cat_tree );
+		$top_cat  = $top_cat[0];
+
+		haste_create_breadcrumb_parent( $category, $parent_cat );
+		return;
+	}
 
 	echo '<li><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></li>';
 }
 
+/**
+ * Create a link to parent element
+ *
+ * @param [type] $term_or_cat
+ * @param [type] $parent
+ */
+function haste_create_breadcrumb_parent( $term_or_cat, $parent ) {
+	if ( $term_or_cat ) {
+		if ( $term_or_cat->parent ) {
+			echo '<li><a href="' . get_term_link( $parent ) . '">' . $parent->name . '</a></li> ';
+		}
+		echo '<li><a href="' . get_term_link( $term_or_cat ) . '">' . $term_or_cat->name . '</a></li> ';
+	}
+}
 
 /**
  * Return 'haste_breadcrumb_single' if post type is post otherwise return 'haste_breadcrumb_cpt_single'
