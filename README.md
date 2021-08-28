@@ -1,8 +1,10 @@
-<p align="center"><img alt="Haste Starter, A WordPress base theme for developers" src="https://github.com/HasteDesign/Haste-Starter/blob/main/screenshot.png" width="600" height="450"></p>
+# Haste Starter
 
 [![GPL](https://img.shields.io/badge/License-GPL-blue.svg?logo=gnu&logoColor=FAFAFA)]()
 [![PluginTerritory](https://img.shields.io/badge/Plugin%20Territory-Free-blue.svg?logo=wordpress&logoColor=FAFAFA)]()
 <a href="https://codeclimate.com/github/HasteDesign/Haste-Starter/maintainability"><img src="https://api.codeclimate.com/v1/badges/b33b74c0718af0cd6041/maintainability" /></a>
+
+<p align="center"><img alt="Haste Starter, A WordPress base theme for developers" src="https://github.com/HasteDesign/Haste-Starter/blob/main/screenshot.png" width="600" height="450"></p>
 
 Haste Starter is a base to be used to create custom WordPress themes. It's a fork from brazilian community unmantained [Odin Framework](https://wpod.in).
 
