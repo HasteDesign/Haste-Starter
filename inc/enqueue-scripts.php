@@ -8,11 +8,21 @@
 function haste_starter_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
 
-	// Loads main stylesheet
-	wp_enqueue_style( 'haste-starter-main-style', get_stylesheet_uri() );
+	// General scripts.
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || 'development' === wp_get_environment_type() ) {
+		// Loads main stylesheet file.
+		wp_enqueue_style( 'haste-starter-main-style', $template_url . '/assets/dist/css/main.css' );
 
-	// Loads main script
-	wp_enqueue_script( 'haste-starter-main-script', $template_url . '/assets/dist/js/main.js', array(), null, true );
+		// Loads main script file.
+		wp_enqueue_script( 'haste-starter-main-script', $template_url . '/assets/dist/js/main.js', array(), null, true );
+
+	} else {
+		// Loads main stylesheet file compressed.
+		wp_enqueue_style( 'haste-starter-main-style', get_stylesheet_uri() );
+
+		// Loads main script file compressed.
+		wp_enqueue_script( 'haste-starter-main-script', $template_url . '/assets/dist/js/main.min.js', array(), null, true );
+	}
 
 	// Load Thread comments WordPress script.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

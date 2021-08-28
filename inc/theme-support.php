@@ -1,80 +1,94 @@
 <?php
+/**
+ * Register theme supports.
+ *
+ * @package  Haste Starter
+ * @category Supports
+ * @author   Haste
+ * @version  1.0.0
+ *
+ * @link https://codex.wordpress.org/Function_Reference/add_theme_support
+ */
 
-if ( ! function_exists( 'haste_starter_theme_support' ) ) {
+if ( ! function_exists( 'haste_starter_load_textdomain' ) ) {
 	/**
 	 * Setup theme supported features.
-	 *
-	 * @link https://codex.wordpress.org/Function_Reference/add_theme_support
 	 */
-	function haste_starter_theme_support() {
+	function haste_starter_load_textdomain() {
 
 		// Add multiple languages support.
 		load_theme_textdomain( 'haste-starter', get_template_directory() . '/languages' );
-
-		// All related a styles support
-		haste_starter_theme_style();
-
-		// All supports related a post type
-		haste_starter_theme_post_type();
-
-		// All supports related a custom configuration
-		haste_starter_theme_custom();
-
-		// All supports related to the project itself
-		haste_starter_theme_project();
-	} /* end theme support */
+	}
 }
+add_action( 'after_setup_theme', 'haste_starter_load_textdomain' );
 
-add_action( 'after_setup_theme', 'haste_starter_theme_support' );
-
-
-/**
- * All supports related to the project itself
- *
- * @return [type]
- */
-function haste_starter_theme_project() {
-
-	// Add infinite scroll support.
-	add_theme_support(
-		'infinite-scroll',
-		array(
-			'type'           => 'scroll',
-			'footer_widgets' => false,
-			'container'      => 'content',
-			'wrapper'        => false,
-			'render'         => false,
-			'posts_per_page' => get_option( 'posts_per_page' ),
-		)
-	);
-
+if ( ! function_exists( 'haste_starter_support_style' ) ) {
 	/**
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
+	 * Add support to editor style.
 	 */
-	add_theme_support( 'title-tag' );
+	function haste_starter_support_style() {
+		add_theme_support( 'editor-styles' );
 
-	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
-	add_theme_support(
-		'html5',
-		array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		)
-	);
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || 'development' === wp_get_environment_type() ) {
+			add_editor_style( 'assets/dist/css/editor.css' );
+		} else {
+			add_editor_style( 'assets/dist/css/editor.min.css' );
+		}
+	}
 }
+add_action( 'after_setup_theme', 'haste_starter_support_style' );
 
-/**
- * All supports related a custom configuration
- *
- * @return [type]
- */
-function haste_starter_theme_custom() {
+if ( ! function_exists( 'haste_starter_support_posts' ) ) {
+	/**
+	 * All supports related a post type
+	 *
+	 * @return [type]
+	 */
+	function haste_starter_support_posts() {
+		// Add post_thumbnails suport.
+		add_theme_support( 'post-thumbnails' );
+
+		// Add feed link support.
+		add_theme_support( 'automatic-feed-links' );
+	}
+}
+add_action( 'after_setup_theme', 'haste_starter_support_posts' );
+
+if ( ! function_exists( 'haste_starter_support_project' ) ) {
+	/**
+	 * All supports related to the project itself
+	 *
+	 * @return [type]
+	 */
+	function haste_starter_support_project() {
+		/**
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
+
+		// Switch default core markup for search form, comment form, and comments to output valid HTML5.
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			)
+		);
+	}
+}
+add_action( 'after_setup_theme', 'haste_starter_support_project' );
+
+if ( ! function_exists( 'haste_starter_support_custom' ) ) {
+	/**
+	 * All supports related a custom configuration
+	 */
+	function haste_starter_support_custom() {
 		// Add custom logo support.
 		add_theme_support(
 			'custom-logo',
@@ -95,45 +109,9 @@ function haste_starter_theme_custom() {
 				'default-image' => '',
 			)
 		);
+	}
 }
-
-/**
- * All supports related a post type
- *
- * @return [type]
- */
-function haste_starter_theme_post_type() {
-	// Add support for Post Formats.
-
-	// add_theme_support( 'post-formats', array(
-	// 'aside',
-	// 'gallery',
-	// 'link',
-	// 'image',
-	// 'quote',
-	// 'status',
-	// 'video',
-	// 'audio',
-	// 'chat',
-	// ) );
-
-	// Add post_thumbnails suport.
-	add_theme_support( 'post-thumbnails' );
-
-	// Add feed link support.
-	add_theme_support( 'automatic-feed-links' );
-
-	// Add the excerpt on pages.
-	// add_post_type_support( 'page', 'excerpt' );
-}
-
-/**
- * Support for styles
- */
-function haste_starter_theme_style() {
-	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/css/editor-style.css' );
-}
+add_action( 'after_setup_theme', 'haste_starter_support_custom' );
 
 if ( ! function_exists( 'haste_starter_content_width' ) ) {
 	/**
@@ -147,7 +125,6 @@ if ( ! function_exists( 'haste_starter_content_width' ) ) {
 		$GLOBALS['content_width'] = apply_filters( 'haste_starter_content_width', 860 );
 	}
 }
-
 add_action( 'after_setup_theme', 'haste_starter_content_width', 0 );
 
 if ( ! function_exists( 'haste_starter_gutenberg_support' ) ) {
@@ -159,7 +136,6 @@ if ( ! function_exists( 'haste_starter_gutenberg_support' ) ) {
 	 * @link https://codex.wordpress.org/Function_Reference/add_theme_support
 	 */
 	function haste_starter_gutenberg_support() {
-
 		// Most of the supports have been moved to the theme.json file
 
 		// Wide alignment
@@ -179,5 +155,4 @@ if ( ! function_exists( 'haste_starter_gutenberg_support' ) ) {
 		add_theme_support( 'responsive-embeds' );
 	}
 }
-
 add_action( 'after_setup_theme', 'haste_starter_gutenberg_support' );

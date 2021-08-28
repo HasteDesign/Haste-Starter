@@ -35,6 +35,14 @@ function haste_starter_pagination( $mid = 2, $end = 1, $show = false, $query = n
 	}
 }
 
+/**
+ * Return pagination links arguments.
+ *
+ * @param bool $show
+ * @param int $total_pages
+ * @param int $end
+ * @param int $mid
+ */
 function haste_paginate_links_filters_args( $show, $total_pages, $end, $mid ) {
 	$big = 999999999;
 

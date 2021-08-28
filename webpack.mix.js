@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+var mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -27,11 +27,10 @@ if ( mix.inProduction() ) {
 	});
 }
 
-mix.sourceMaps()
-   .js('assets/src/js/main.js', jsMain )
-   .sass('assets/src/scss/main.scss', cssMain, { sourceMap: true } )
-   .sass('assets/src/scss/editor-style.scss', cssEditor, { sourceMap: true } )
-   .sass('assets/src/scss/admin-style.scss', cssAdmin, { sourceMap: true } );
+mix.js('assets/src/js/main.js', jsMain )
+   .sass('assets/src/scss/main.scss', cssMain )
+   .sass('assets/src/scss/editor.scss', cssEditor)
+   .sass('assets/src/scss/admin.scss', cssAdmin );
 
 
 mix.options({

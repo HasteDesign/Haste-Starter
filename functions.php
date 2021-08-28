@@ -13,13 +13,6 @@
  */
 
 /**
- * Vendors.
- */
-if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
-	require_once get_template_directory() . '/vendor/autoload.php';
-}
-
-/**
  * Classes.
  */
 require_once get_template_directory() . '/inc/classes/class-bootstrap-nav-walker.php';
@@ -60,23 +53,17 @@ require_once get_template_directory() . '/inc/queries/post.php';
  * Helpers.
  */
 
-// Allows you to easily require or recommend plugins with TGM Plugin Activation.
-// require_once get_template_directory() . '/inc/required-plugins.php';
-
 // Custom templates tags.
 require_once get_template_directory() . '/inc/template-tags.php';
 
 // Custom comments loop.
 require_once get_template_directory() . '/inc/comments-loop.php';
 
-// Embeds
-require_once get_template_directory() . '/inc/embeds.php';
-
-// Replace 'older/newer' post links with numbered navigation.
+// Pagination
 require_once get_template_directory() . '/inc/pagination.php';
 
-// WooCommerce compatibility files.
-require_once get_template_directory() . '/inc/woocommerce.php';
-
-// Breadcrumbs function - no need to rely on plugins.
+// Breadcrumbs
 require_once get_template_directory() . '/inc/breadcrumbs.php';
+
+// WooCommerce
+require_once get_template_directory() . '/inc/woocommerce.php';
