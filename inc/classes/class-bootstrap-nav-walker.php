@@ -2,7 +2,7 @@
 /**
  * Haste_Starter_Bootstrap_Nav_Walker class.
  *
- * A custom WordPress nav walker to implement the Bootstrap 3 dropdown navigation using the WordPress built in menu manager.
+ * A custom WordPress nav walker to implement the Bootstrap dropdown navigation using the WordPress built in menu manager.
  * Inspired by the class twitter_bootstrap_nav_walker <https://github.com/twittem/wp-bootstrap-navwalker>,
  * created by Edward McIntyre and with the licence GPLv2.
  *
@@ -68,11 +68,24 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 
 	}
 
+	/**
+	 * Define item ID.
+	 *
+	 * @param object $item
+	 * @param object $args
+	 */
 	protected function item_menu_id( $item, $args ) {
 		$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
 		return $id ? ' id="' . esc_attr( $id ) . '"' : '';
 	}
 
+	/**
+	 * Define item attributes
+	 *
+	 * @param object $item
+	 * @param object $args
+	 * @param int $depth
+	 */
 	protected function item_menu_atts( $item, $args, $depth ) {
 		$atts = array(
 			'title'  => ! empty( $item->title ) ? strip_tags( $item->title ) : '',
@@ -91,6 +104,13 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 		return $atts;
 	}
 
+	/**
+	 * Define item classes
+	 *
+	 * @param object $item
+	 * @param object $args
+	 * @param int $depth
+	 */
 	protected function item_menu_classes( $item, $args, $depth ) {
 		$classes   = empty( $item->classes ) ? array() : (array) $item->classes;
 		$classes[] = 'nav-item menu-item-' . $item->ID;
@@ -111,13 +131,19 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 
 		return $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 	}
-				/*
-			 * Glyphicons
-			 * ===========
-			 * Since the the menu item is NOT a Divider or Header we check the see
-			 * if there is a value in the attr_title property. If the attr_title
-			 * property is NOT null we apply it as the class name for the glyphicon.
-			 */
+
+	/**
+	 * Glyphicons
+	 *
+	 * Since the the menu item is NOT a divider or header we check the see
+	 * if there is a value in the attr_title property. If the attr_title
+	 * property is NOT null we apply it as the class name for the glyphicon.
+	 *
+	 * @param object $item
+	 * @param string $item_output
+	 * @param string $attributes
+	 * @param object $args
+	 */
 	protected function item_menu_glyphicons( $item, $item_output, $attributes, $args ) {
 		if ( ! empty( $item->attr_title ) ) {
 			$item_output .= '<a' . $attributes . '><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
@@ -130,9 +156,8 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 		$item_output .= $args->after;
 		return $item_output;
 	}
+
 	/**
-	 * Check if the item is divider, header or disabled
-	 *
 	 * Dividers, Headers or Disabled
 	 * =============================
 	 * Determine whether the item is a Divider, Header, Disabled or regular
@@ -140,8 +165,8 @@ class Bootstrap_Nav_Walker extends Walker_Nav_Menu {
 	 * comparison that is not case sensitive. The strcasecmp() function returns
 	 * a 0 if the strings are equal.
 	 *
-	 * @param mixed $item
-	 * @param mixed $depth
+	 * @param object $item
+	 * @param int $depth
 	 * @param mixed $indent
 	 *
 	 * @return HTML
