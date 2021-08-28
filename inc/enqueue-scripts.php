@@ -3,7 +3,7 @@
 /**
  * Load scripts and styles.
  *
- * @since 2.2.0
+ * @since 1.0.0
  */
 function haste_starter_enqueue_scripts() {
 	$template_url = get_template_directory_uri();
@@ -35,7 +35,7 @@ add_action( 'wp_enqueue_scripts', 'haste_starter_enqueue_scripts', 1 );
 /**
  * Haste Starter custom stylesheet URI.
  *
- * @since  2.2.0
+ * @since 1.0.0
  *
  * @param  string $uri Default URI.
  * @param  string $dir Stylesheet directory URI.

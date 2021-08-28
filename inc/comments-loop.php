@@ -4,7 +4,7 @@ if ( ! function_exists( 'haste_starter_comment_loop' ) ) {
 	/**
 	 * Custom comments loop.
 	 *
-	 * @since 2.2.0
+	 * @since 1.0.0
 	 *
 	 * @param  object $comment Comment object.
 	 * @param  array  $args    Comment arguments.
@@ -144,7 +144,7 @@ function haste_starter_comment_trackback() {
 function haste_starter_comment_approve( $comment ) {
 	if ( $comment->comment_aprove ) {
 		?>
-		<p class="comment-awaiting-moderation alert alert-info"><?php _e( 'Your comment is awaiting moderation.', 'haste-starter' ); ?></p> 
+		<p class="comment-awaiting-moderation alert alert-info"><?php _e( 'Your comment is awaiting moderation.', 'haste-starter' ); ?></p>
 		<?php
 	}
 }

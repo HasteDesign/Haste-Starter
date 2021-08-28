@@ -2,7 +2,7 @@
 /**
  * Register widget areas.
  *
- * @since 2.2.0
+ * @since 1.0.0
  */
 function haste_starter_widgets_init() {
 	register_sidebar(

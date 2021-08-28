@@ -36,7 +36,7 @@ if ( ! function_exists( 'haste_starter_after_content' ) ) {
 /**
  * Default loop columns on product archives
  * @return integer products per row
- * @since  2.2.6
+ * @since 1.0.0
  */
 function haste_starter_loop_columns() {
 	return apply_filters( 'haste_starter_loop_columns', 4 ); // 4 products per row
@@ -45,7 +45,7 @@ function haste_starter_loop_columns() {
 /**
  * Product gallery thumnail columns
  * @return integer number of columns
- * @since  2.2.6
+ * @since 1.0.0
  */
 function haste_starter_thumbnail_columns() {
 	return intval( apply_filters( 'haste_starter_product_thumbnail_columns', 4 ) );
@@ -54,7 +54,7 @@ function haste_starter_thumbnail_columns() {
 /**
  * Products per page
  * @return integer number of products
- * @since  2.2.6
+ * @since 1.0.0
  */
 function haste_starter_products_per_page() {
 	return intval( apply_filters( 'haste_starter_products_per_page', 12 ) );

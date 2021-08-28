@@ -11,7 +11,7 @@ if ( ! function_exists( 'haste_starter_cart_link' ) ) {
 	 * Cart Link
 	 * Displayed a link to the cart including the number of items present and the cart total
 	 *
-	 * @since  2.2.6
+	 * @since 1.0.0
 	 *
 	 * @param  array $settings Settings
 	 *
@@ -38,7 +38,7 @@ if ( ! function_exists( 'haste_starter_product_search' ) ) {
 	/**
 	 * Display Product Search
 	 *
-	 * @since 2.2.6
+	 * @since 1.0.0
 	 *
 	 * @uses  is_woocommerce_activated() check if WooCommerce is activated
 	 */
@@ -58,7 +58,7 @@ if ( ! function_exists( 'haste_starter_header_cart' ) ) {
 	/**
 	 * Display Header Cart
 	 *
-	 * @since 2.2.6
+	 * @since 1.0.0
 	 *
 	 * @uses  is_woocommerce_activated() check if WooCommerce is activated
 	 */

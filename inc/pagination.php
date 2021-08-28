@@ -2,7 +2,7 @@
 /**
  * Pagination.
  *
- * @since  2.2.0
+ * @since 1.0.0
  *
  * @global array $wp_query   Current WP Query.
  * @global array $wp_rewrite URL rewrite rules.

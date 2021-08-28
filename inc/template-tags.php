@@ -3,7 +3,7 @@
  * Custom template tags for Haste Starter.
  *
  * @package HasteStarter
- * @since 2.2.0
+ * @since 1.0.0
  */
 
 if ( ! function_exists( 'haste_starter_classes_page_full' ) ) {
@@ -11,7 +11,7 @@ if ( ! function_exists( 'haste_starter_classes_page_full' ) ) {
 	/**
 	 * Classes page full.
 	 *
-	 * @since 2.2.0
+	 * @since 1.0.0
 	 *
 	 * @return string Classes name.
 	 */
@@ -25,7 +25,7 @@ if ( ! function_exists( 'haste_starter_classes_page_sidebar' ) ) {
 	/**
 	 * Classes page with sidebar.
 	 *
-	 * @since 2.2.0
+	 * @since 1.0.0
 	 *
 	 * @return string Classes name.
 	 */
@@ -39,7 +39,7 @@ if ( ! function_exists( 'haste_starter_classes_page_sidebar_aside' ) ) {
 	/**
 	 * Classes aside of page with sidebar.
 	 *
-	 * @since 2.2.0
+	 * @since 1.0.0
 	 *
 	 * @return string Classes name.
 	 */
@@ -108,7 +108,7 @@ if ( ! function_exists( 'haste_starter_posted_on' ) ) {
 	/**
 	 * Print HTML with meta information for the current post-date/time and author.
 	 *
-	 * @since 2.2.0
+	 * @since 1.0.0
 	 */
 	function haste_starter_posted_on() {
 		if ( is_sticky() && is_home() && ! is_paged() ) {
@@ -133,7 +133,7 @@ if ( ! function_exists( 'haste_starter_paging_nav' ) ) {
 	/**
 	 * Print HTML with meta information for the current post-date/time and author.
 	 *
-	 * @since 2.2.0
+	 * @since 1.0.0
 	 */
 	function haste_starter_paging_nav() {
 		$mid  = 2;     // Total of items that will show along with the current page.

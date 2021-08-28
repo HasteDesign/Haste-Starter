@@ -2,7 +2,10 @@
 /**
  * General queries used to integrate this theme with WooCommerce.
  *
- * @package HasteStarter
+ * @package  Haste Starter
+ * @category Queries
+ * @author   Haste
+ * @version  1.0.0
  */
 
 /**
@@ -14,7 +17,7 @@
  * To show related by tags:
  * Add in single.php <?php haste_starter_related_posts( 'tag' ); ?>
  *
- * @since  2.2.0
+ * @since  1.0.0
  *
  * @global array $post         WP global post.
  *
@@ -23,8 +26,6 @@
  * @param  string $title        Set the widget title.
  * @param  bool   $thumb        Enable or disable displaying images (default true).
  * @param  string $post_type    Post type (default post).
- *
- * @return string              Related Posts.
  */
 function haste_starter_related_posts( $display = 'category', $qty = 4, $title = '', $thumb = true, $post_type = 'post' ) {
 	global $post;
@@ -109,15 +110,13 @@ function haste_starter_thumb_related_posts( $thumb, $qty ) {
 	}
 }
 
-function haste_starter_final_level_related_posts( $thumb ) {
-	$layout  = '';
-	$layout .= ( $thumb ) ? '</div>' : '</ul>';
-	$layout .= '</div>';
-	return $layout;
-}
-
+/**
+ * Generates the first level of related posts.
+ *
+ * @param [type] $thumb
+ * @param string $title
+ */
 function haste_starter_first_level_related_posts( $thumb, $title ) {
-
 	$layout  = '<div id="related-post">';
 	$layout .= '<h3>' . esc_attr( $title ) . '</h3>';
 	$layout .= ( $thumb ) ? '<div class="row">' : '<ul>';
@@ -125,7 +124,19 @@ function haste_starter_first_level_related_posts( $thumb, $title ) {
 }
 
 /**
- * args for display tag or category
+ * Generates the final level of releated posts.
+ *
+ * @param [type] $thumb
+ */
+function haste_starter_final_level_related_posts( $thumb ) {
+	$layout  = '';
+	$layout .= ( $thumb ) ? '</div>' : '</ul>';
+	$layout .= '</div>';
+	return $layout;
+}
+
+/**
+ * Args for display tag or category
  *
  * @param mixed $display
  * @param mixed $post

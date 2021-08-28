@@ -2,7 +2,7 @@
 /**
  * Register nav menus.
  *
- * @since 2.2.0
+ * @since 1.0.0
  */
 register_nav_menus(
 	array(
