@@ -136,22 +136,10 @@ if ( ! function_exists( 'haste_starter_gutenberg_support' ) ) {
 	 * @link https://codex.wordpress.org/Function_Reference/add_theme_support
 	 */
 	function haste_starter_gutenberg_support() {
-		// Most of the supports have been moved to the theme.json file
-
-		// Wide alignment
-		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
-		// add_theme_support( 'align-wide' );
-
-		// Editor styles
-		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#dark-backgrounds
-		// add_theme_support( 'editor-styles' );
-		// add_theme_support( 'dark-editor-style' );
-
-		// WP block styles
-		// add_theme_support( 'wp-block-styles' );
-
-		// Responsive embeds
-		// https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
+		/**
+		 * Responsive embeds
+		 * https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
+		 */
 		add_theme_support( 'responsive-embeds' );
 	}
 }
