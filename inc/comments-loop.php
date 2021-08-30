@@ -106,6 +106,13 @@ function haste_starter_footer_comments( $comment ) {
 	<?php
 }
 
+/**
+ *Create a reply link
+ * @param mixed $args
+ * @param mixed $depth
+ * 
+ * @return [type]
+ */
 function haste_starter_reply_link( $args, $depth ) {
 	comment_reply_link(
 		array_merge(

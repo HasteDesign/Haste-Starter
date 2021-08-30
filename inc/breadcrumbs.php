@@ -206,7 +206,13 @@ function haste_breadcrumb_page() {
 }
 
 /**
+<<<<<<< HEAD
+ * Create breadcrumb li when is category archive
+ *
+ * @return [type]
+=======
  * Undocumented function
+>>>>>>> f98eeaf3bc8983fbbadcbf977ab9a8429b176a31
  */
 function haste_breadcrumb_category_archive() {
 	global $wp_query;
@@ -245,6 +251,11 @@ function haste_breadcrumb_wc_archive() {
 
 }
 
+/**
+ * Get the author of archive
+ *
+ * @return [type]
+ */
 function haste_breadcrumb_author_archive() {
 	global $author;
 
@@ -310,6 +321,11 @@ function haste_breadcrumb_archive() {
 	}
 }
 
+/**
+ * Create the li when CPT is single
+ *
+ * @return [type]
+ */
 function haste_breadcrumb_cpt_single() {
 	global $post;
 	$taxonomies = get_object_taxonomies( $post->post_type );
