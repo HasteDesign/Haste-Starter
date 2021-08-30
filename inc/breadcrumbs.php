@@ -206,13 +206,9 @@ function haste_breadcrumb_page() {
 }
 
 /**
-<<<<<<< HEAD
  * Create breadcrumb li when is category archive
  *
  * @return [type]
-=======
- * Undocumented function
->>>>>>> f98eeaf3bc8983fbbadcbf977ab9a8429b176a31
  */
 function haste_breadcrumb_category_archive() {
 	global $wp_query;
