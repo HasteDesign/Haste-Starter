@@ -30,12 +30,9 @@
   "devDependencies": {
     "bootstrap": "^5.0.0-beta3",
     "cross-env": "^5.2.1",
-    "jquery": "^3.5.1",
     "laravel-mix": "^5.0.9",
-    "popper.js": "^1.16.1",
     "sass": "^1.29.0",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.14",
     "webpack-livereload-plugin": "^1.2.0"
   }
 }
