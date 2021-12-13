@@ -211,9 +211,8 @@ function haste_breadcrumb_page() {
  * @return [type]
  */
 function haste_breadcrumb_category_archive() {
-	global $wp_query;
-
 	if ( is_category() ) {
+		global $wp_query;
 		$category_object  = $wp_query->get_queried_object();
 		$category_id      = $category_object->term_id;
 		$current_category = get_category( $category_id );
