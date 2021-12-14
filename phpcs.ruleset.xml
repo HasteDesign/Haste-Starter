@@ -3,5 +3,6 @@
 	<description>The coding standard for PHP_CodeSniffer itself.</description>
 	<rule ref="WordPress-Core">
 		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
+		<exclude name="Generic.PHP.DisallowShortOpenTag.EchoFound"/>
 	</rule>
 </ruleset>
